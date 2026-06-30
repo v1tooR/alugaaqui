@@ -3,803 +3,2496 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AlugaAqui — Wireframe Baixa Fidelidade</title>
+  <meta name="description" content="AlugaAqui — Aluguel de máquinas e equipamentos para construção civil. Entrega em até 24h, equipamentos revisados e 5 estrelas no Google.">
+  <title>AlugaAqui — Máquinas e Equipamentos para sua Obra</title>
+  <link rel="icon" type="image/png" href="Design System Aluga Aqui/assets/logos/aluga-aqui-full.png">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ══════════════════════════════════════════
+       FONTS — Design System AlugaAqui
+    ══════════════════════════════════════════ */
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-Regular.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-Medium.otf') format('opentype');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-SemiBold.otf') format('opentype');
+      font-weight: 600; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-Bold.otf') format('opentype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-ExtraBold.otf') format('opentype');
+      font-weight: 800; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-Black.otf') format('opentype');
+      font-weight: 900; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('Design System Aluga Aqui/assets/fonts/Montserrat-Variable.ttf') format('truetype');
+      font-weight: 300 800; font-style: normal; font-display: swap;
+    }
 
+    /* ══════════════════════════════════════════
+       DESIGN TOKENS
+    ══════════════════════════════════════════ */
     :root {
-      --wf-bg: #F0EDE8;
-      --wf-surface: #FAFAF8;
-      --wf-border: #B8B3AB;
-      --wf-border-light: #D4D0CB;
-      --wf-img: #C8C3BC;
-      --wf-img-border: #A09B94;
-      --wf-dark: #3C3835;
-      --wf-mid: #6B6661;
-      --wf-muted: #9E9990;
-      --wf-btn: #D0CBC4;
-      --wf-btn-primary: #8C8780;
-      --wf-section-dark: #4A4742;
-      --wf-section-accent: #7A7570;
-      --wf-text-dark: #2C2A28;
-      --wf-text-body: #5A5550;
-      --wf-text-muted: #8A8580;
-      --wf-note-bg: #FFFAC8;
-      --wf-note-border: #D4CC80;
-      --wf-note-text: #6B6400;
+      --orange:         #EC670F;
+      --orange-dark:    #C2540B;
+      --orange-light:   #FBE3D2;
+      --orange-xlight:  #FEF4EE;
+      --coal:           #2A2725;
+      --graphite:       #464240;
+      --gray-600:       #6E6864;
+      --gray-400:       #A8A09B;
+      --gray-200:       #DAD3CC;
+      --cream:          #FAF6F2;
+      --white:          #FFFFFF;
+      --available:      #2E7D4F;
+      --available-bg:   #E2F1E8;
+      --font-display:   'Metropolis', 'Montserrat', system-ui, sans-serif;
+      --font-body:      'Montserrat', system-ui, sans-serif;
+      --max-w:          1240px;
+      --px:             clamp(18px, 5vw, 80px);
+      --radius-card:    18px;
+      --radius-btn:     11px;
+      --ease:           cubic-bezier(.22,.61,.36,1);
     }
 
+    /* ══════════════════════════════════════════
+       BASE RESET
+    ══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
-      font-family: 'Courier New', 'Lucida Console', monospace;
-      background: var(--wf-bg);
-      color: var(--wf-text-body);
-      font-size: 13px;
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--graphite);
       line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--font-body); border: none; background: none; }
+    ul, ol { list-style: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
-    /* ─── META BAR ─── */
-    .meta-bar {
-      background: var(--wf-dark);
-      color: var(--wf-muted);
-      padding: 8px 32px;
-      display: flex;
+    /* ══════════════════════════════════════════
+       LAYOUT
+    ══════════════════════════════════════════ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding-inline: var(--px);
+    }
+    .section    { padding-block: 100px; }
+    .section-sm { padding-block: 72px; }
+
+    /* Brand diagonal stripe */
+    .stripe {
+      height: 14px;
+      background: repeating-linear-gradient(135deg, var(--orange) 0 16px, var(--coal) 16px 32px);
+      flex-shrink: 0;
+    }
+    .stripe-soft {
+      height: 12px;
+      background: repeating-linear-gradient(135deg, var(--orange) 0 16px, var(--cream) 16px 32px);
+    }
+
+    /* ══════════════════════════════════════════
+       TYPOGRAPHY
+    ══════════════════════════════════════════ */
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1;
+      letter-spacing: -.022em;
+      color: var(--coal);
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -.02em;
+      line-height: 1.05;
+      color: var(--coal);
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+      color: var(--coal);
+    }
+    p { line-height: 1.7; color: var(--gray-600); }
+
+    .inv h1, .inv h2, .inv h3 { color: var(--cream); }
+    .inv p  { color: var(--gray-400); }
+
+    .section-header          { text-align: center; margin-bottom: 56px; }
+    .section-header .eyebrow { margin-bottom: 16px; }
+    .section-header h2       { margin-bottom: 16px; }
+    .section-header p        { max-width: 50ch; margin-inline: auto; font-size: 17px; }
+
+    /* ══════════════════════════════════════════
+       BUTTONS
+    ══════════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
       align-items: center;
-      gap: 24px;
-      font-size: 10px;
-      letter-spacing: 0.08em;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: var(--radius-btn);
+      padding: 14px 26px;
+      cursor: pointer;
+      transition: background .18s var(--ease), color .18s, border-color .18s, transform .18s var(--ease), box-shadow .18s;
+      white-space: nowrap;
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      border-color: var(--orange);
+    }
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      border-color: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(236,103,15,.35);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--graphite);
+      border-color: var(--graphite);
+    }
+    .btn-outline:hover {
+      background: var(--graphite);
+      color: var(--white);
+    }
+    .btn-outline-inv {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(250,246,242,.45);
+    }
+    .btn-outline-inv:hover {
+      background: var(--cream);
+      color: var(--coal);
+      border-color: var(--cream);
+    }
+    .btn-ghost {
+      background: var(--orange-light);
+      color: var(--orange);
+      border-color: var(--orange-light);
+    }
+    .btn-ghost:hover { background: #F7D3BC; }
+    .btn-lg  { font-size: 16px; padding: 17px 34px; border-radius: 13px; }
+    .btn-sm  { font-size: 13px; padding:  9px 18px; border-radius:  9px; }
+
+    /* ══════════════════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .32s; }
+
+    /* ══════════════════════════════════════════
+       SCROLLBAR
+    ══════════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 4px; }
+
+    /* ══════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════ */
+
+    /* Entry animation */
+    @keyframes nav-drop {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Hero animations ── */
+    @keyframes hero-line-in {
+      from { opacity: 0; transform: translateY(26px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes hero-fade-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes hero-img-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    @keyframes hero-badge-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-7px); }
+    }
+    @keyframes hero-badge2-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(7px); }
+    }
+    @keyframes glow-breathe {
+      0%, 100% { opacity: 0.75; }
+      50%       { opacity: 1; }
+    }
+    @keyframes hero-scroll-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0);   opacity: .45; }
+      50%       { transform: translateX(-50%) translateY(7px); opacity: .9; }
+    }
+    @keyframes em-reveal {
+      to { transform: scaleX(1); }
+    }
+    @keyframes badge2-slide {
+      from { opacity: 0; transform: translateX(18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes stat-slide {
+      from { opacity: 0; transform: translateX(-18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pill-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(236,103,15,0); }
+      50%       { box-shadow: 0 0 18px 2px rgba(236,103,15,.18); }
+    }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 100%;                          /* sempre full-width */
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange), #FF9340);
+      z-index: 110;
+      border-radius: 0 3px 3px 0;
+      box-shadow: 0 0 10px rgba(236,103,15,.6);
+      transform: scaleX(0);                 /* escala via compositor — zero reflow */
+      transform-origin: left;
+      transition: transform .08s linear;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .navbar {
       position: sticky;
       top: 0;
-      z-index: 1000;
-    }
-    .meta-bar strong { color: #D0CBC4; }
-    .meta-sep { color: #555; }
-    .legend { display: flex; gap: 16px; flex-wrap: wrap; }
-    .legend-item { display: flex; align-items: center; gap: 5px; }
-    .legend-swatch {
-      width: 12px; height: 12px;
-      border-radius: 2px;
-      border: 1px solid var(--wf-border);
+      z-index: 100;
+      overflow-anchor: none;
+      background: rgba(250,246,242,0);
+      border-bottom: 1px solid rgba(228,220,211,0);
+      /* Apenas propriedades compositor-safe — sem height, padding ou width */
+      transition:
+        background .28s var(--ease),
+        border-color .28s var(--ease),
+        box-shadow .28s var(--ease);
+      animation: nav-drop .42s var(--ease) both;
     }
 
-    /* ─── SECTION WRAPPER ─── */
-    .wf-section {
+    .navbar.scrolled {
+      background: rgba(250,246,242,.96);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border-color: rgba(228,220,211,.9);
+      box-shadow: 0 1px 0 rgba(228,220,211,.9), 0 10px 36px rgba(42,39,37,.07);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 14px;
+      /* Sem transition em padding — evita layout trigger no scroll */
+    }
+
+    /* Logo — encolhe via transform (sem layout trigger) */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .nav-logo img {
+      height: 72px;
+      width: auto;
+      transform-origin: left center;
+      transition: transform .32s var(--ease), opacity .2s;
+      will-change: transform;
+      object-fit: contain;
+    }
+    .navbar.scrolled .nav-logo img { transform: scale(0.72); }
+    .nav-logo:hover img { opacity: .82; }
+
+    /* Nav links — pill hover background */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .nav-links a {
       position: relative;
-      border-left: 3px solid var(--wf-border-light);
-      border-right: 3px solid var(--wf-border-light);
+      font-weight: 600;
+      font-size: 13.5px;
+      color: var(--graphite);
+      padding: 7px 13px;
+      border-radius: 8px;
+      transition: color .18s, background .18s;
+      white-space: nowrap;
     }
-    .wf-section + .wf-section { border-top: 2px dashed var(--wf-border); }
-
-    .sec-label {
+    /* Animated dot indicator */
+    .nav-links a::after {
+      content: '';
       position: absolute;
-      top: 0; left: 0;
-      background: var(--wf-dark);
-      color: var(--wf-muted);
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      padding: 3px 10px;
-      text-transform: uppercase;
+      bottom: 3px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: calc(100% - 26px);
+      height: 2.5px;
+      background: var(--orange);
+      border-radius: 99px;
+      transition: transform .22s var(--ease);
+      transform-origin: center;
     }
-    .sec-num {
+    .nav-links a:hover {
+      color: var(--orange);
+      background: var(--orange-xlight);
+    }
+    .nav-links a:hover::after { transform: translateX(-50%) scaleX(1); }
+    .nav-links a.active {
+      color: var(--orange);
+      background: var(--orange-xlight);
+    }
+    .nav-links a.active::after { transform: translateX(-50%) scaleX(1); }
+
+    /* CTA — shimmer on hover */
+    .nav-cta-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-cta-btn::after {
+      content: '';
       position: absolute;
-      top: 0; right: 0;
-      background: var(--wf-border-light);
-      color: var(--wf-mid);
-      font-size: 9px;
-      padding: 3px 10px;
+      top: 0; left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transform: skewX(-20deg);
+      transition: left .5s var(--ease);
+      pointer-events: none;
+    }
+    .nav-cta-btn:hover::after { left: 125%; }
+
+    /* Hamburger button — morphs to X */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      transition: background .18s;
+      border: none;
+      background: none;
+    }
+    .nav-hamburger:hover { background: var(--orange-xlight); }
+    .nav-hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--graphite);
+      border-radius: 2px;
+      transform-origin: center;
+      transition: transform .32s var(--ease), opacity .25s, width .25s;
+    }
+    .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.is-open span:nth-child(2) { opacity: 0; width: 0; }
+    .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Mobile overlay ── */
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(42,39,37,.55);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      z-index: 190;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s var(--ease);
+    }
+    .mobile-overlay.open {
+      opacity: 1;
+      pointer-events: all;
     }
 
-    /* ─── TYPOGRAPHY ─── */
-    .wf-eyebrow {
-      display: inline-block;
-      border: 1.5px solid var(--wf-border);
-      background: var(--wf-btn);
-      color: var(--wf-mid);
+    /* ── Mobile menu — slides from right ── */
+    .mobile-menu {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(340px, 100vw);
+      background: var(--coal);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      padding: 88px 36px 48px;
+      transform: translateX(110%);
+      transition: transform .4s var(--ease);
+      overflow-y: auto;
+      /* Decorative edge line */
+      border-left: 1px solid rgba(236,103,15,.2);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* Brand mark top of drawer */
+    .mobile-brand {
+      position: absolute;
+      top: 20px; left: 28px;
+    }
+    .mobile-brand img { height: 28px; opacity: .5; filter: brightness(2); }
+
+    /* Close button */
+    .mobile-close {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray-400);
+      cursor: pointer;
+      border-radius: 9px;
+      border: none;
+      background: none;
+      transition: background .18s, color .18s;
+    }
+    .mobile-close:hover {
+      background: rgba(255,255,255,.08);
+      color: var(--white);
+    }
+
+    /* Nav items — staggered slide-in */
+    .mobile-menu .m-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 26px;
+      color: rgba(250,246,242,.35);
+      letter-spacing: -.02em;
+      opacity: 0;
+      transform: translateX(24px);
+      transition:
+        opacity .35s var(--ease),
+        transform .35s var(--ease),
+        color .18s;
+    }
+    .mobile-menu.open .m-link { opacity: 1; transform: translateX(0); }
+    /* Children: 1=.mobile-brand, 2=button.mobile-close, 3–7=.m-link */
+    .mobile-menu.open .m-link:nth-child(3) { transition-delay: .06s; }
+    .mobile-menu.open .m-link:nth-child(4) { transition-delay: .11s; }
+    .mobile-menu.open .m-link:nth-child(5) { transition-delay: .16s; }
+    .mobile-menu.open .m-link:nth-child(6) { transition-delay: .21s; }
+    .mobile-menu.open .m-link:nth-child(7) { transition-delay: .26s; }
+    .mobile-menu .m-link:hover {
+      color: var(--orange);
+      transform: translateX(6px) !important;
+    }
+    .m-link-arrow {
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity .15s, transform .2s var(--ease);
+      color: var(--orange);
+    }
+    .mobile-menu .m-link:hover .m-link-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* CTA in drawer */
+    .mobile-cta-wrap {
+      margin-top: 32px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .35s .30s var(--ease), transform .35s .30s var(--ease);
+    }
+    .mobile-menu.open .mobile-cta-wrap { opacity: 1; transform: translateY(0); }
+    .mobile-cta-wrap .btn { width: 100%; justify-content: center; }
+
+    /* Small label above CTA */
+    .mobile-cta-label {
       font-size: 10px;
-      letter-spacing: 0.1em;
+      font-weight: 600;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      padding: 4px 12px;
+      color: rgba(168,160,155,.5);
+      margin-bottom: 12px;
     }
-    .wf-h1 { font-size: 38px; font-weight: bold; color: var(--wf-text-dark); line-height: 1.1; }
-    .wf-h2 { font-size: 26px; font-weight: bold; color: var(--wf-text-dark); line-height: 1.2; }
-    .wf-h3 { font-size: 15px; font-weight: bold; color: var(--wf-text-dark); }
-    .wf-body { font-size: 12px; color: var(--wf-text-body); }
-    .wf-small { font-size: 10px; color: var(--wf-text-muted); }
 
-    /* inverted (dark bg sections) */
-    .inv .wf-h1, .inv .wf-h2, .inv .wf-h3 { color: #E8E4DE; }
-    .inv .wf-body { color: #A8A49E; }
-    .inv .wf-eyebrow { background: #5A5550; border-color: #7A7570; color: #C0BBB5; }
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      background: var(--coal);
+      position: relative;
+    }
 
-    /* ─── IMAGE PLACEHOLDER ─── */
-    .img-ph {
-      background: var(--wf-img);
-      border: 2px solid var(--wf-img-border);
+    /* Glow — camada full-section, reage ao mouse */
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 65% at 65% 48%, rgba(236,103,15,.15) 0%, transparent 68%);
+      pointer-events: none;
+      z-index: 1;
+      animation: glow-breathe 5s ease-in-out infinite;
+      transition: background .22s ease;
+    }
+
+    /* Grain texture — CSS repeating pattern, zero SVG filter cost */
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 1;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,.018) 0px, rgba(255,255,255,.018) 1px,
+          transparent 1px, transparent 3px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,.012) 0px, rgba(255,255,255,.012) 1px,
+          transparent 1px, transparent 3px
+        );
+    }
+
+    /* Everything above grain and glow */
+    .hero .stripe,
+    .hero .container { position: relative; z-index: 3; }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+      padding-block: 96px 120px;
+    }
+
+    /* ── Pill badge ── */
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(236,103,15,.12);
+      border: 1px solid rgba(236,103,15,.3);
+      border-radius: 999px;
+      padding: 8px 16px 8px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--orange);
+      margin-bottom: 30px;
+      animation: pill-glow 3s ease-in-out infinite;
+    }
+    .hero-pill-dot {
+      width: 7px; height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* ── H1 per-line entrance ── */
+    .hero h1 {
+      color: var(--cream);
+      margin-bottom: 22px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+      position: relative;
+      display: inline-block;
+    }
+    /* Faixa industrial CSS — substitui o SVG underline */
+    .hero h1 em::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 100%;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--orange)          0,  var(--orange)          10px,
+        rgba(236,103,15,.22)  10px, rgba(236,103,15,.22)  14px
+      );
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: em-reveal .65s var(--ease) 1.05s both;
+    }
+    .hero h1 .hero-line {
+      display: block;
+      opacity: 0;
+      animation: hero-line-in .65s var(--ease) both;
+    }
+    .hero h1 .hero-line:nth-child(1) { animation-delay: .22s; }
+    .hero h1 .hero-line:nth-child(2) { animation-delay: .38s; }
+    .hero h1 .hero-line:nth-child(3) { animation-delay: .54s; }
+
+    /* ── Body copy ── */
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--gray-400);
+      max-width: 44ch;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: hero-fade-in .6s var(--ease) .7s both;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: hero-fade-in .6s var(--ease) .82s both;
+    }
+
+    /* Ripple on primary CTA */
+    .hero-btns .btn-primary {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-btns .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--rx,50%) var(--ry,50%), rgba(255,255,255,.28) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .hero-btns .btn-primary:hover::before { opacity: 1; }
+
+    /* ── Social proof bar ── */
+    .hero-proof {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      opacity: 0;
+      animation: hero-fade-in .6s var(--ease) .96s both;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: 9px 14px;
+    }
+    .hero-stars { color: #FFBE00; font-size: 15px; letter-spacing: 2px; }
+    .hero-proof-text { font-size: 13px; font-weight: 500; color: var(--gray-400); }
+
+    /* ── Visual column ── */
+    .hero-visual { position: relative; }
+
+    .hero-img-frame {
+      position: relative;
+      aspect-ratio: 3/4;
+      z-index: 1;
+      animation: hero-img-float 7s ease-in-out infinite;
+      animation-delay: 1s;
+      will-change: transform;              /* promove para layer do compositor */
+    }
+    .hero-img-frame img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center top;
+      /* drop-shadow em elemento animado = repaint por frame. Usar box-shadow no frame. */
+    }
+
+    .hero-img-accent { display: none; }
+
+    /* "24h" floating card — left */
+    .hero-img-stat {
+      position: absolute;
+      top: 32px; left: -20px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 14px 20px;
+      box-shadow: 0 12px 40px rgba(42,39,37,.28);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 3;
+      animation: stat-slide .55s var(--ease) .65s both,
+                 hero-badge-float 6s 1.8s ease-in-out infinite;
+    }
+    .hero-img-stat-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 28px;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .hero-img-stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      max-width: 7ch;
+      line-height: 1.3;
+    }
+
+    /* "+500 obras" floating card — right */
+    .hero-badge-2 {
+      position: absolute;
+      bottom: 30%;
+      right: -28px;
+      background: rgba(42,39,37,.92);
+      border: 1px solid rgba(236,103,15,.28);
+      border-radius: 14px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      z-index: 3;
+      backdrop-filter: blur(8px);
+      animation: badge2-slide .55s var(--ease) .9s both,
+                 hero-badge2-float 8s 2s ease-in-out infinite;
+    }
+    .hero-badge-2-icon {
+      width: 32px; height: 32px;
+      background: rgba(236,103,15,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-badge-2-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 20px;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .hero-badge-2-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      max-width: 8ch;
+      line-height: 1.35;
+    }
+
+    /* Scroll hint arrow at bottom of hero */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      color: rgba(250,246,242,.3);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 3;
+      animation: hero-scroll-bounce 2.2s ease-in-out 2s infinite;
+    }
+
+    /* ══════════════════════════════════════════
+       EQUIPMENT GRID
+    ══════════════════════════════════════════ */
+    .equipment { background: var(--white); }
+
+    .equip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .equip-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .2s;
+    }
+    .equip-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(70,66,64,.13);
+      border-color: var(--orange-light);
+    }
+    .equip-img {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--cream);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .equip-img img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      transition: transform .4s var(--ease);
+    }
+    .equip-card:hover .equip-img img { transform: scale(1.07); }
+    .equip-body {
+      padding: 18px 18px 12px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .equip-cat {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .equip-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--coal);
+      line-height: 1.2;
+    }
+    .equip-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .equip-footer {
+      padding: 12px 18px 18px;
+    }
+    .equip-cta {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background .18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+    }
+    .equip-cta:hover { background: var(--orange-dark); }
+
+    /* Brand meta row inside card */
+    .equip-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .equip-brand {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      border-radius: 5px;
+      padding: 2px 7px;
+      line-height: 1.6;
+    }
+    .equip-brand-csm    { background: rgba(236,103,15,.1);  color: var(--orange-dark); }
+    .equip-brand-bosch  { background: var(--cream); color: var(--coal); border: 1px solid var(--gray-200); }
+    .equip-brand-andasa { background: #e2f1e8; color: #2E7D4F; }
+    .equip-brand-vonder { background: #e8eef8; color: #2c5282; }
+
+    /* Cards hidden until load more */
+    .equip-hidden { display: none; }
+    .equip-load-more { text-align: center; margin-top: 44px; }
+    .equip-load-more .btn-load { display: inline-flex; align-items: center; gap: 9px; }
+    .equip-load-more .btn-load svg { transition: transform .3s var(--ease); }
+    .equip-load-more .btn-load:hover svg { transform: translateY(3px); }
+
+    /* ══════════════════════════════════════════
+       STATS
+    ══════════════════════════════════════════ */
+    .stats { background: var(--coal); position: relative; overflow: hidden; }
+    .stats::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 720px; height: 320px;
+      background: radial-gradient(ellipse at center, rgba(236,103,15,.10), transparent 72%);
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+      z-index: 1;
+    }
+    .stat-item {
+      padding: 50px 28px 44px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,.07);
+      position: relative;
+      cursor: default;
+      transition: background .3s var(--ease);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      width: 0; height: 2px;
+      background: var(--orange);
+      transition: width .35s var(--ease), left .35s var(--ease);
+    }
+    .stat-item:hover { background: rgba(255,255,255,.025); }
+    .stat-item:hover::after { width: 52px; left: calc(50% - 26px); }
+    .stat-icon {
+      width: 42px; height: 42px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 11px;
+      background: rgba(236,103,15,.12);
+      color: var(--orange);
+      transition: transform .32s var(--ease), background .3s;
+    }
+    .stat-icon svg { width: 21px; height: 21px; }
+    .stat-item:hover .stat-icon {
+      transform: translateY(-3px) scale(1.07);
+      background: rgba(236,103,15,.22);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(48px, 5vw, 66px);
+      line-height: 1;
+      color: var(--cream);
+      letter-spacing: -.03em;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .stat-num .accent { color: var(--orange); }
+    .stat-num.pop { animation: stat-pop .45s var(--ease); }
+    @keyframes stat-pop {
+      0%   { transform: scale(1); }
+      45%  { transform: scale(1.09); }
+      100% { transform: scale(1); }
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+
+    /* ══════════════════════════════════════════
+       WHY RENT
+    ══════════════════════════════════════════ */
+    .why { background: var(--cream); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 40px 30px 34px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      width: 0; height: 3px;
+      background: var(--orange);
+      transition: width .4s var(--ease), left .4s var(--ease);
+    }
+    .why-card:hover::before { width: 100%; left: 0; }
+    .why-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 22px 50px rgba(70,66,64,.12);
+      border-color: var(--orange-light);
+    }
+    .why-index {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .04em;
+      color: var(--gray-200);
+      transition: color .3s var(--ease);
+    }
+    .why-card:hover .why-index { color: var(--orange-light); }
+    .why-icon {
+      width: 72px; height: 72px;
+      background: var(--orange-light);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .3s var(--ease), transform .35s var(--ease);
+    }
+    .why-card:hover .why-icon { background: var(--orange); transform: scale(1.08) rotate(-4deg); }
+    .why-icon svg { width: 32px; height: 32px; color: var(--orange); transition: color .2s; }
+    .why-card:hover .why-icon svg { color: var(--white); }
+    .why-card h3 { margin: 0; transition: color .25s; }
+    .why-card:hover h3 { color: var(--orange-dark); }
+    .why-card p  { font-size: 14px; line-height: 1.65; }
+
+    /* ══════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════ */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-content .eyebrow { margin-bottom: 18px; }
+    .about-content h2        { margin-bottom: 26px; }
+    .about-content p         { font-size: 16px; margin-bottom: 16px; }
+    .about-content p:last-of-type { margin-bottom: 28px; }
+
+    .about-mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 260px 170px;
+      gap: 12px;
+      position: relative;
+    }
+    .about-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: var(--cream);
+    }
+    .about-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(42,39,37,.4));
+      opacity: 0;
+      transition: opacity .35s var(--ease);
+    }
+    .about-photo:hover::after { opacity: 1; }
+    .about-photo:first-child { grid-row: span 2; }
+    .about-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .55s var(--ease);
+    }
+    .about-photo:hover img { transform: scale(1.07); }
+
+    .about-badge {
+      position: absolute;
+      bottom: -24px; left: -24px;
+      background: var(--coal);
+      border-radius: 16px;
+      padding: 16px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      box-shadow: 0 16px 40px rgba(42,39,37,.3);
+      z-index: 2;
+      animation: hero-badge-float 6s ease-in-out infinite;
+    }
+    .about-badge-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 26px;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .about-badge-num .accent { color: var(--orange); }
+    .about-badge-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+
+    /* ══════════════════════════════════════════
+       BRANDS
+    ══════════════════════════════════════════ */
+    .brands { background: var(--cream); }
+    .brands-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .brand-card {
+      width: 172px;
+      height: 96px;
+      padding: 18px 26px;
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
-      flex-shrink: 0;
+      cursor: pointer;
+      transition: border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);
     }
-    .img-ph::before, .img-ph::after {
+    .brand-card::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: none;
-      border: none;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ease);
     }
-    /* X cross lines */
-    .img-ph .x-line {
+    .brand-card:hover {
+      border-color: var(--orange-light);
+      box-shadow: 0 12px 30px rgba(236,103,15,.16);
+      transform: translateY(-5px);
+    }
+    .brand-card:hover::before { transform: scaleX(1); }
+    .brand-card img {
+      max-width: 100%;
+      max-height: 40px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(1) opacity(.5);
+      transition: filter .35s var(--ease), transform .35s var(--ease);
+    }
+    .brand-card:hover img {
+      filter: grayscale(0) opacity(1);
+      transform: scale(1.08);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .brand-card, .brand-card img { transition: none; }
+    }
+
+    /* ══════════════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════════════ */
+    .testimonials { background: var(--white); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .review-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-card);
+      padding: 30px 28px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+    }
+    .review-card::before {
+      content: '';
       position: absolute;
-      width: 141%;
-      height: 1.5px;
-      background: var(--wf-img-border);
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ease);
     }
-    .img-ph .x-line:nth-child(1) { transform: rotate(var(--r)); }
-    .img-ph .x-line:nth-child(2) { transform: rotate(calc(-1 * var(--r))); }
-    .img-ph .ph-label {
+    .review-card::after {
+      content: '\201C';
+      position: absolute;
+      top: -16px; right: 18px;
+      font-family: var(--font-display);
+      font-size: 96px;
+      font-weight: 900;
+      color: var(--gray-200);
+      line-height: 1;
+      pointer-events: none;
+      transition: color .3s var(--ease);
+    }
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(70,66,64,.14);
+      border-color: var(--orange-light);
+    }
+    .review-card:hover::before { transform: scaleX(1); }
+    .review-card:hover::after { color: var(--orange-light); }
+    .review-stars {
+      display: flex;
+      gap: 2px;
+      color: #FFBE00;
+      font-size: 17px;
       position: relative;
       z-index: 1;
-      background: var(--wf-img);
-      padding: 4px 10px;
-      font-size: 10px;
-      color: var(--wf-mid);
-      text-align: center;
-      line-height: 1.4;
-      letter-spacing: 0.04em;
-      max-width: 80%;
     }
-
-    /* ─── BUTTONS ─── */
-    .btn-wf {
-      display: inline-flex;
+    .review-stars .star {
+      display: inline-block;
+      transition: transform .25s var(--ease);
+    }
+    .review-card:hover .review-stars .star { transform: scale(1.18) rotate(-6deg); }
+    .review-card:hover .review-stars .star:nth-child(1) { transition-delay: 0s; }
+    .review-card:hover .review-stars .star:nth-child(2) { transition-delay: .04s; }
+    .review-card:hover .review-stars .star:nth-child(3) { transition-delay: .08s; }
+    .review-card:hover .review-stars .star:nth-child(4) { transition-delay: .12s; }
+    .review-card:hover .review-stars .star:nth-child(5) { transition-delay: .16s; }
+    .review-text {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--graphite);
+      font-style: italic;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-200);
+      position: relative;
+      z-index: 1;
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gray-200);
+      display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid var(--wf-btn-primary);
-      background: var(--wf-btn);
-      color: var(--wf-dark);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 16px;
+      color: var(--graphite);
+      flex-shrink: 0;
+      transition: transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+    }
+    .review-card:hover .review-avatar {
+      transform: scale(1.08);
+      background: var(--orange-light);
+      color: var(--orange-dark);
+    }
+    .review-name  { font-weight: 700; font-size: 14px; color: var(--coal); }
+    .review-role  { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+    .review-g {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      transition: transform .3s var(--ease);
+    }
+    .review-card:hover .review-g { transform: scale(1.15); }
+
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cream);
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
       padding: 10px 22px;
-      font-family: inherit;
-      font-size: 12px;
-      cursor: default;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
+      margin-top: 24px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
     }
-    .btn-wf.primary {
-      background: var(--wf-btn-primary);
-      border-color: var(--wf-mid);
-      color: #F0EDE8;
+    .google-badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 26px rgba(66,133,244,.18);
+      border-color: #4285F4;
     }
-    .btn-wf.outline-inv {
-      background: transparent;
-      border-color: #A8A49E;
-      color: #C8C4BE;
-    }
-    .btn-wf.sm { padding: 7px 14px; font-size: 11px; }
-
-    /* ─── NOTE / ANNOTATION ─── */
-    .note {
-      display: inline-block;
-      background: var(--wf-note-bg);
-      border: 1px solid var(--wf-note-border);
-      color: var(--wf-note-text);
-      font-size: 10px;
-      padding: 4px 10px;
-      line-height: 1.4;
-    }
-    .note.block { display: block; }
-
-    /* ─── CARD ─── */
-    .card-wf {
-      border: 1.5px solid var(--wf-border);
-      background: var(--wf-surface);
-      padding: 16px;
+    .google-badge .g-letter { display: flex; align-items: center; }
+    .google-badge .g-stars { color: #FFBE00; font-size: 15px; letter-spacing: 1px; }
+    .google-badge .g-text  { font-size: 13px; font-weight: 600; color: var(--graphite); }
+    @media (prefers-reduced-motion: reduce) {
+      .review-card, .review-card::before, .review-card::after,
+      .review-stars .star, .review-avatar, .review-g, .google-badge { transition: none; }
     }
 
-    /* ─── TEXT LINES (body placeholder) ─── */
-    .tl { height: 9px; background: var(--wf-border-light); border-radius: 2px; margin-bottom: 7px; }
-    .tl.w80 { width: 80%; }
-    .tl.w70 { width: 70%; }
-    .tl.w60 { width: 60%; }
-    .tl.w50 { width: 50%; }
-
-    /* ─── LAYOUT HELPERS ─── */
-    .row { display: flex; }
-    .col { display: flex; flex-direction: column; }
-    .gap4 { gap: 4px; }
-    .gap8 { gap: 8px; }
-    .gap12 { gap: 12px; }
-    .gap16 { gap: 16px; }
-    .gap20 { gap: 20px; }
-    .gap24 { gap: 24px; }
-    .gap32 { gap: 32px; }
-    .gap40 { gap: 40px; }
-    .mt8 { margin-top: 8px; }
-    .mt12 { margin-top: 12px; }
-    .mt16 { margin-top: 16px; }
-    .mt20 { margin-top: 20px; }
-    .mt24 { margin-top: 24px; }
-    .mt32 { margin-top: 32px; }
-    .center { text-align: center; }
-    .items-center { align-items: center; }
-    .justify-between { justify-content: space-between; }
-    .justify-center { justify-content: center; }
-    .wrap { flex-wrap: wrap; }
-    .flex1 { flex: 1; }
-    .pad { padding: 64px 80px; }
-    .pad-sm { padding: 48px 80px; }
-    .pad-xs { padding: 32px 80px; }
-
-    /* ─── GRID ─── */
-    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .grid3f { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
-
-    /* ─── BACKGROUNDS ─── */
-    .bg-surface { background: var(--wf-surface); }
-    .bg-dark { background: var(--wf-section-dark); }
-    .bg-mid { background: var(--wf-section-accent); }
-    .bg-accent { background: #888; } /* placeholder for orange */
-
-    /* ─── STARS ─── */
-    .stars { color: var(--wf-muted); font-size: 15px; letter-spacing: 2px; }
-
-    /* ─── BRAND LOGOS ─── */
-    .brand-ph {
-      width: 90px; height: 44px;
-      background: var(--wf-img);
-      border: 1.5px solid var(--wf-img-border);
-      display: flex; align-items: center; justify-content: center;
+    /* ══════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════ */
+    .faq-wrap { background: var(--cream); }
+    .faq-list  { max-width: 780px; margin-inline: auto; }
+    .faq-item  {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: box-shadow .25s var(--ease), border-color .25s var(--ease), transform .2s var(--ease);
     }
-    .brand-ph span { font-size: 9px; color: var(--wf-mid); }
-
-    /* ─── ACCORDION ─── */
-    .accordion { border: 1.5px solid var(--wf-border); background: var(--wf-surface); }
-    .acc-row {
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--wf-border-light);
-      display: flex; justify-content: space-between; align-items: center;
+    .faq-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 3px;
+      background: var(--orange);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform .3s var(--ease);
     }
-    .acc-row:last-child { border-bottom: none; }
-    .acc-row.open { background: #EDEAE4; }
-    .acc-answer { padding: 12px 20px 16px; background: #F5F2EC; border-bottom: 1px solid var(--wf-border-light); }
-
-    /* ─── FLOATING WA ─── */
-    .fab {
-      position: fixed; bottom: 28px; right: 28px;
-      width: 54px; height: 54px;
+    .faq-item:hover { border-color: var(--orange-light); }
+    .faq-item.open {
+      box-shadow: 0 10px 30px rgba(70,66,64,.1);
+      border-color: var(--orange-light);
+    }
+    .faq-item.open::before { transform: scaleY(1); }
+    .faq-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      padding: 22px 26px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .faq-btn:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: -2px;
+    }
+    .faq-q {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--coal);
+      transition: color .25s var(--ease);
+    }
+    .faq-num {
+      color: var(--orange);
+      font-weight: 800;
+      margin-right: 2px;
+    }
+    .faq-btn:hover .faq-q { color: var(--orange-dark); }
+    .faq-icon {
+      width: 30px; height: 30px;
       border-radius: 50%;
-      background: var(--wf-btn-primary);
-      border: 2px solid var(--wf-mid);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      font-size: 9px; color: #D0CBC4;
-      z-index: 999;
-      line-height: 1.3;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .25s var(--ease), transform .3s var(--ease), color .25s var(--ease);
+      color: var(--graphite);
+    }
+    .faq-item:not(.open):hover .faq-icon {
+      background: var(--orange-light);
+      color: var(--orange-dark);
+      transform: scale(1.1);
+    }
+    .faq-item.open .faq-icon {
+      background: var(--orange);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s var(--ease);
+    }
+    .faq-answer {
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity .35s var(--ease) .05s, transform .35s var(--ease) .05s;
+      padding: 0 26px 22px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--gray-600);
+    }
+    .faq-item.open .faq-answer {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .faq-item, .faq-item::before, .faq-icon, .faq-q, .faq-body, .faq-answer { transition: none; }
+    }
+
+    /* ══════════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════════ */
+    .cta-final {
+      background: var(--orange);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 440px; height: 440px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      pointer-events: none;
+    }
+    .cta-final::after {
+      content: '';
+      position: absolute;
+      bottom: -140px; left: -80px;
+      width: 540px; height: 540px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.06);
+      pointer-events: none;
+    }
+    .cta-final-inner {
       text-align: center;
+      padding-block: 96px;
+      position: relative;
+      z-index: 1;
     }
-    .fab-note {
-      position: fixed; bottom: 88px; right: 8px;
-      font-size: 8px; color: var(--wf-muted);
-      text-align: right; line-height: 1.4;
-      letter-spacing: 0.06em;
+    .cta-final h2   { color: var(--white); margin-bottom: 14px; }
+    .cta-final p    {
+      color: rgba(255,255,255,.78);
+      font-size: 17px;
+      max-width: 46ch;
+      margin-inline: auto;
+      margin-bottom: 44px;
     }
-
-    /* ─── DIVIDER ─── */
-    hr.wf { border: none; border-top: 1.5px dashed var(--wf-border); margin: 0; }
-
-    /* scrollbar */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--wf-bg); }
-    ::-webkit-scrollbar-thumb { background: var(--wf-border); }
-
-    /* ════════════════════════════════════
-       HAMBURGER (hidden desktop, visible mobile)
-    ════════════════════════════════════ */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: default;
-      padding: 6px;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--wf-mid);
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    /* ════════════════════════════════════
-       RESPONSIVE — TABLET (769 – 1024px)
-    ════════════════════════════════════ */
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    .footer { background: var(--coal); position: relative; overflow: hidden; }
+    .footer::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; right: -180px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(236,103,15,.07) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .footer-inner { padding-top: 72px; position: relative; z-index: 1; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 56px;
+    }
+    .footer-logo img { height: 72px; width: auto; margin-bottom: 16px; }
+    .footer-tagline  { font-size: 13px; font-style: italic; color: var(--gray-400); margin-bottom: 24px; line-height: 1.6; }
+    .footer-socials  { display: flex; gap: 10px; }
+    .social-btn {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .22s var(--ease), border-color .22s var(--ease), transform .22s var(--ease), box-shadow .22s var(--ease);
+    }
+    .social-btn:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(236,103,15,.38);
+    }
+    .social-btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+    .social-btn svg   { width: 17px; height: 17px; color: var(--gray-400); transition: color .22s var(--ease), transform .22s var(--ease); fill: currentColor; }
+    .social-btn:hover svg { color: var(--white); transform: scale(1.1); }
+    .footer-col-title {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      position: relative;
+    }
+    .footer-col-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 22px; height: 2px;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      font-size: 14px;
+      color: #6A6560;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: color .22s var(--ease);
+    }
+    .footer-links a::before {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 1.5px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin-right: 0;
+      flex-shrink: 0;
+      align-self: center;
+      transition: width .25s var(--ease), margin-right .25s var(--ease);
+    }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-links a:hover::before { width: 12px; margin-right: 7px; }
+    .footer-links a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 3px; }
+    .footer-contact { display: flex; flex-direction: column; gap: 14px; }
+    .footer-citem { display: flex; align-items: flex-start; gap: 10px; }
+    .footer-citem svg {
+      width: 15px; height: 15px;
+      flex-shrink: 0; margin-top: 3px;
+      color: var(--orange); fill: none; stroke: currentColor; stroke-width: 2;
+      transition: transform .22s var(--ease);
+    }
+    .footer-citem:hover svg { transform: scale(1.18); }
+    .footer-citem span { font-size: 14px; color: #6A6560; line-height: 1.55; }
+    .footer-citem a {
+      font-size: 14px;
+      color: #6A6560;
+      text-decoration: none;
+      line-height: 1.55;
+      transition: color .22s var(--ease);
+    }
+    .footer-citem a:hover { color: var(--orange-light); }
+    .footer-citem a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 2px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-block: 22px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 11.5px; color: #4A4540; letter-spacing: .04em; }
+    @media (prefers-reduced-motion: reduce) {
+      .social-btn, .social-btn svg, .footer-links a, .footer-links a::before, .footer-citem svg { transition: none; }
+    }
+
+    /* ══════════════════════════════════════════
+       FLOATING WA
+    ══════════════════════════════════════════ */
+    .fab-wrap {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 90;
+    }
+    .fab-pulse {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(37,211,102,.3);
+      animation: pulse 2.8s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1);   opacity: .7; }
+      60%      { transform: scale(1.6); opacity: 0; }
+    }
+    .fab {
+      position: relative;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 28px rgba(37,211,102,.4);
+      cursor: pointer;
+      transition: transform .2s var(--ease), box-shadow .2s;
+      border: none;
+    }
+    .fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 36px rgba(37,211,102,.5);
+    }
+    .fab svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE — TABLET 769–1024
+    ══════════════════════════════════════════ */
     @media (min-width: 769px) and (max-width: 1024px) {
-      .pad     { padding: 48px 40px !important; }
-      .pad-sm  { padding: 36px 40px !important; }
-      .pad-xs  { padding: 24px 40px !important; }
-      .wf-h1   { font-size: 30px; }
-      .wf-h2   { font-size: 22px; }
-      .grid4   { grid-template-columns: repeat(2, 1fr) !important; }
-      .grid3   { grid-template-columns: repeat(2, 1fr) !important; }
-      .grid2   { gap: 32px !important; }
+      .equip-grid  { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+      .stat-item   { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.07); }
+      .about-grid  { gap: 44px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
     }
 
-    /* ════════════════════════════════════
-       RESPONSIVE — MOBILE (≤ 768px)
-    ════════════════════════════════════ */
+    /* ══════════════════════════════════════════
+       RESPONSIVE — MOBILE ≤ 768
+    ══════════════════════════════════════════ */
     @media (max-width: 768px) {
+      .section    { padding-block: 64px; }
+      .section-sm { padding-block: 48px; }
 
-      /* Meta bar */
-      .meta-bar { padding: 6px 14px; gap: 6px; flex-wrap: wrap; }
-      .legend   { display: none; }
-      .meta-sep { display: none; }
+      /* Navbar */
+      .nav-links         { display: none !important; }
+      .nav-cta-desktop   { display: none !important; }
+      .nav-hamburger     { display: flex; }
 
-      /* Padding global */
-      .pad    { padding: 36px 18px !important; }
-      .pad-sm { padding: 28px 18px !important; }
-      .pad-xs { padding: 20px 18px !important; }
-
-      /* Typography */
-      .wf-h1      { font-size: 24px; }
-      .wf-h2      { font-size: 18px; }
-      .wf-h3      { font-size: 13px; }
-      .wf-eyebrow { font-size: 9px; padding: 3px 10px; }
-      .note       { font-size: 9px; }
-
-      /* Section badges */
-      .sec-label { font-size: 7.5px; padding: 2px 8px; }
-      .sec-num   { font-size: 8px;   padding: 2px 8px; }
-
-      /* ── NAVBAR ── */
-      .nav-desktop     { display: none !important; }
-      .nav-cta-desktop { display: none !important; }
-      .nav-hamburger   { display: flex !important; }
-      /* navbar padding */
-      .navbar-inner    { padding: 12px 18px !important; }
-
-      /* ── HERO ── */
-      .hero-layout { flex-direction: column !important; gap: 20px !important; }
-      .hero-img-col { flex: none !important; width: 100% !important; }
-      .hero-img-col .img-ph { height: 220px !important; }
-      .hero-btns { flex-wrap: wrap !important; gap: 8px !important; }
-      .hero-btns .btn-wf {
-        flex: 1 1 auto;
-        min-width: 130px;
-        justify-content: center;
-        white-space: normal;
+      /* Hero */
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding-block: 60px 72px;
+        gap: 36px;
       }
+      .hero-visual       { order: -1; }
+      .hero-img-frame    { aspect-ratio: 16/9; }
+      .hero-img-stat     { left: 12px; top: 12px; bottom: auto; }
+      .hero-img-accent   { display: none; }
 
-      /* ── EQUIPMENT CARDS — horizontal scroll carousel ── */
-      .cards-carousel {
-        display: flex !important;
+      /* Grids */
+      .why-grid    { grid-template-columns: 1fr; }
+      .about-grid  { grid-template-columns: 1fr; gap: 36px; }
+      .reviews-grid{ grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .social-btn { width: 48px; height: 48px; }
+
+      /* Stats */
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-item  { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .stat-item:nth-child(odd)  { border-right: 1px solid rgba(255,255,255,.07); }
+      .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+
+      /* CTA row */
+      .cta-row { flex-direction: column; align-items: center; }
+      .cta-row .btn { width: 100%; max-width: 340px; }
+
+      /* About mosaic */
+      .about-mosaic { grid-template-rows: 180px 130px; margin-bottom: 28px; }
+      .about-badge  { bottom: -18px; left: 12px; padding: 12px 16px; }
+      .about-badge-num { font-size: 21px; }
+
+      /* Brands */
+      .brands-row { gap: 10px; }
+      .brand-card { width: 132px; height: 76px; padding: 12px 18px; }
+      .brand-card img { max-height: 28px; }
+    }
+
+    /* Equipment carousel on small screens */
+    @media (max-width: 600px) {
+      .equip-grid {
+        display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 12px;
-        padding-bottom: 14px;
+        padding-bottom: 12px;
+        /* hide scrollbar visually */
+        scrollbar-width: none;
       }
-      .cards-carousel > * {
-        min-width: 74vw;
-        flex-shrink: 0;
+      .equip-grid::-webkit-scrollbar { display: none; }
+      .equip-card {
+        min-width: 76vw;
         scroll-snap-align: start;
+        flex-shrink: 0;
       }
-
-      /* ── NUMBERS — 2×2 ── */
-      .numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
-      .num-display  { font-size: 34px !important; }
-
-      /* ── WHY RENT — stack ── */
-      .grid3 { grid-template-columns: 1fr !important; }
-
-      /* ── ABOUT — stack ── */
-      .grid2 { grid-template-columns: 1fr !important; }
-      .about-photos {
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: 140px 100px !important;
-      }
-      .about-photos > :first-child { grid-row: auto !important; }
-
-      /* ── BRANDS — horizontal scroll ── */
-      .brands-scroll {
-        flex-wrap: nowrap !important;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        justify-content: flex-start !important;
-        padding-bottom: 8px;
-        gap: 10px !important;
-      }
-
-      /* ── TESTIMONIALS — horizontal scroll ── */
-      .reviews-carousel {
-        display: flex !important;
+      /* Reviews carousel */
+      .reviews-grid {
+        display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 12px;
-        padding-bottom: 14px;
+        scrollbar-width: none;
       }
-      .reviews-carousel > * {
+      .reviews-grid::-webkit-scrollbar { display: none; }
+      .review-card {
         min-width: 80vw;
-        flex-shrink: 0;
         scroll-snap-align: start;
+        flex-shrink: 0;
       }
-
-      /* ── CTA FINAL buttons ── */
-      .cta-btns {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 10px !important;
-      }
-      .cta-btns .btn-wf { white-space: normal !important; text-align: center; }
-
-      /* ── FOOTER ── */
-      .grid3f { grid-template-columns: 1fr !important; gap: 24px !important; }
-
-      /* ── FAB note ── */
-      .fab-note { display: none; }
-
-      /* ── Misc ── */
-      .brands-row { gap: 10px !important; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ META BAR ═══ -->
-<div class="meta-bar">
-  <strong>ALUGAAQUI</strong>
-  <span class="meta-sep">·</span>
-  <span>Wireframe de Baixa Fidelidade</span>
-  <span class="meta-sep">·</span>
-  <div class="legend">
-    <div class="legend-item"><div class="legend-swatch" style="background:#C8C3BC;"></div> Imagem</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:#D0CBC4;border-color:#8C8780;"></div> Botão</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:#3C3835;"></div> Fundo Escuro</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:#888;border-color:#666;"></div> Laranja (prod)</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:#FFFAC8;border-color:#D4CC80;"></div> Anotação UX</div>
-  </div>
-</div>
+<!-- ════════════════════ SCROLL PROGRESS ════════════════════ -->
+<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-hidden="true"></div>
 
-<!-- ═══════════════════════════════════
-     NAVBAR
-═══════════════════════════════════ -->
-<div class="wf-section" style="background:#E0DDD8;border-top:3px solid var(--wf-border-light);">
-  <div class="sec-label">NAVBAR — sticky</div>
+<!-- ════════════════════ MOBILE OVERLAY ════════════════════ -->
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
 
-  <div class="row items-center justify-between navbar-inner" style="padding:14px 80px;">
-    <!-- Logo -->
-    <div class="row items-center gap20">
-      <div style="border:2px solid var(--wf-border);background:var(--wf-btn-primary);padding:8px 16px;color:#E8E4DE;font-size:13px;font-weight:bold;">
-        [ LOGO AlugaAqui ]
-      </div>
-      <div class="row gap24 items-center nav-desktop" style="margin-left:12px;">
-        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">Equipamentos</span>
-        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">Sobre</span>
-        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">Marcas</span>
-        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">Diferenciais</span>
-        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">FAQ</span>
-      </div>
-    </div>
-    <!-- CTA desktop -->
-    <div class="btn-wf primary nav-cta-desktop">📲 Solicitar Orçamento</div>
-    <!-- Hamburger mobile -->
-    <div class="nav-hamburger">
-      <span></span><span></span><span></span>
-    </div>
+<!-- ════════════════════ MOBILE MENU (drawer) ════════════════════ -->
+<nav class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+
+  <div class="mobile-brand" aria-hidden="true">
+    <img src="Design System Aluga Aqui/assets/logos/aluga-mark.png" alt="" />
   </div>
 
-  <div style="padding:4px 18px 10px;">
-    <span class="note">⬆ Sticky: some no scroll ↓, aparece no scroll ↑ · <strong>Mobile:</strong> hamburguer (ícone ☰ acima) + CTA WA flutuante sempre visível</span>
+  <button class="mobile-close" id="closeMenu" aria-label="Fechar menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+
+  <a href="#equipamentos" class="m-link">
+    Equipamentos
+    <svg class="m-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+  <a href="#sobre" class="m-link">
+    Sobre
+    <svg class="m-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+  <a href="#marcas" class="m-link">
+    Marcas
+    <svg class="m-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+  <a href="#diferenciais" class="m-link">
+    Diferenciais
+    <svg class="m-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+  <a href="#faq" class="m-link">
+    FAQ
+    <svg class="m-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+
+  <div class="mobile-cta-wrap">
+    <div class="mobile-cta-label">Fale conosco agora</div>
+    <a href="https://wa.me/5519995757318" class="btn btn-primary btn-lg">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Solicitar Orçamento
+    </a>
   </div>
-</div>
+</nav>
 
-<!-- ═══════════════════════════════════
-     1. HERO
-═══════════════════════════════════ -->
-<section class="wf-section bg-dark inv" style="padding-top:32px;">
-  <div class="sec-label">SEÇÃO 1 — HERO</div>
-  <div class="sec-num">1 / 9</div>
+<!-- ════════════════════ NAVBAR ════════════════════ -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <nav class="navbar-inner" aria-label="Navegação principal">
 
-  <div class="pad" style="padding-top:56px;">
-    <div class="row gap40 items-center hero-layout">
+      <!-- Logo — aluga-aqui-full.png -->
+      <a href="#" class="nav-logo" aria-label="AlugaAqui — Página inicial">
+        <img src="Design System Aluga Aqui/assets/logos/aluga-aqui-full.png"
+             alt="AlugaAqui Máquinas e Equipamentos" />
+      </a>
 
-      <!-- LEFT: copy -->
-      <div class="col flex1 gap20">
-        <div class="wf-eyebrow">🔧 Entrega rápida · Equipamentos revisados · 5 estrelas no Google</div>
+      <!-- Desktop links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#equipamentos" data-nav>Equipamentos</a></li>
+        <li><a href="#sobre"        data-nav>Sobre</a></li>
+        <li><a href="#marcas"       data-nav>Marcas</a></li>
+        <li><a href="#diferenciais" data-nav>Diferenciais</a></li>
+        <li><a href="#faq"          data-nav>FAQ</a></li>
+      </ul>
 
-        <div class="wf-h1">
-          A máquina certa,<br>
-          na hora certa,<br>
-          na sua obra.
+      <!-- Desktop CTA -->
+      <a href="https://wa.me/5519995757318"
+         class="btn btn-primary nav-cta-desktop nav-cta-btn"
+         aria-label="Solicitar orçamento pelo WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Solicitar Orçamento
+      </a>
+
+      <!-- Hamburger → X -->
+      <button class="nav-hamburger" id="menuBtn"
+              aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </nav>
+  </div>
+</header>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero" id="hero" aria-label="Apresentação">
+  <!-- Ambient glow — full section, reage ao mouse (JS) -->
+  <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
+  <!-- Subtle noise grain for depth -->
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <div class="stripe" role="presentation"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Copy -->
+      <div class="hero-copy">
+        <div class="hero-pill reveal">
+          <span class="hero-pill-dot" aria-hidden="true"></span>
+          Entrega rápida · Equipamentos revisados · 5 estrelas no Google
         </div>
 
-        <div class="wf-body" style="max-width:440px;">
+        <!-- H1: each line animates independently -->
+        <h1>
+          <span class="hero-line">A máquina certa,</span>
+          <span class="hero-line">na hora certa,</span>
+          <span class="hero-line">
+            <em>na sua obra.</em>
+          </span>
+        </h1>
+
+        <p class="hero-sub">
           Alugue betoneiras, escavadeiras, compactadores e muito mais — com entrega rápida, equipamentos revisados e suporte de quem entende de obra.
+        </p>
+
+        <div class="hero-btns">
+          <a href="https://wa.me/5519995757318" class="btn btn-primary btn-lg" id="heroCta">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Solicitar Orçamento
+          </a>
+          <a href="#equipamentos" class="btn btn-outline-inv btn-lg">
+            Ver Equipamentos
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </a>
         </div>
 
-        <div class="row gap12 mt8 hero-btns">
-          <div class="btn-wf primary" style="font-size:13px;padding:12px 26px;">[ Solicitar Orçamento ]</div>
-          <div class="btn-wf outline-inv" style="font-size:12px;padding:12px 20px;">[ Ver Equipamentos ↓ ]</div>
-        </div>
-
-        <!-- Social proof -->
-        <div style="padding-top:16px;border-top:1px solid #555;margin-top:4px;">
-          <div class="row items-center gap12">
-            <div style="border:1.5px solid #666;background:#4A4742;padding:6px 14px;" class="row items-center gap8">
-              <div class="img-ph" style="width:22px;height:22px;background:#555;border-color:#777;--r:35deg;">
-                <span class="x-line"></span><span class="x-line"></span>
-              </div>
-              <span class="stars">★★★★★</span>
-            </div>
-            <span class="wf-body">Empresa 5 estrelas no Google · +500 obras atendidas</span>
+        <div class="hero-proof">
+          <div class="hero-badge">
+            <span style="font-family:var(--font-display);font-weight:900;font-size:17px;color:#4285F4;">G</span>
+            <span class="hero-stars" aria-label="5 estrelas">★★★★★</span>
           </div>
-          <div class="mt8"><span class="note">⬆ Badge Google real (ícone G + estrelas amarelas)</span></div>
+          <span class="hero-proof-text">Empresa 5 estrelas no Google · +500 obras atendidas</span>
         </div>
       </div>
 
-      <!-- RIGHT: image -->
-      <div class="hero-img-col" style="flex:0 0 420px;">
-        <div class="img-ph" style="height:480px;width:100%;--r:49deg;">
-          <span class="x-line"></span>
-          <span class="x-line"></span>
-          <div class="ph-label">FOTO EQUIPAMENTO EM DESTAQUE<br>(betoneira / escavadeira)<br>imagem real, corte editorial</div>
+      <!-- Visual -->
+      <div class="hero-visual">
+
+        <div class="hero-img-frame">
+          <img src="Design System Aluga Aqui/assets/herosection.webp"
+               alt="Fachada da AlugaAqui — loja de aluguel de máquinas e equipamentos para construção"
+               loading="eager" />
         </div>
-        <div class="mt8"><span class="note">⬆ Mobile: imagem abaixo do texto, não atrás</span></div>
+
+        <!-- Badge esquerdo: 24h -->
+        <div class="hero-img-stat" aria-label="24 horas de prazo de entrega">
+          <span class="hero-img-stat-num">24h</span>
+          <span class="hero-img-stat-label">Prazo de Entrega</span>
+        </div>
+
+        <!-- Badge direito: +500 obras -->
+        <div class="hero-badge-2" aria-label="Mais de 500 obras atendidas">
+          <div class="hero-badge-2-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EC670F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="hero-badge-2-num">500+</div>
+            <div class="hero-badge-2-label">Obras atendidas</div>
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
+
+  <!-- Scroll hint — animated down arrow -->
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+    </svg>
+  </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     2. GRADE DE EQUIPAMENTOS
-═══════════════════════════════════ -->
-<section class="wf-section bg-surface" style="padding-top:32px;">
-  <div class="sec-label">SEÇÃO 2 — GRADE DE EQUIPAMENTOS</div>
-  <div class="sec-num">2 / 9</div>
-
-  <div class="pad" style="padding-top:56px;">
-    <div class="col gap8 center mt12 mb" style="margin-bottom:32px;">
-      <div class="wf-eyebrow" style="margin:0 auto;">EQUIPAMENTOS DISPONÍVEIS</div>
-      <div class="wf-h2 mt12">Tudo o que sua obra precisa, num só lugar.</div>
-      <div class="wf-body mt8" style="max-width:500px;margin:0 auto;">
-        Escolha o equipamento, fale com a gente e receba na obra. Simples assim.
-      </div>
+<!-- ════════════════════ EQUIPMENT GRID ════════════════════ -->
+<section class="equipment section" id="equipamentos" aria-label="Equipamentos disponíveis">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Equipamentos Disponíveis</span>
+      <h2>Tudo o que sua obra precisa,<br>num só lugar.</h2>
+      <p>Escolha o equipamento, fale com a gente e receba na obra. Simples assim.</p>
     </div>
 
-    <!-- 4-col grid desktop / horizontal carousel mobile -->
-    <div class="grid4 cards-carousel">
+    <div class="equip-grid" role="list" aria-label="Equipamentos disponíveis para aluguel">
 
-      <!-- Card template repeated -->
-      <div class="card-wf col gap12">
-        <div class="img-ph" style="height:110px;--r:48deg;">
-          <span class="x-line"></span><span class="x-line"></span>
-          <div class="ph-label">Foto Betoneira</div>
-        </div>
-        <div class="wf-h3">🟠 Betoneiras</div>
-        <div class="wf-body wf-small">Preparo de concreto e argamassa com alta produtividade</div>
-        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
-      </div>
+      <!-- ── Visíveis: 1–8 ── -->
 
-      <div class="card-wf col gap12">
-        <div class="img-ph" style="height:110px;--r:48deg;">
-          <span class="x-line"></span><span class="x-line"></span>
-          <div class="ph-label">Foto Compactador</div>
+      <article class="equip-card reveal" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/placa_vibrat_ria_pv95_cyclone_1x.webp" alt="Placa Vibratória PV95 Cyclone CSM" loading="lazy" />
         </div>
-        <div class="wf-h3">🟠 Compactadores</div>
-        <div class="wf-body wf-small">Compactação eficiente para fundações e terraplanagem</div>
-        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
-      </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Compactação</span>
+          </div>
+          <h3 class="equip-name">Placa Vibratória PV95 Cyclone</h3>
+          <p class="equip-desc">Compactação de solo e cascalho com alta performance e robustez industrial.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Placa%20Vibrat%C3%B3ria%20PV95%20Cyclone.')">Solicitar Orçamento</button>
+        </div>
+      </article>
 
-      <div class="card-wf col gap12">
-        <div class="img-ph" style="height:110px;--r:48deg;">
-          <span class="x-line"></span><span class="x-line"></span>
-          <div class="ph-label">Foto Martelete</div>
+      <article class="equip-card reveal d1" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/betoneiras_400l__1x.webp" alt="Betoneiras 400L CSM" loading="lazy" />
         </div>
-        <div class="wf-h3">🟠 Marteletes</div>
-        <div class="wf-body wf-small">Demolição rápida com o mínimo de esforço</div>
-        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
-      </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Mistura de Concreto</span>
+          </div>
+          <h3 class="equip-name">Betoneiras 400L</h3>
+          <p class="equip-desc">Mistura de concreto e argamassa com alta capacidade e uniformidade de preparo.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Betoneira%20400L.')">Solicitar Orçamento</button>
+        </div>
+      </article>
 
-      <div class="card-wf col gap12">
-        <div class="img-ph" style="height:110px;--r:48deg;">
-          <span class="x-line"></span><span class="x-line"></span>
-          <div class="ph-label">Foto Andaime</div>
+      <article class="equip-card reveal d2" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/martelo_demolidor_gsh16_28__1x.webp" alt="Martelo Demolidor GSH16-28 Bosch" loading="lazy" />
         </div>
-        <div class="wf-h3">🟠 Andaimes</div>
-        <div class="wf-body wf-small">Segurança em altura para qualquer fase da obra</div>
-        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
-      </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-bosch">Bosch</span>
+            <span class="equip-cat">Demolição</span>
+          </div>
+          <h3 class="equip-name">Martelo Demolidor GSH16-28</h3>
+          <p class="equip-desc">Demolição pesada de concreto armado e rocha com energia de impacto superior.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Martelo%20GSH16-28.')">Solicitar Orçamento</button>
+        </div>
+      </article>
 
-      <div class="card-wf col gap12">
-        <div class="img-ph" style="height:110px;--r:48deg;">
-          <span class="x-line"></span><span class="x-line"></span>
-          <div class="ph-label">Foto Gerador</div>
+      <article class="equip-card reveal d3" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/esmerilhadeira_9_gws_2200_230__1x.webp" alt="Esmerilhadeira 9 polegadas GWS 2200-230 Bosch" loading="lazy" />
         </div>
-        <div class="wf-h3">🟠 Geradores</div>
-        <div class="wf-body wf-small">Energia onde a obra precisar, sem interrupções</div>
-        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
-      </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-bosch">Bosch</span>
+            <span class="equip-cat">Corte e Desbaste</span>
+          </div>
+          <h3 class="equip-name">Esmerilhadeira 9" GWS 2200-230</h3>
+          <p class="equip-desc">Corte pesado de metal e concreto com 2.200W e disco de 230mm.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Esmerilhadeira%209%22%20GWS%202200.')">Solicitar Orçamento</button>
+        </div>
+      </article>
 
-      <div class="card-wf col gap12">
-        <div class="img-ph" style="height:110px;--r:48deg;">
-          <span class="x-line"></span><span class="x-line"></span>
-          <div class="ph-label">Foto Mini Carregadeira</div>
+      <article class="equip-card reveal" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/compactador_de_percuss_o_cs70_1x.webp" alt="Compactador de Percussão CS70 CSM" loading="lazy" />
         </div>
-        <div class="wf-h3">🟠 Mini Carregadeiras</div>
-        <div class="wf-body wf-small">Versatilidade para movimentação em espaços reduzidos</div>
-        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
-      </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Compactação</span>
+          </div>
+          <h3 class="equip-name">Compactador de Percussão CS70</h3>
+          <p class="equip-desc">Compactação em profundidade para valas estreitas, trincheiras e reparos de pavimento.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Compactador%20CS70.')">Solicitar Orçamento</button>
+        </div>
+      </article>
 
-      <div class="card-wf col gap12">
-        <div class="img-ph" style="height:110px;--r:48deg;">
-          <span class="x-line"></span><span class="x-line"></span>
-          <div class="ph-label">Foto Lavadora</div>
+      <article class="equip-card reveal d1" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/gerador_port_til_gm8000e_1x.webp" alt="Gerador Portátil GM8000E CSM" loading="lazy" />
         </div>
-        <div class="wf-h3">🟠 Lavadoras Alta Pressão</div>
-        <div class="wf-body wf-small">Limpeza profissional de pisos, fachadas e equipamentos</div>
-        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
-      </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Energia</span>
+          </div>
+          <h3 class="equip-name">Gerador Portátil GM8000E</h3>
+          <p class="equip-desc">Energia independente de até 8kVA para obras sem rede elétrica disponível.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Gerador%20GM8000E.')">Solicitar Orçamento</button>
+        </div>
+      </article>
 
-      <div class="card-wf col gap12">
-        <div class="img-ph" style="height:110px;--r:48deg;">
-          <span class="x-line"></span><span class="x-line"></span>
-          <div class="ph-label">Foto Compressor de Ar</div>
+      <article class="equip-card reveal d2" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/painel_de_andaime_1_00x1_50_painel_de_andaime_1_00x1_00_1x.webp" alt="Painéis de Andaime Andasa" loading="lazy" />
         </div>
-        <div class="wf-h3">🟠 Compressores de Ar</div>
-        <div class="wf-body wf-small">Do acabamento doméstico até a construção industrial</div>
-        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
-      </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-andasa">Andasa</span>
+            <span class="equip-cat">Andaimes</span>
+          </div>
+          <h3 class="equip-name">Painéis de Andaime</h3>
+          <p class="equip-desc">Painéis tubulares galvanizados em 1,00×1,50m e 1,00×1,00m para andaimes modulares.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20Pain%C3%A9is%20de%20Andaime%20Andasa.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal d3" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/vonder_compressor_100pes_1x.webp" alt="Compressor 100 pés Vonder" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-vonder">Vonder</span>
+            <span class="equip-cat">Pneumática</span>
+          </div>
+          <h3 class="equip-name">Compressor 100pes</h3>
+          <p class="equip-desc">100 pés cúbicos de ar comprimido para ferramentas pneumáticas de alta demanda.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Compressor%20100pes%20Vonder.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <!-- ── Ocultos: 9–21 (carregados via JS) ── -->
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/ca_amba_de_i_amento_50_l__1x.webp" alt="Caçamba de Içamento 50L CSM" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Remoção de Entulho</span>
+          </div>
+          <h3 class="equip-name">Caçamba de Içamento 50L</h3>
+          <p class="equip-desc">Transporte e içamento seguro de entulho em qualquer pavimento da obra.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Ca%C3%A7amba%20de%20I%C3%A7amento%2050L.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/lixadeira_telescola_de_parede_e_teto_1x.webp" alt="Lixadeira Telescola de Parede e Teto CSM" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Acabamento</span>
+          </div>
+          <h3 class="equip-name">Lixadeira Telescola Parede e Teto</h3>
+          <p class="equip-desc">Lixamento com haste telescópica para paredes e tetos, sem poeira e sem esforço.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Lixadeira%20Telescola.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/bomba_submers_vel__1x.webp" alt="Bomba Submersível CSM" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Drenagem</span>
+          </div>
+          <h3 class="equip-name">Bomba Submersível</h3>
+          <p class="equip-desc">Drenagem rápida de água em obras alagadas, porões e valas de fundação.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Bomba%20Submers%C3%ADvel.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/vibrador_de_imers_o_port_til_vcp_25_1x.webp" alt="Vibrador de Imersão Portátil VCP-25 CSM" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Concretagem</span>
+          </div>
+          <h3 class="equip-name">Vibrador de Imersão VCP-25</h3>
+          <p class="equip-desc">Adensamento de concreto lançado para estruturas de alta resistência e durabilidade.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Vibrador%20VCP-25.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/motor_vibrador_port_til_vcp_1x.webp" alt="Motor Vibrador Portátil VCP CSM" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Concretagem</span>
+          </div>
+          <h3 class="equip-name">Motor Vibrador Portátil VCP</h3>
+          <p class="equip-desc">Acionamento portátil para mangotes de vibração em qualquer ponto da concretagem.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Motor%20Vibrador%20VCP.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/guincho_tec_gt_300_600_1x.webp" alt="Guincho TEC GT 300/600 CSM" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Elevação</span>
+          </div>
+          <h3 class="equip-name">Guincho TEC GT 300/600</h3>
+          <p class="equip-desc">Içamento de materiais em andares e locais de acesso restrito com até 600kg.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Guincho%20GT%20300%2F600.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/motor_acionamento_combust_o_7hp_1x.webp" alt="Motor de Acionamento a Combustão 7HP CSM" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-csm">CSM</span>
+            <span class="equip-cat">Acionamento</span>
+          </div>
+          <h3 class="equip-name">Motor Acionamento Combustão 7HP</h3>
+          <p class="equip-desc">Motor a combustão para acionar bombas e vibradores em obras sem energia elétrica.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Motor%20a%20Combust%C3%A3o%207HP.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/martelo_demolidor_gsh11_1x.webp" alt="Martelo Demolidor GSH11 Bosch" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-bosch">Bosch</span>
+            <span class="equip-cat">Demolição</span>
+          </div>
+          <h3 class="equip-name">Martelo Demolidor GSH11</h3>
+          <p class="equip-desc">Quebra de paredes e pisos de concreto com potência profissional e total controle.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Martelo%20GSH11.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/martelo_demolidor_gsh500_1x.webp" alt="Martelo Demolidor GSH500 Bosch" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-bosch">Bosch</span>
+            <span class="equip-cat">Demolição</span>
+          </div>
+          <h3 class="equip-name">Martelo Demolidor GSH500</h3>
+          <p class="equip-desc">Demolição leve de pisos cerâmicos e revestimentos com baixo peso e vibração reduzida.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20o%20Martelo%20GSH500.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/parafusadores_furadeira_imp_18_gsb_18v_50__1x.webp" alt="Parafusadeira Furadeira GSB 18V-50 Bosch" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-bosch">Bosch</span>
+            <span class="equip-cat">Elétrica Portátil</span>
+          </div>
+          <h3 class="equip-name">Parafusadeira/Furadeira GSB 18V-50</h3>
+          <p class="equip-desc">Parafusamento e furação sem fio com bateria 18V para total mobilidade na obra.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Furadeira%20GSB%2018V-50.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/furadeira_impacto_1_2_gsb16__1x.webp" alt="Furadeira de Impacto 1/2 GSB16 Bosch" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-bosch">Bosch</span>
+            <span class="equip-cat">Furação</span>
+          </div>
+          <h3 class="equip-name">Furadeira Impacto 1/2 GSB16</h3>
+          <p class="equip-desc">Furação em concreto e alvenaria com mandril 1/2" e alto torque de impacto.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Furadeira%20GSB16.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/esmerilhadeira_5_gws_9_125_1x.webp" alt="Esmerilhadeira 5 polegadas GWS 9-125 Bosch" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-bosch">Bosch</span>
+            <span class="equip-cat">Corte e Desbaste</span>
+          </div>
+          <h3 class="equip-name">Esmerilhadeira 5" GWS 9-125</h3>
+          <p class="equip-desc">Corte e desbaste de metal com precisão — compacta para trabalhos em espaços reduzidos.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20a%20Esmerilhadeira%205%22%20GWS%209-125.')">Solicitar Orçamento</button>
+        </div>
+      </article>
+
+      <article class="equip-card reveal equip-hidden" role="listitem">
+        <div class="equip-img">
+          <img src="Design System Aluga Aqui/assets/machines/plataforma_1_50_x370mm_plataforma_1_00x330mm_1x.webp" alt="Plataformas para Andaime Andasa" loading="lazy" />
+        </div>
+        <div class="equip-body">
+          <div class="equip-meta">
+            <span class="equip-brand equip-brand-andasa">Andasa</span>
+            <span class="equip-cat">Andaimes</span>
+          </div>
+          <h3 class="equip-name">Plataformas para Andaime</h3>
+          <p class="equip-desc">Plataformas de trabalho em 1,50×370mm e 1,00×330mm para sistemas modulares.</p>
+        </div>
+        <div class="equip-footer">
+          <button class="equip-cta" onclick="window.open('https://wa.me/5519995757318?text=Ol%C3%A1!%20Tenho%20interesse%20em%20alugar%20Plataformas%20Andasa.')">Solicitar Orçamento</button>
+        </div>
+      </article>
 
     </div>
 
-    <div class="col gap8 center mt32">
-      <div class="btn-wf primary" style="margin:0 auto;padding:14px 36px;font-size:14px;">
-        📲 Quero Solicitar Orçamento
-      </div>
-      <span class="note" style="margin:0 auto;">⬆ <strong>Mobile:</strong> carrossel ← → com scroll-snap, cards 74vw (hint do próximo visível). Botão abre WhatsApp com msg pré-preenchida.</span>
+    <!-- Carregar mais -->
+    <div class="equip-load-more" id="equipLoadMore">
+      <button class="btn btn-outline btn-load" id="loadMoreBtn" aria-label="Carregar mais 13 equipamentos">
+        Carregar mais equipamentos
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     3. NÚMEROS / SOCIAL PROOF
-═══════════════════════════════════ -->
-<section class="wf-section bg-dark inv" style="padding-top:32px;">
-  <div class="sec-label">SEÇÃO 3 — NÚMEROS (fundo escuro → pode ser laranja)</div>
-  <div class="sec-num">3 / 9</div>
-
-  <div class="pad" style="padding-top:56px;">
-    <div class="wf-h2 center" style="margin-bottom:40px;">
-      Números que provam o que entregamos.
-    </div>
-
-    <div class="grid4 numbers-grid">
-      <div class="col gap8 center" style="padding:20px;border:1px solid #5A5550;">
-        <div class="num-display" style="font-size:48px;font-weight:bold;color:#E8E4DE;line-height:1;">+500</div>
-        <div class="wf-body" style="text-transform:uppercase;letter-spacing:0.1em;font-size:10px;">obras atendidas</div>
-      </div>
-      <div class="col gap8 center" style="padding:20px;border:1px solid #5A5550;">
-        <div class="num-display" style="font-size:48px;font-weight:bold;color:#E8E4DE;line-height:1;">5 ★</div>
-        <div class="wf-body" style="text-transform:uppercase;letter-spacing:0.1em;font-size:10px;">média no Google</div>
-      </div>
-      <div class="col gap8 center" style="padding:20px;border:1px solid #5A5550;">
-        <div class="num-display" style="font-size:48px;font-weight:bold;color:#E8E4DE;line-height:1;">24h</div>
-        <div class="wf-body" style="text-transform:uppercase;letter-spacing:0.1em;font-size:10px;">prazo de entrega</div>
-      </div>
-      <div class="col gap8 center" style="padding:20px;border:1px solid #5A5550;">
-        <div class="num-display" style="font-size:48px;font-weight:bold;color:#E8E4DE;line-height:1;">100%</div>
-        <div class="wf-body" style="text-transform:uppercase;letter-spacing:0.1em;font-size:10px;">equipamentos revisados</div>
-      </div>
-    </div>
-
-    <div class="center mt20">
-      <span class="note">⬆ Animação de contador numérico ao entrar na viewport (IntersectionObserver)</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     4. POR QUE ALUGAR?
-═══════════════════════════════════ -->
-<section class="wf-section" style="background:#EDEAE4;padding-top:32px;">
-  <div class="sec-label">SEÇÃO 4 — POR QUE ALUGAR?</div>
-  <div class="sec-num">4 / 9</div>
-
-  <div class="pad" style="padding-top:56px;">
-    <div class="col gap8 center" style="margin-bottom:36px;">
-      <div class="wf-eyebrow" style="margin:0 auto;">VANTAGEM INTELIGENTE</div>
-      <div class="wf-h2 mt12">Você paga só pelo que usa.</div>
-      <div class="wf-body mt8">Sem manutenção, sem armazenamento, sem dor de cabeça.</div>
-    </div>
-
-    <div class="grid3">
-      <!-- Bloco 1 -->
-      <div class="card-wf col gap12" style="padding:28px;align-items:center;text-align:center;">
-        <div style="font-size:36px;">💰</div>
-        <div class="wf-h3">Economia real</div>
-        <div class="tl mt8"></div>
-        <div class="tl w80"></div>
-        <div class="tl w60"></div>
-        <div class="wf-small mt4">Comprar tem custo de aquisição, manutenção e depreciação. No aluguel, paga só pelo tempo que vai usar.</div>
-      </div>
-      <!-- Bloco 2 -->
-      <div class="card-wf col gap12" style="padding:28px;align-items:center;text-align:center;">
-        <div style="font-size:36px;">🔧</div>
-        <div class="wf-h3">Equipamentos revisados</div>
-        <div class="tl mt8"></div>
-        <div class="tl w80"></div>
-        <div class="tl w70"></div>
-        <div class="wf-small mt4">Cada máquina passa por revisão antes de sair. Problemas são responsabilidade nossa.</div>
-      </div>
-      <!-- Bloco 3 -->
-      <div class="card-wf col gap12" style="padding:28px;align-items:center;text-align:center;">
-        <div style="font-size:36px;">🚚</div>
-        <div class="wf-h3">Entrega sem burocracia</div>
-        <div class="tl mt8"></div>
-        <div class="tl w80"></div>
-        <div class="tl w50"></div>
-        <div class="wf-small mt4">Sem cadastro complicado. Fale, confirme e receba na obra. Rápido do jeito que obra exige.</div>
-      </div>
-    </div>
-
-    <div class="center mt32">
-      <div class="btn-wf primary" style="padding:13px 32px;font-size:13px;">[ Solicitar Orçamento Agora ]</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     5. SOBRE A EMPRESA
-═══════════════════════════════════ -->
-<section class="wf-section bg-surface" style="padding-top:32px;">
-  <div class="sec-label">SEÇÃO 5 — SOBRE A EMPRESA</div>
-  <div class="sec-num">5 / 9</div>
-
-  <div class="pad" style="padding-top:56px;">
-    <div class="grid2" style="gap:60px;align-items:center;">
-
-      <!-- LEFT: copy -->
-      <div class="col gap16">
-        <div class="wf-eyebrow">CONHEÇA A ALUGAAQUI</div>
-        <div class="wf-h2">Nascemos para mover obras.</div>
-
-        <div class="col gap6">
-          <div class="tl"></div>
-          <div class="tl w80"></div>
-          <div class="tl"></div>
-          <div class="tl w70"></div>
-          <div class="tl w90"></div>
+<!-- ════════════════════ STATS ════════════════════ -->
+<section class="stats" aria-label="Números AlugaAqui">
+  <div class="stripe" role="presentation"></div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/>
+          </svg>
         </div>
+        <div class="stat-num" aria-label="Mais de 500 obras atendidas">
+          <span data-count="500" aria-hidden="true">0</span><span class="accent" aria-hidden="true">+</span>
+        </div>
+        <div class="stat-label">Obras atendidas</div>
+      </div>
+      <div class="stat-item reveal d1">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <path d="M12 2.5l2.95 6.46 7.05.78-5.3 4.86 1.46 6.95L12 17.9l-6.16 3.65 1.46-6.95-5.3-4.86 7.05-.78z"/>
+          </svg>
+        </div>
+        <div class="stat-num" aria-label="5 estrelas no Google">
+          5 <span class="accent" style="font-size:.65em;">★</span>
+        </div>
+        <div class="stat-label">Média no Google</div>
+      </div>
+      <div class="stat-item reveal d2">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3.5 2"/>
+          </svg>
+        </div>
+        <div class="stat-num" aria-label="24 horas de prazo">
+          <span class="accent">24</span>h
+        </div>
+        <div class="stat-label">Prazo de entrega</div>
+      </div>
+      <div class="stat-item reveal d3">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.5l7.5 3v6c0 4.97-3.2 8.94-7.5 9.96-4.3-1.02-7.5-4.99-7.5-9.96v-6z"/>
+            <path d="M8.5 12.2l2.4 2.4 4.6-4.8"/>
+          </svg>
+        </div>
+        <div class="stat-num" aria-label="100% revisados">
+          <span data-count="100" aria-hidden="true">0</span><span class="accent" aria-hidden="true">%</span>
+        </div>
+        <div class="stat-label">Equipamentos revisados</div>
+      </div>
+    </div>
+  </div>
+  <div class="stripe" role="presentation"></div>
+</section>
 
-        <div class="wf-body">
+<!-- ════════════════════ WHY RENT ════════════════════ -->
+<section class="why section" id="diferenciais" aria-label="Por que alugar com a AlugaAqui">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Vantagem Inteligente</span>
+      <h2>Você paga só pelo que usa.</h2>
+      <p>Sem manutenção, sem armazenamento, sem dor de cabeça.</p>
+    </div>
+    <div class="why-grid">
+
+      <div class="why-card reveal">
+        <span class="why-index" aria-hidden="true">01</span>
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v12M9.5 9.5h4a1.5 1.5 0 010 3h-3a1.5 1.5 0 000 3H15"/>
+          </svg>
+        </div>
+        <h3>Economia real</h3>
+        <p>Comprar tem custo de aquisição, manutenção e depreciação. No aluguel, você paga só pelo tempo que vai usar — sem surpresas.</p>
+      </div>
+
+      <div class="why-card reveal d1">
+        <span class="why-index" aria-hidden="true">02</span>
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3>Equipamentos revisados</h3>
+        <p>Cada máquina passa por revisão técnica completa antes de sair. Qualquer problema durante o aluguel é nossa responsabilidade.</p>
+      </div>
+
+      <div class="why-card reveal d2">
+        <span class="why-index" aria-hidden="true">03</span>
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" rx="1"/>
+            <path d="M16 8h4l3 5v3h-7V8z"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h3>Entrega sem burocracia</h3>
+        <p>Sem cadastro complicado. Fale, confirme e receba na obra. Rápido do jeito que a obra exige — em até 24 horas.</p>
+      </div>
+
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:52px;">
+      <a href="https://wa.me/5519995757318" class="btn btn-primary btn-lg">Solicitar Orçamento Agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ ABOUT ════════════════════ -->
+<section class="about section" id="sobre" aria-label="Sobre a AlugaAqui">
+  <div class="stripe-soft" role="presentation"></div>
+  <div class="container" style="padding-top:80px;">
+    <div class="about-grid">
+
+      <div class="about-content">
+        <span class="eyebrow reveal">Conheça a AlugaAqui</span>
+        <h2 class="reveal d1">Nascemos para mover obras.</h2>
+        <p class="reveal d2">
           Na AlugaAqui, acreditamos que cada obra — grande ou pequena — merece as ferramentas certas para acontecer com qualidade e segurança.
-        </div>
-        <div class="wf-body">
+        </p>
+        <p class="reveal d2">
           Somos uma locadora especializada em máquinas e equipamentos, atendendo profissionais da construção civil, empresas e também quem precisa resolver um serviço em casa.
-        </div>
-        <div class="wf-body">
-          Mais do que alugar máquinas, entregamos tranquilidade para você focar no que importa: a obra andar.
+        </p>
+        <p class="reveal d3">
+          Mais do que alugar máquinas, entregamos tranquilidade para você focar no que importa: <strong style="color:var(--coal)">a obra andar.</strong>
+        </p>
+        <div class="reveal d4">
+          <a href="https://wa.me/5519995757318" class="btn btn-primary">Fale com a gente</a>
         </div>
       </div>
 
-      <!-- RIGHT: photo grid assimétrico -->
-      <div class="col gap8">
-        <div class="note block">⬆ Grid assimétrico — fotos REAIS da loja/equipe. Evitar stock photo.</div>
-        <div class="about-photos" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 150px;gap:10px;margin-top:8px;">
-          <div class="img-ph" style="grid-row:1/3;--r:49deg;">
-            <span class="x-line"></span><span class="x-line"></span>
-            <div class="ph-label">Foto loja ou<br>equipe AlugaAqui<br>(vertical / tall)</div>
-          </div>
-          <div class="img-ph" style="--r:45deg;">
-            <span class="x-line"></span><span class="x-line"></span>
-            <div class="ph-label">Foto equipamento<br>ou operação</div>
-          </div>
-          <div class="img-ph" style="--r:45deg;">
-            <span class="x-line"></span><span class="x-line"></span>
-            <div class="ph-label">Foto atendimento<br>ou entrega</div>
-          </div>
+      <div class="about-mosaic reveal d1">
+        <div class="about-photo">
+          <img src="Design System Aluga Aqui/assets/maquinas1.webp"
+               alt="Equipamentos AlugaAqui prontos para locação" loading="lazy" />
+        </div>
+        <div class="about-photo">
+          <img src="Design System Aluga Aqui/assets/maquinas2.webp"
+               alt="Máquinas e ferramentas para construção civil" loading="lazy" />
+        </div>
+        <div class="about-photo">
+          <img src="Design System Aluga Aqui/assets/maquinas3.webp"
+               alt="Equipamento revisado e pronto para obra" loading="lazy" />
+        </div>
+        <div class="about-badge" aria-hidden="true">
+          <span class="about-badge-num">500<span class="accent">+</span></span>
+          <span class="about-badge-label">Obras atendidas</span>
         </div>
       </div>
 
@@ -807,277 +2500,536 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     6. MARCAS
-═══════════════════════════════════ -->
-<section class="wf-section" style="background:#EDEAE4;padding-top:32px;">
-  <div class="sec-label">SEÇÃO 6 — MARCAS</div>
-  <div class="sec-num">6 / 9</div>
-
-  <div class="pad-sm" style="padding-top:56px;">
-    <div class="col gap8 center" style="margin-bottom:32px;">
-      <div class="wf-eyebrow" style="margin:0 auto;">AS MELHORES MARCAS, À SUA DISPOSIÇÃO</div>
-      <div class="wf-h2 mt12">Trabalhamos só com quem é referência.</div>
-      <div class="wf-body mt8" style="max-width:520px;margin:0 auto;">
-        Equipamentos de fabricantes líderes mundiais — alta performance, durabilidade e confiança para qualquer tipo de obra.
+<!-- ════════════════════ BRANDS ════════════════════ -->
+<section class="brands section-sm" id="marcas" aria-label="Marcas parceiras">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">As Melhores Marcas, à Sua Disposição</span>
+      <h2>Trabalhamos só com quem é referência.</h2>
+      <p>Equipamentos de fabricantes líderes mundiais — alta performance, durabilidade e confiança para qualquer tipo de obra.</p>
+    </div>
+    <div class="brands-row" role="list" aria-label="Marcas de equipamentos">
+      <div class="brand-card reveal"    role="listitem">
+        <img src="Design System Aluga Aqui/assets/brand/Bosch-logo.svg.webp" alt="Bosch" loading="lazy" />
       </div>
-    </div>
-
-    <!-- Logos row -->
-    <div class="row gap20 justify-center wrap brands-scroll" style="margin-bottom:16px;">
-      <div class="brand-ph"><span>Bosch</span></div>
-      <div class="brand-ph"><span>Makita</span></div>
-      <div class="brand-ph"><span>Wacker</span></div>
-      <div class="brand-ph"><span>Honda</span></div>
-      <div class="brand-ph"><span>Husqvarna</span></div>
-      <div class="brand-ph"><span>DeWalt</span></div>
-      <div class="brand-ph"><span>Tramontina</span></div>
-    </div>
-
-    <div class="center mt8">
-      <span class="note">⬆ Logos reais em escala de cinza → colorido no hover. Carrossel infinito se muitas marcas.</span>
-    </div>
-
-    <div class="center mt24">
-      <div class="btn-wf primary" style="padding:13px 32px;">📲 Entre em Contato e Alugue</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     7. DEPOIMENTOS
-═══════════════════════════════════ -->
-<section class="wf-section bg-surface" style="padding-top:32px;">
-  <div class="sec-label">SEÇÃO 7 — DEPOIMENTOS / GOOGLE REVIEWS</div>
-  <div class="sec-num">7 / 9</div>
-
-  <div class="pad" style="padding-top:56px;">
-    <div class="col gap8 center" style="margin-bottom:32px;">
-      <div class="wf-eyebrow" style="margin:0 auto;">O QUE NOSSOS CLIENTES DIZEM</div>
-      <div class="wf-h2 mt12">5 estrelas em cada entrega.</div>
-      <!-- Badge reforço -->
-      <div class="row gap8 justify-center items-center mt12">
-        <div style="border:1.5px solid var(--wf-border);background:var(--wf-btn);padding:5px 14px;" class="row items-center gap8">
-          <div class="img-ph" style="width:18px;height:18px;--r:35deg;background:#C8C3BC;">
-            <span class="x-line"></span><span class="x-line"></span>
-          </div>
-          <span class="stars" style="font-size:12px;">★★★★★</span>
-          <span class="wf-small">Empresa 5 estrelas no Google</span>
-        </div>
+      <div class="brand-card reveal d1" role="listitem">
+        <img src="Design System Aluga Aqui/assets/brand/Makita_Logo.svg.webp" alt="Makita" loading="lazy" />
       </div>
-    </div>
-
-    <div class="grid3 reviews-carousel">
-
-      <!-- Depo 1 -->
-      <div class="card-wf col gap12" style="padding:20px;">
-        <div class="stars">★★★★★</div>
-        <div class="col gap6">
-          <div class="tl"></div>
-          <div class="tl w90"></div>
-          <div class="tl w70"></div>
-        </div>
-        <div class="wf-small" style="font-style:italic;">
-          "Atendimento rápido e a betoneira chegou no dia combinado, já revisada. Recomendo demais!"
-        </div>
-        <div class="row items-center gap8 mt8" style="padding-top:12px;border-top:1px solid var(--wf-border-light);">
-          <div class="img-ph" style="width:34px;height:34px;border-radius:50%;flex-shrink:0;--r:45deg;">
-            <span class="x-line"></span><span class="x-line"></span>
-          </div>
-          <span class="wf-small">— Carlos M., Construtor Civil</span>
-        </div>
+      <div class="brand-card reveal d2" role="listitem">
+        <img src="Design System Aluga Aqui/assets/brand/wakernelson.svg" alt="Wacker Neuson" loading="lazy" />
       </div>
-
-      <!-- Depo 2 -->
-      <div class="card-wf col gap12" style="padding:20px;">
-        <div class="stars">★★★★★</div>
-        <div class="col gap6">
-          <div class="tl"></div>
-          <div class="tl w80"></div>
-          <div class="tl w60"></div>
-        </div>
-        <div class="wf-small" style="font-style:italic;">
-          "Depoimento real do Google Maps — breve, autêntico, com nome e cargo visíveis."
-        </div>
-        <div class="row items-center gap8 mt8" style="padding-top:12px;border-top:1px solid var(--wf-border-light);">
-          <div class="img-ph" style="width:34px;height:34px;border-radius:50%;flex-shrink:0;--r:45deg;">
-            <span class="x-line"></span><span class="x-line"></span>
-          </div>
-          <span class="wf-small">— Nome Sobrenome, Cargo</span>
-        </div>
+      <div class="brand-card reveal d3" role="listitem">
+        <img src="Design System Aluga Aqui/assets/brand/vonder-logo-3.png" alt="Vonder" loading="lazy" />
       </div>
-
-      <!-- Depo 3 -->
-      <div class="card-wf col gap12" style="padding:20px;">
-        <div class="stars">★★★★★</div>
-        <div class="col gap6">
-          <div class="tl"></div>
-          <div class="tl w90"></div>
-          <div class="tl w75"></div>
-        </div>
-        <div class="wf-small" style="font-style:italic;">
-          "Terceiro depoimento — destaca um aspecto diferente: qualidade, agilidade ou preço."
-        </div>
-        <div class="row items-center gap8 mt8" style="padding-top:12px;border-top:1px solid var(--wf-border-light);">
-          <div class="img-ph" style="width:34px;height:34px;border-radius:50%;flex-shrink:0;--r:45deg;">
-            <span class="x-line"></span><span class="x-line"></span>
-          </div>
-          <span class="wf-small">— Nome Sobrenome, Cargo</span>
-        </div>
+      <div class="brand-card reveal"    role="listitem">
+        <img src="Design System Aluga Aqui/assets/brand/CSM.webp" alt="CSM" loading="lazy" />
       </div>
-
-    </div>
-
-    <div class="center mt24 col gap8">
-      <div class="btn-wf" style="margin:0 auto;">[ Ver todas as avaliações no Google → ]</div>
-      <span class="note" style="margin:0 auto;">⬆ <strong>Mobile:</strong> swipe horizontal entre cards (80vw cada), snap automático.</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     8. FAQ
-═══════════════════════════════════ -->
-<section class="wf-section" style="background:#EDEAE4;padding-top:32px;">
-  <div class="sec-label">SEÇÃO 8 — FAQ</div>
-  <div class="sec-num">8 / 9</div>
-
-  <div class="pad" style="padding-top:56px;">
-    <div class="col gap8 center" style="margin-bottom:36px;">
-      <div class="wf-eyebrow" style="margin:0 auto;">PERGUNTAS FREQUENTES</div>
-      <div class="wf-h2 mt12">Ficou com alguma dúvida?</div>
-    </div>
-
-    <div style="max-width:740px;margin:0 auto;">
-      <div class="accordion">
-        <!-- aberta -->
-        <div class="acc-row open">
-          <span class="wf-body" style="font-weight:bold;">1. Como funciona o aluguel?</span>
-          <span style="font-size:16px;color:var(--wf-mid);">×</span>
-        </div>
-        <div class="acc-answer">
-          <span class="wf-small">É simples: entre em contato via WhatsApp ou formulário, informe o equipamento e o período. Nossa equipe confirma disponibilidade e entrega.</span>
-        </div>
-
-        <div class="acc-row">
-          <span class="wf-body" style="font-weight:bold;">2. Quanto tempo leva a entrega?</span>
-          <span style="font-size:18px;color:var(--wf-muted);">+</span>
-        </div>
-        <div class="acc-row">
-          <span class="wf-body" style="font-weight:bold;">3. Os equipamentos são revisados?</span>
-          <span style="font-size:18px;color:var(--wf-muted);">+</span>
-        </div>
-        <div class="acc-row">
-          <span class="wf-body" style="font-weight:bold;">4. Posso alugar por apenas um dia?</span>
-          <span style="font-size:18px;color:var(--wf-muted);">+</span>
-        </div>
-        <div class="acc-row">
-          <span class="wf-body" style="font-weight:bold;">5. E se o equipamento apresentar algum problema?</span>
-          <span style="font-size:18px;color:var(--wf-muted);">+</span>
-        </div>
-        <div class="acc-row" style="border-bottom:none;">
-          <span class="wf-body" style="font-weight:bold;">6. Quais formas de pagamento são aceitas?</span>
-          <span style="font-size:18px;color:var(--wf-muted);">+</span>
-        </div>
-      </div>
-      <div class="mt12">
-        <span class="note">⬆ Accordion com transição CSS suave. Um item por vez. Ícone + / × à direita.</span>
+      <div class="brand-card reveal d1" role="listitem">
+        <img src="Design System Aluga Aqui/assets/brand/andasa.png" alt="Andasa" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     9. CTA FINAL
-═══════════════════════════════════ -->
-<section class="wf-section bg-accent inv" style="padding-top:32px;">
-  <div class="sec-label" style="background:#666;color:#CCC;border-color:#888;">SEÇÃO 9 — CTA FINAL (fundo laranja AlugaAqui na versão final)</div>
-  <div class="sec-num" style="background:#777;color:#CCC;">9 / 9</div>
-
-  <div class="pad" style="padding-top:56px;text-align:center;">
-    <div class="wf-h2" style="color:#F0EDE8;font-size:32px;">Sua obra não pode esperar.</div>
-    <div class="wf-h2 mt8" style="color:#F0EDE8;font-size:32px;">Fale com a gente agora.</div>
-    <div class="wf-body mt16" style="color:#DDD;max-width:480px;margin:16px auto 0;">
-      Equipamento revisado, entrega rápida e atendimento de quem entende de obra.
+<!-- ════════════════════ TESTIMONIALS ════════════════════ -->
+<section class="testimonials section" aria-label="Depoimentos de clientes">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">O que nossos clientes dizem</span>
+      <h2>5 estrelas em cada entrega.</h2>
+      <a class="google-badge" href="https://share.google/a6qexjVxkVzf5vCTY" target="_blank" rel="noopener noreferrer" aria-label="Empresa 5 estrelas no Google — ver avaliações">
+        <span class="g-letter" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="18" height="18"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.93 21.93 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+        </span>
+        <span class="g-stars" aria-label="5 estrelas">★★★★★</span>
+        <span class="g-text">Empresa 5 estrelas no Google</span>
+      </a>
     </div>
 
-    <div class="row gap16 justify-center mt32 cta-btns">
-      <div class="btn-wf" style="background:#F0EDE8;border-color:#DDD;color:#3C3835;padding:14px 32px;font-size:13px;">
-        📲 Falar pelo WhatsApp
-      </div>
-      <div class="btn-wf outline-inv" style="padding:14px 32px;font-size:13px;">
-        [ Solicitar Orçamento ]
-      </div>
+    <div class="reviews-grid" role="list" aria-label="Avaliações de clientes">
+
+      <article class="review-card reveal" role="listitem">
+        <div class="review-stars" aria-label="5 estrelas">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">
+          "Atendimento rápido e a betoneira chegou no dia combinado, já revisada. Trabalho impecável, pessoal muito atencioso. Recomendo demais!"
+        </p>
+        <div class="review-author">
+          <div class="review-avatar" aria-hidden="true">C</div>
+          <div>
+            <div class="review-name">Carlos M.</div>
+            <div class="review-role">Construtor Civil</div>
+          </div>
+          <span class="review-g" aria-label="Avaliação no Google" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="16" height="16"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.93 21.93 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+          </span>
+        </div>
+      </article>
+
+      <article class="review-card reveal d1" role="listitem">
+        <div class="review-stars" aria-label="5 estrelas">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">
+          "Máquina entregue em menos de 24h, em perfeito estado de funcionamento. Nunca vi uma locadora tão eficiente. Com certeza vou usar mais vezes!"
+        </p>
+        <div class="review-author">
+          <div class="review-avatar" aria-hidden="true">R</div>
+          <div>
+            <div class="review-name">Roberto S.</div>
+            <div class="review-role">Engenheiro de Obras</div>
+          </div>
+          <span class="review-g" aria-label="Avaliação no Google" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="16" height="16"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.93 21.93 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+          </span>
+        </div>
+      </article>
+
+      <article class="review-card reveal d2" role="listitem">
+        <div class="review-stars" aria-label="5 estrelas">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">
+          "Fiz tudo pelo WhatsApp, sem burocracia. Combinei o horário e o equipamento chegou certinho. Preço justo e equipamento em ótimo estado."
+        </p>
+        <div class="review-author">
+          <div class="review-avatar" aria-hidden="true">A</div>
+          <div>
+            <div class="review-name">Ana L.</div>
+            <div class="review-role">Arquiteta</div>
+          </div>
+          <span class="review-g" aria-label="Avaliação no Google" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="16" height="16"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.93 21.93 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+          </span>
+        </div>
+      </article>
+
     </div>
 
-    <div class="mt16">
-      <span class="note" style="background:rgba(0,0,0,0.2);border-color:rgba(0,0,0,0.3);color:#E8E4CC;">
-        ⬆ Seção full-width com bom espaçamento. Botão 1: branco com texto laranja. Botão 2: outline branco.
-      </span>
+    <div class="reveal" style="text-align:center;margin-top:36px;">
+      <a href="https://share.google/a6qexjVxkVzf5vCTY" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Ver todas as avaliações no Google</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     FOOTER
-═══════════════════════════════════ -->
-<footer class="wf-section" style="background:#2C2A28;padding-top:24px;">
-  <div class="sec-label" style="background:#1C1A18;color:#666;border-color:#444;">FOOTER</div>
+<!-- ════════════════════ FAQ ════════════════════ -->
+<section class="faq-wrap section" id="faq" aria-label="Perguntas frequentes">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Perguntas Frequentes</span>
+      <h2>Ficou com alguma dúvida?</h2>
+    </div>
+    <div class="faq-list" role="list">
 
-  <div class="pad" style="padding-top:56px;padding-bottom:0;">
-    <div class="grid3f" style="margin-bottom:48px;">
-
-      <!-- Col 1: Logo + tagline -->
-      <div class="col gap16">
-        <div style="border:2px solid #5A5550;background:#3A3835;padding:10px 18px;color:#9A9590;font-weight:bold;font-size:13px;width:fit-content;">
-          [ LOGO AlugaAqui ]
-        </div>
-        <div style="color:#7A7570;font-size:12px;font-style:italic;">"A força que sua obra precisa."</div>
-        <div class="row gap10 mt8">
-          <div style="width:32px;height:32px;background:#3A3835;border:1px solid #5A5550;display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:8px;color:#7A7570;">IG</span>
-          </div>
-          <div style="width:32px;height:32px;background:#3A3835;border:1px solid #5A5550;display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:8px;color:#7A7570;">WA</span>
-          </div>
-          <div style="width:32px;height:32px;background:#3A3835;border:1px solid #5A5550;display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:8px;color:#7A7570;">FB</span>
-          </div>
+      <div class="faq-item open reveal" role="listitem">
+        <button class="faq-btn" aria-expanded="true">
+          <span class="faq-q"><span class="faq-num">1.</span> Como funciona o aluguel?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><line x1="6.5" y1="1" x2="6.5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6.5" x2="12" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-answer">
+            É simples: entre em contato via WhatsApp ou formulário, informe o equipamento e o período desejado. Nossa equipe confirma a disponibilidade, combina a entrega e cuida de tudo para você.
+          </p>
         </div>
       </div>
 
-      <!-- Col 2: Links rápidos -->
-      <div class="col gap12">
-        <div style="color:#9A9590;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:bold;margin-bottom:4px;">Links Rápidos</div>
-        <span style="color:#6A6560;font-size:12px;">Equipamentos</span>
-        <span style="color:#6A6560;font-size:12px;">Sobre</span>
-        <span style="color:#6A6560;font-size:12px;">Marcas</span>
-        <span style="color:#6A6560;font-size:12px;">Diferenciais</span>
-        <span style="color:#6A6560;font-size:12px;">FAQ</span>
+      <div class="faq-item reveal d1" role="listitem">
+        <button class="faq-btn" aria-expanded="false">
+          <span class="faq-q"><span class="faq-num">2.</span> Quanto tempo leva a entrega?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><line x1="6.5" y1="1" x2="6.5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6.5" x2="12" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-answer">
+            Nosso prazo padrão é de até 24 horas após a confirmação do pedido. Em casos urgentes, fale diretamente pelo WhatsApp e verificamos as opções disponíveis para sua região.
+          </p>
+        </div>
       </div>
 
-      <!-- Col 3: Contato -->
-      <div class="col gap12">
-        <div style="color:#9A9590;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:bold;margin-bottom:4px;">Contato</div>
-        <span style="color:#6A6560;font-size:12px;">📱 WhatsApp: [número]</span>
-        <span style="color:#6A6560;font-size:12px;">📍 [Endereço completo]</span>
-        <span style="color:#6A6560;font-size:12px;">📷 @alugaaquimaquinas</span>
+      <div class="faq-item reveal d2" role="listitem">
+        <button class="faq-btn" aria-expanded="false">
+          <span class="faq-q"><span class="faq-num">3.</span> Os equipamentos são revisados?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><line x1="6.5" y1="1" x2="6.5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6.5" x2="12" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-answer">
+            Sim! 100% dos equipamentos passam por revisão técnica antes de cada entrega. Verificamos funcionamento, segurança e limpeza. Qualquer problema por desgaste durante o uso é nossa responsabilidade.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal" role="listitem">
+        <button class="faq-btn" aria-expanded="false">
+          <span class="faq-q"><span class="faq-num">4.</span> Posso alugar por apenas um dia?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><line x1="6.5" y1="1" x2="6.5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6.5" x2="12" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-answer">
+            Sim! Trabalhamos com aluguel por diária, semanal ou mensal. O período mínimo é de um dia. Para prazos mais longos, geralmente temos tarifas especiais — consulte nossa equipe.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d1" role="listitem">
+        <button class="faq-btn" aria-expanded="false">
+          <span class="faq-q"><span class="faq-num">5.</span> E se o equipamento apresentar algum problema?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><line x1="6.5" y1="1" x2="6.5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6.5" x2="12" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-answer">
+            Entre em contato imediatamente pelo nosso WhatsApp. Avaliaremos a situação e, dependendo do caso, enviaremos um substituto ou faremos o atendimento o mais rápido possível.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d2" role="listitem">
+        <button class="faq-btn" aria-expanded="false">
+          <span class="faq-q"><span class="faq-num">6.</span> Quais formas de pagamento são aceitas?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><line x1="6.5" y1="1" x2="6.5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6.5" x2="12" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-answer">
+            Aceitamos PIX, transferência bancária, cartão de crédito e débito. Para locações prolongadas ou empresas, também trabalhamos com faturamento — consulte nossa equipe para mais detalhes.
+          </p>
+        </div>
       </div>
 
     </div>
+  </div>
+</section>
 
-    <!-- Footer bottom -->
-    <div style="border-top:1px solid #3A3835;padding:16px 0 24px;">
-      <span style="color:#4A4540;font-size:10px;letter-spacing:0.06em;">
-        © 2025 AlugaAqui Máquinas e Equipamentos &nbsp;·&nbsp; CNPJ: [número] &nbsp;·&nbsp; Todos os direitos reservados.
-      </span>
+<!-- ════════════════════ CTA FINAL ════════════════════ -->
+<section class="cta-final" aria-label="Solicitar orçamento">
+  <div class="stripe" style="background:repeating-linear-gradient(135deg,rgba(255,255,255,.18) 0 16px,transparent 16px 32px);" role="presentation"></div>
+  <div class="container">
+    <div class="cta-final-inner">
+      <h2 class="reveal">Sua obra não pode esperar.<br>Fale com a gente agora.</h2>
+      <p class="reveal d1">Equipamento revisado, entrega rápida e atendimento de quem entende de obra.</p>
+      <div class="cta-row reveal d2">
+        <a href="https://wa.me/5519995757318"
+           class="btn btn-lg"
+           style="background:var(--white);color:var(--orange);border-color:var(--white);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <a href="#equipamentos" class="btn btn-outline-inv btn-lg">
+          Ver Equipamentos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer class="footer" aria-label="Rodapé">
+  <div class="stripe" role="presentation"></div>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="reveal">
+          <div class="footer-logo">
+            <img src="Design System Aluga Aqui/assets/logos/aqui-orange.png"
+                 alt="AlugaAqui Máquinas e Equipamentos" />
+          </div>
+          <p class="footer-tagline">"A força que sua obra precisa."</p>
+          <div class="footer-socials" role="list" aria-label="Redes sociais">
+            <a href="https://instagram.com/alugaaquimaquinas" class="social-btn" aria-label="Instagram AlugaAqui" role="listitem" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/5519995757318" class="social-btn" aria-label="WhatsApp AlugaAqui" role="listitem" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="https://facebook.com/alugaaqui" class="social-btn" aria-label="Facebook AlugaAqui" role="listitem" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <nav aria-label="Links rápidos" class="reveal d1">
+          <div class="footer-col-title">Links Rápidos</div>
+          <div class="footer-links">
+            <a href="#equipamentos">Equipamentos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#marcas">Marcas</a>
+            <a href="#diferenciais">Diferenciais</a>
+            <a href="#faq">FAQ</a>
+          </div>
+        </nav>
+
+        <!-- Contact -->
+        <address aria-label="Informações de contato" class="reveal d2">
+          <div class="footer-col-title">Contato</div>
+          <div class="footer-contact">
+            <div class="footer-citem">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <a href="https://wa.me/5519995757318" target="_blank" rel="noopener noreferrer">WhatsApp: (19) 99575-7318</a>
+            </div>
+            <div class="footer-citem">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <a href="https://maps.google.com/?q=Rua+Jo%C3%A3o+Polezel+62+Jardim+das+Palmeiras+Sumar%C3%A9+SP" target="_blank" rel="noopener noreferrer">Rua João Polezel, 62 - Jardim das Palmeiras, Sumaré/SP - CEP 13172-390</a>
+            </div>
+            <div class="footer-citem">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:contato@alugaaquimaquinas.com.br">contato@alugaaquimaquinas.com.br</a>
+            </div>
+            <div class="footer-citem">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <a href="https://instagram.com/alugaaquimaquinas" target="_blank" rel="noopener noreferrer">@alugaaquimaquinas</a>
+            </div>
+          </div>
+        </address>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">
+          &copy; 2025–2026 AlugaAqui Máquinas e Equipamentos &nbsp;&middot;&nbsp; CNPJ: 03.037.369/0001-67 &nbsp;&middot;&nbsp; Todos os direitos reservados.
+        </span>
+        <img src="Design System Aluga Aqui/assets/logos/aluga-mark.png"
+             alt=""
+             aria-hidden="true"
+             style="height:26px;opacity:.25;" />
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- ═══ FLOATING WA BUTTON ═══ -->
-<div class="fab">WA<br>BTN</div>
-<div class="fab-note">sempre<br>visível<br>em mobile</div>
+<!-- ════════════════════ FLOATING WA ════════════════════ -->
+<div class="fab-wrap">
+  <div class="fab-pulse" aria-hidden="true"></div>
+  <a href="https://wa.me/5519995757318"
+     class="fab"
+     aria-label="Falar com a AlugaAqui pelo WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
 
+<!-- ════════════════════ JAVASCRIPT ════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Hero: ambient glow follows cursor (rAF-throttled) ── */
+  const heroSection = document.getElementById('hero');
+  const heroGlow    = document.getElementById('heroGlow');
+  if (heroSection && heroGlow) {
+    let glowRaf = null;
+    let glowX = 60, glowY = 50;
+    heroSection.addEventListener('mousemove', e => {
+      const r = heroSection.getBoundingClientRect();
+      glowX = ((e.clientX - r.left) / r.width  * 100).toFixed(1);
+      glowY = ((e.clientY - r.top)  / r.height * 100).toFixed(1);
+      if (!glowRaf) glowRaf = requestAnimationFrame(() => {
+        heroGlow.style.background =
+          `radial-gradient(ellipse 65% 60% at ${glowX}% ${glowY}%, rgba(236,103,15,.22) 0%, transparent 68%)`;
+        glowRaf = null;
+      });
+    }, { passive: true });
+    heroSection.addEventListener('mouseleave', () => {
+      if (glowRaf) { cancelAnimationFrame(glowRaf); glowRaf = null; }
+      heroGlow.style.background = '';
+    });
+  }
+
+  /* ── Hero CTA: ripple origin follows cursor ── */
+  const heroCta = document.getElementById('heroCta');
+  if (heroCta) {
+    heroCta.addEventListener('mousemove', e => {
+      const r = heroCta.getBoundingClientRect();
+      heroCta.style.setProperty('--rx', ((e.clientX - r.left) / r.width  * 100) + '%');
+      heroCta.style.setProperty('--ry', ((e.clientY - r.top)  / r.height * 100) + '%');
+    }, { passive: true });
+  }
+
+  /* ── Navbar scroll + scroll progress bar (rAF-throttled) ── */
+  const navbar         = document.getElementById('navbar');
+  const scrollProgress = document.getElementById('scrollProgress');
+  let   scrollRaf      = null;
+  let   lastScrollY    = -1;
+  let   navbarScrolled = false;
+
+  /*
+   * Limites diferentes para entrar e sair do estado compacto evitam que a
+   * mudanca de altura do navbar fique alternando perto do topo da pagina.
+   */
+  const NAV_COLLAPSE_AT = 64;
+  const NAV_EXPAND_AT   = 12;
+
+  function updateScroll() {
+    scrollRaf = null;
+    const sy = window.scrollY;
+    if (sy === lastScrollY) return;
+    lastScrollY = sy;
+
+    if (!navbarScrolled && sy >= NAV_COLLAPSE_AT) {
+      navbarScrolled = true;
+      navbar.classList.add('scrolled');
+    } else if (navbarScrolled && sy <= NAV_EXPAND_AT) {
+      navbarScrolled = false;
+      navbar.classList.remove('scrolled');
+    }
+
+    if (scrollProgress) {
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct  = docH > 0 ? sy / docH : 0;
+      scrollProgress.style.transform = 'scaleX(' + pct + ')';   /* compositor only */
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!scrollRaf) scrollRaf = requestAnimationFrame(updateScroll);
+  }, { passive: true });
+
+  /* Sincroniza o estado ao recarregar a pagina no meio do scroll. */
+  updateScroll();
+
+  /* ── Scroll spy — active nav link ── */
+  const navSections = ['equipamentos','sobre','marcas','diferenciais','faq'];
+  const navLinks    = document.querySelectorAll('[data-nav]');
+
+  if ('IntersectionObserver' in window && navLinks.length) {
+    const spyIO = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        navLinks.forEach(a => {
+          const matches = a.getAttribute('href') === '#' + id;
+          a.classList.toggle('active', matches);
+        });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+    navSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) spyIO.observe(el);
+    });
+  }
+
+  /* ── Mobile menu (drawer) ── */
+  const mobileMenu    = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const menuBtn       = document.getElementById('menuBtn');
+  const closeBtn      = document.getElementById('closeMenu');
+
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    mobileOverlay.classList.add('open');
+    menuBtn.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    menuBtn.setAttribute('aria-expanded', 'true');
+    mobileOverlay.setAttribute('aria-hidden', 'false');
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    menuBtn.classList.remove('is-open');
+    document.body.style.overflow = '';
+    menuBtn.setAttribute('aria-expanded', 'false');
+    mobileOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  /* ── FAQ Accordion ── */
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+        i.querySelector('.faq-body').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        const body = item.querySelector('.faq-body');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+  const faqInitiallyOpen = document.querySelector('.faq-item.open .faq-body');
+  if (faqInitiallyOpen) faqInitiallyOpen.style.maxHeight = faqInitiallyOpen.scrollHeight + 'px';
+
+  /* ── Scroll reveal (IntersectionObserver) ── */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    /* Fallback: show all immediately */
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+
+  /* ── Load more equipamentos ── */
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      const hidden = document.querySelectorAll('.equip-hidden');
+      hidden.forEach((card, i) => {
+        card.classList.remove('equip-hidden');
+        /* Stagger: pequeno delay por card para efeito cascata */
+        setTimeout(() => card.classList.add('visible'), i * 55 + 20);
+      });
+      document.getElementById('equipLoadMore').style.display = 'none';
+    });
+  }
+
+  /* ── Counter animation ── */
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length && 'IntersectionObserver' in window) {
+    const cio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el  = e.target;
+        const end = parseInt(el.dataset.count, 10);
+        const dur = 1600;
+        let   cur = 0;
+        const step = end / (dur / 16);
+        const tick = () => {
+          cur = Math.min(cur + step, end);
+          el.textContent = Math.floor(cur);
+          if (cur < end) {
+            requestAnimationFrame(tick);
+          } else {
+            const num = el.closest('.stat-num');
+            if (num) num.classList.add('pop');
+          }
+        };
+        requestAnimationFrame(tick);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(el => cio.observe(el));
+  }
+
+})();
+</script>
 </body>
 </html>

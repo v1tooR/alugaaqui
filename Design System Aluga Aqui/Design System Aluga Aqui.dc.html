@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+@font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-SemiBold.otf') format('opentype');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-ExtraBold.otf') format('opentype');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Montserrat';src:url('assets/fonts/Montserrat-Variable.ttf') format('truetype');font-weight:300 800;font-style:normal;font-display:swap}
+*{box-sizing:border-box}
+body{margin:0;background:#FAF6F2;color:#464240;font-family:'Montserrat',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+</style>
+</helmet>
+
+<div style="max-width:100%;overflow-x:hidden;background:#FAF6F2;">
+
+<!-- ===== TOP IDENTITY BAR ===== -->
+<div style="display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid #E4DCD3;background:rgba(250,246,242,.9);position:sticky;top:0;z-index:30;backdrop-filter:blur(8px);">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="assets/logos/aluga-mark.png" alt="Aluga Aqui" style="height:34px;width:auto;display:block;" />
+    <span style="font-family:'Montserrat';font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8A827C;">Identidade Visual</span>
+  </div>
+  <span style="font-family:'Montserrat';font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#A8A09B;">v1.0 · 2025</span>
+</div>
+
+<!-- ===== HERO ===== -->
+<div style="position:relative;background:#2A2725;padding:0 0 88px;overflow:hidden;">
+  <div style="height:14px;width:100%;background:repeating-linear-gradient(135deg,#EC670F 0 16px,#2A2725 16px 32px);"></div>
+  <div style="max-width:1240px;margin:0 auto;padding:96px 48px 0;display:flex;flex-direction:column;align-items:flex-start;">
+    <div style="font-family:'Montserrat';font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#EC670F;margin-bottom:28px;">Brand &amp; Design System</div>
+    <h1 style="font-family:'Metropolis';font-weight:900;font-size:84px;line-height:.96;letter-spacing:-.02em;color:#FAF6F2;margin:0 0 24px;max-width:14ch;">Sistema de Identidade Visual</h1>
+    <p style="font-family:'Montserrat';font-weight:400;font-size:19px;line-height:1.6;color:#B8AFA8;max-width:54ch;margin:0 0 52px;">O conjunto de regras, ativos e componentes que dão consistência à marca <strong style="color:#FAF6F2;font-weight:700;">Aluga Aqui</strong> — locação de máquinas e equipamentos para construção.</p>
+    <div style="background:#FAF6F2;border-radius:20px;padding:56px 72px;box-shadow:0 30px 70px rgba(0,0,0,.35);">
+      <img src="assets/logos/aluga-aqui-full.png" alt="Aluga Aqui — Máquinas e Equipamentos" style="height:230px;width:auto;display:block;" />
+    </div>
+  </div>
+</div>
+
+<!-- ===== 01 LOGOTIPO ===== -->
+<section style="max-width:1240px;margin:0 auto;padding:104px 48px 40px;">
+  <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+    <span style="font-family:'Metropolis';font-weight:900;font-size:15px;color:#EC670F;letter-spacing:.04em;">01</span>
+    <span style="font-family:'Montserrat';font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#A8A09B;">Identidade</span>
+  </div>
+  <h2 style="font-family:'Metropolis';font-weight:900;font-size:46px;letter-spacing:-.02em;color:#2A2725;margin:0 0 16px;">Logotipo</h2>
+  <p style="font-family:'Montserrat';font-size:17px;line-height:1.65;color:#6E6864;max-width:60ch;margin:0 0 44px;">A marca combina um <strong style="color:#464240;">pin de localização</strong> com a silhueta de uma escavadeira — comunicando, num só símbolo, "a máquina que você precisa, aqui perto". Use sempre os arquivos oficiais, sem redesenhar ou recriar.</p>
+
+  <!-- primary lockup -->
+  <div style="border:1px solid #E4DCD3;border-radius:18px;overflow:hidden;margin-bottom:24px;">
+    <div style="display:flex;align-items:center;justify-content:center;padding:72px;background:#FFFFFF;min-height:300px;">
+      <img src="assets/logos/aluga-aqui-full.png" alt="Logo principal" style="height:220px;width:auto;display:block;" />
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:#FAF6F2;border-top:1px solid #E4DCD3;">
+      <span style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;">Assinatura principal · vertical</span>
+      <span style="font-family:'Montserrat';font-weight:500;font-size:13px;color:#A8A09B;">Uso preferencial</span>
+    </div>
+  </div>
+
+  <!-- secondary lockups grid -->
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:24px;">
+    <div style="border:1px solid #E4DCD3;border-radius:18px;overflow:hidden;">
+      <div style="display:flex;align-items:center;justify-content:center;padding:56px;background:#FFFFFF;min-height:200px;">
+        <img src="assets/logos/aluga-aqui-horizontal.png" alt="Logo horizontal" style="height:96px;width:auto;display:block;" />
+      </div>
+      <div style="padding:16px 24px;background:#FAF6F2;border-top:1px solid #E4DCD3;">
+        <span style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;">Assinatura horizontal</span>
+        <span style="display:block;font-family:'Montserrat';font-weight:500;font-size:13px;color:#A8A09B;margin-top:2px;">Espaços largos e cabeçalhos</span>
+      </div>
+    </div>
+    <div style="border:1px solid #E4DCD3;border-radius:18px;overflow:hidden;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:40px;padding:56px;background:#FFFFFF;min-height:200px;">
+        <img src="assets/logos/aluga-mark.png" alt="Marca aluga" style="height:88px;width:auto;display:block;" />
+        <img src="assets/logos/aqui-mark.png" alt="Marca aqui" style="height:88px;width:auto;display:block;" />
+      </div>
+      <div style="padding:16px 24px;background:#FAF6F2;border-top:1px solid #E4DCD3;">
+        <span style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;">Símbolo + reduções</span>
+        <span style="display:block;font-family:'Montserrat';font-weight:500;font-size:13px;color:#A8A09B;margin-top:2px;">Avatar, favicon e apps</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- on backgrounds -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+    <div style="border-radius:18px;overflow:hidden;border:1px solid #E4DCD3;">
+      <div style="display:flex;align-items:center;justify-content:center;padding:48px;background:#FFFFFF;min-height:170px;"><img src="assets/logos/aqui-dark.png" style="height:54px;width:auto;" alt="" /></div>
+      <div style="padding:13px 20px;background:#FAF6F2;font-family:'Montserrat';font-weight:600;font-size:12.5px;color:#6E6864;">Versão grafite · sobre claro</div>
+    </div>
+    <div style="border-radius:18px;overflow:hidden;border:1px solid #E4DCD3;">
+      <div style="display:flex;align-items:center;justify-content:center;padding:48px;background:#FAF6F2;min-height:170px;"><img src="assets/logos/aluga-aqui-full.png" style="height:88px;width:auto;" alt="" /></div>
+      <div style="padding:13px 20px;background:#FFFFFF;font-family:'Montserrat';font-weight:600;font-size:12.5px;color:#6E6864;">Full color · sobre creme</div>
+    </div>
+    <div style="border-radius:18px;overflow:hidden;border:1px solid #2A2725;">
+      <div style="display:flex;align-items:center;justify-content:center;padding:48px;background:#2A2725;min-height:170px;"><img src="assets/logos/aqui-orange.png" style="height:54px;width:auto;" alt="" /></div>
+      <div style="padding:13px 20px;background:#2A2725;font-family:'Montserrat';font-weight:600;font-size:12.5px;color:#B8AFA8;">Laranja · sobre escuro</div>
+    </div>
+  </div>
+
+  <!-- clear space + misuse -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;">
+    <div style="background:#FFFFFF;border:1px solid #E4DCD3;border-radius:18px;padding:32px 36px;">
+      <div style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;margin-bottom:14px;">Área de respiro</div>
+      <p style="font-family:'Montserrat';font-size:14px;line-height:1.6;color:#6E6864;margin:0 0 22px;">Mantenha ao redor da marca uma margem livre equivalente à <strong style="color:#EC670F;">altura do símbolo (pin)</strong>. Nenhum texto ou elemento gráfico deve invadir essa área.</p>
+      <div style="position:relative;border:1.5px dashed #DAD3CC;border-radius:12px;padding:40px;display:flex;align-items:center;justify-content:center;background:#FAF6F2;">
+        <img src="assets/logos/aluga-mark.png" style="height:70px;width:auto;" alt="" />
+        <span style="position:absolute;top:8px;left:10px;font-family:'Montserrat';font-weight:600;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#C0B8B0;">margem mínima = X</span>
+      </div>
+    </div>
+    <div style="background:#FFFFFF;border:1px solid #E4DCD3;border-radius:18px;padding:32px 36px;">
+      <div style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;margin-bottom:14px;">Não faça</div>
+      <div style="display:flex;flex-direction:column;gap:11px;">
+        <div style="display:flex;align-items:center;gap:12px;font-family:'Montserrat';font-size:14px;color:#6E6864;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#FBE3D2;color:#C0392B;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px;">✕</span> Distorcer, inclinar ou esticar a marca</div>
+        <div style="display:flex;align-items:center;gap:12px;font-family:'Montserrat';font-size:14px;color:#6E6864;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#FBE3D2;color:#C0392B;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px;">✕</span> Trocar as cores ou aplicar gradientes</div>
+        <div style="display:flex;align-items:center;gap:12px;font-family:'Montserrat';font-size:14px;color:#6E6864;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#FBE3D2;color:#C0392B;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px;">✕</span> Usar laranja sobre fundo laranja ou de baixo contraste</div>
+        <div style="display:flex;align-items:center;gap:12px;font-family:'Montserrat';font-size:14px;color:#6E6864;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#FBE3D2;color:#C0392B;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px;">✕</span> Adicionar sombras, contornos ou efeitos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="height:12px;width:100%;background:repeating-linear-gradient(135deg,#EC670F 0 16px,#FAF6F2 16px 32px);margin:48px 0;"></div>
+
+<!-- ===== 02 CORES ===== -->
+<section style="max-width:1240px;margin:0 auto;padding:48px 48px 40px;">
+  <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+    <span style="font-family:'Metropolis';font-weight:900;font-size:15px;color:#EC670F;letter-spacing:.04em;">02</span>
+    <span style="font-family:'Montserrat';font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#A8A09B;">Paleta</span>
+  </div>
+  <h2 style="font-family:'Metropolis';font-weight:900;font-size:46px;letter-spacing:-.02em;color:#2A2725;margin:0 0 16px;">Cores</h2>
+  <p style="font-family:'Montserrat';font-size:17px;line-height:1.65;color:#6E6864;max-width:60ch;margin:0 0 44px;">O laranja-construção é a assinatura da marca; o grafite dá peso e legibilidade. Os neutros quentes equilibram, e as cores de status comunicam o estado de cada equipamento.</p>
+
+  <!-- primary big -->
+  <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px;margin-bottom:24px;">
+    <div style="border-radius:18px;overflow:hidden;border:1px solid #E4DCD3;">
+      <div style="background:#EC670F;height:200px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;">
+        <span style="font-family:'Metropolis';font-weight:800;font-size:26px;color:#fff;">Laranja Aluga</span>
+      </div>
+      <div style="background:#fff;padding:18px 24px;">
+        <div style="display:flex;justify-content:space-between;font-family:'Montserrat';font-size:14px;"><span style="font-weight:700;color:#464240;">HEX</span><span style="font-weight:600;color:#6E6864;letter-spacing:.04em;">#EC670F</span></div>
+        <div style="display:flex;justify-content:space-between;font-family:'Montserrat';font-size:14px;margin-top:6px;"><span style="font-weight:700;color:#464240;">RGB</span><span style="font-weight:600;color:#6E6864;">236 · 103 · 15</span></div>
+        <div style="display:flex;justify-content:space-between;font-family:'Montserrat';font-size:14px;margin-top:6px;"><span style="font-weight:700;color:#464240;">CMYK</span><span style="font-weight:600;color:#6E6864;">0 · 70 · 95 · 0</span></div>
+        <div style="margin-top:12px;font-family:'Montserrat';font-size:12.5px;color:#A8A09B;">Primária · CTAs, destaques, símbolo</div>
+      </div>
+    </div>
+    <div style="border-radius:18px;overflow:hidden;border:1px solid #E4DCD3;">
+      <div style="background:#C2540B;height:200px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;"><span style="font-family:'Metropolis';font-weight:800;font-size:20px;color:#fff;">Laranja Escuro</span></div>
+      <div style="background:#fff;padding:18px 24px;">
+        <div style="display:flex;justify-content:space-between;font-family:'Montserrat';font-size:14px;"><span style="font-weight:700;color:#464240;">HEX</span><span style="font-weight:600;color:#6E6864;">#C2540B</span></div>
+        <div style="margin-top:10px;font-family:'Montserrat';font-size:12.5px;color:#A8A09B;">Hover &amp; estado pressionado</div>
+      </div>
+    </div>
+    <div style="border-radius:18px;overflow:hidden;border:1px solid #E4DCD3;">
+      <div style="background:#FBE3D2;height:200px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;"><span style="font-family:'Metropolis';font-weight:800;font-size:20px;color:#9A4310;">Laranja Claro</span></div>
+      <div style="background:#fff;padding:18px 24px;">
+        <div style="display:flex;justify-content:space-between;font-family:'Montserrat';font-size:14px;"><span style="font-weight:700;color:#464240;">HEX</span><span style="font-weight:600;color:#6E6864;">#FBE3D2</span></div>
+        <div style="margin-top:10px;font-family:'Montserrat';font-size:12.5px;color:#A8A09B;">Tint · fundos e realces suaves</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- neutral ramp -->
+  <div style="font-family:'Montserrat';font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#A8A09B;margin:8px 0 16px;">Neutros quentes</div>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-bottom:36px;">
+    <sc-for list="{{ neutrals }}" as="n" hint-placeholder-count="7">
+      <div style="border-radius:14px;overflow:hidden;border:1px solid #E4DCD3;background:#fff;">
+        <div style="height:96px;background:{{ n.hex }};"></div>
+        <div style="padding:11px 12px;">
+          <div style="font-family:'Montserrat';font-weight:700;font-size:13px;color:#464240;">{{ n.name }}</div>
+          <div style="font-family:'Montserrat';font-weight:500;font-size:11.5px;color:#A8A09B;margin-top:2px;letter-spacing:.03em;">{{ n.hex }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- semantic -->
+  <div style="font-family:'Montserrat';font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#A8A09B;margin:8px 0 16px;">Status do equipamento</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+    <sc-for list="{{ semantic }}" as="s" hint-placeholder-count="3">
+      <div style="display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #E4DCD3;border-radius:14px;padding:18px 20px;">
+        <div style="flex:none;width:46px;height:46px;border-radius:12px;background:{{ s.hex }};"></div>
+        <div>
+          <div style="font-family:'Montserrat';font-weight:700;font-size:15px;color:#464240;">{{ s.name }}</div>
+          <div style="font-family:'Montserrat';font-weight:500;font-size:12.5px;color:#A8A09B;margin-top:2px;">{{ s.hex }} · {{ s.use }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<div style="height:12px;width:100%;background:repeating-linear-gradient(135deg,#EC670F 0 16px,#FAF6F2 16px 32px);margin:48px 0;"></div>
+
+<!-- ===== 03 TIPOGRAFIA ===== -->
+<section style="max-width:1240px;margin:0 auto;padding:48px 48px 40px;">
+  <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+    <span style="font-family:'Metropolis';font-weight:900;font-size:15px;color:#EC670F;letter-spacing:.04em;">03</span>
+    <span style="font-family:'Montserrat';font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#A8A09B;">Tipografia</span>
+  </div>
+  <h2 style="font-family:'Metropolis';font-weight:900;font-size:46px;letter-spacing:-.02em;color:#2A2725;margin:0 0 16px;">Tipografia</h2>
+  <p style="font-family:'Montserrat';font-size:17px;line-height:1.65;color:#6E6864;max-width:60ch;margin:0 0 44px;">Duas famílias geométricas, no espírito da marca. <strong style="color:#464240;">Metropolis</strong> para títulos e números — robusta e impactante. <strong style="color:#464240;">Montserrat</strong> para textos e interface — clara em qualquer tamanho.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:36px;">
+    <div style="background:#2A2725;border-radius:18px;padding:40px;">
+      <div style="font-family:'Montserrat';font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#EC670F;margin-bottom:18px;">Display · Títulos</div>
+      <div style="font-family:'Metropolis';font-weight:900;font-size:96px;line-height:1;color:#FAF6F2;">Aa</div>
+      <div style="font-family:'Metropolis';font-weight:800;font-size:26px;color:#FAF6F2;margin-top:18px;">Metropolis</div>
+      <div style="font-family:'Montserrat';font-size:13.5px;color:#B8AFA8;margin-top:8px;line-height:1.6;">Black 900 · ExtraBold 800 · Bold 700</div>
+      <div style="font-family:'Metropolis';font-weight:500;font-size:14px;color:#8A827C;margin-top:14px;letter-spacing:.02em;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz 1234567890</div>
+    </div>
+    <div style="background:#FFFFFF;border:1px solid #E4DCD3;border-radius:18px;padding:40px;">
+      <div style="font-family:'Montserrat';font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#EC670F;margin-bottom:18px;">Texto · Interface</div>
+      <div style="font-family:'Montserrat';font-weight:700;font-size:96px;line-height:1;color:#2A2725;">Aa</div>
+      <div style="font-family:'Montserrat';font-weight:700;font-size:26px;color:#2A2725;margin-top:18px;">Montserrat</div>
+      <div style="font-family:'Montserrat';font-size:13.5px;color:#6E6864;margin-top:8px;line-height:1.6;">SemiBold 600 · Medium 500 · Regular 400</div>
+      <div style="font-family:'Montserrat';font-weight:400;font-size:14px;color:#8A827C;margin-top:14px;letter-spacing:.01em;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz 1234567890</div>
+    </div>
+  </div>
+
+  <!-- type scale -->
+  <div style="background:#fff;border:1px solid #E4DCD3;border-radius:18px;overflow:hidden;">
+    <sc-for list="{{ scale }}" as="t" hint-placeholder-count="6">
+      <div style="display:flex;align-items:baseline;gap:28px;padding:22px 32px;border-bottom:1px solid #F0EAE3;">
+        <div style="flex:none;width:140px;font-family:'Montserrat';font-weight:600;font-size:12px;letter-spacing:.06em;color:#A8A09B;text-transform:uppercase;">{{ t.label }}</div>
+        <div style="flex:none;width:96px;font-family:'Montserrat';font-weight:600;font-size:12.5px;color:#C0B8B0;">{{ t.spec }}</div>
+        <div style="font-family:{{ t.font }};font-weight:{{ t.weight }};font-size:{{ t.px }};line-height:1.1;color:#2A2725;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Aluga aqui</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- tagline treatment -->
+  <div style="margin-top:24px;background:#FBE3D2;border-radius:18px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Montserrat';font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#C2540B;margin-bottom:10px;">Assinatura / Tagline</div>
+      <div style="font-family:'Montserrat';font-weight:600;font-size:24px;letter-spacing:.18em;text-transform:uppercase;color:#464240;">Máquinas e Equipamentos</div>
+    </div>
+    <div style="font-family:'Montserrat';font-size:13.5px;color:#9A4310;line-height:1.6;max-width:30ch;">Sempre em caixa-alta, Montserrat SemiBold, com tracking de 0.18em.</div>
+  </div>
+</section>
+
+<div style="height:12px;width:100%;background:repeating-linear-gradient(135deg,#EC670F 0 16px,#FAF6F2 16px 32px);margin:48px 0;"></div>
+
+<!-- ===== 04 COMPONENTES ===== -->
+<section style="max-width:1240px;margin:0 auto;padding:48px 48px 40px;">
+  <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+    <span style="font-family:'Metropolis';font-weight:900;font-size:15px;color:#EC670F;letter-spacing:.04em;">04</span>
+    <span style="font-family:'Montserrat';font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#A8A09B;">Interface</span>
+  </div>
+  <h2 style="font-family:'Metropolis';font-weight:900;font-size:46px;letter-spacing:-.02em;color:#2A2725;margin:0 0 16px;">Componentes</h2>
+  <p style="font-family:'Montserrat';font-size:17px;line-height:1.65;color:#6E6864;max-width:60ch;margin:0 0 44px;">Blocos de interface prontos para o app e o site de locação, construídos com a paleta e a tipografia da marca.</p>
+
+  <!-- buttons -->
+  <div style="background:#fff;border:1px solid #E4DCD3;border-radius:18px;padding:36px;margin-bottom:24px;">
+    <div style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;margin-bottom:22px;">Botões</div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;">
+      <button style="font-family:'Montserrat';font-weight:700;font-size:15px;color:#fff;background:#EC670F;border:none;border-radius:11px;padding:15px 30px;cursor:pointer;transition:background .15s;" style-hover="background:#C2540B;">Alugar agora</button>
+      <button style="font-family:'Montserrat';font-weight:700;font-size:15px;color:#464240;background:transparent;border:2px solid #464240;border-radius:11px;padding:13px 28px;cursor:pointer;transition:all .15s;" style-hover="background:#464240;color:#fff;">Ver catálogo</button>
+      <button style="font-family:'Montserrat';font-weight:700;font-size:15px;color:#EC670F;background:#FBE3D2;border:none;border-radius:11px;padding:15px 28px;cursor:pointer;transition:background .15s;" style-hover="background:#F7D3BC;">Falar no WhatsApp</button>
+      <button style="font-family:'Montserrat';font-weight:600;font-size:15px;color:#A8A09B;background:#F0EAE3;border:none;border-radius:11px;padding:15px 28px;cursor:not-allowed;">Indisponível</button>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-top:18px;">
+      <button style="font-family:'Montserrat';font-weight:700;font-size:13px;color:#fff;background:#EC670F;border:none;border-radius:9px;padding:10px 20px;cursor:pointer;" style-hover="background:#C2540B;">Pequeno</button>
+      <button style="font-family:'Montserrat';font-weight:700;font-size:17px;color:#fff;background:#EC670F;border:none;border-radius:13px;padding:18px 38px;cursor:pointer;" style-hover="background:#C2540B;">Grande</button>
+    </div>
+  </div>
+
+  <!-- badges + input -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+    <div style="background:#fff;border:1px solid #E4DCD3;border-radius:18px;padding:36px;">
+      <div style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;margin-bottom:22px;">Etiquetas de status</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:'Montserrat';font-weight:700;font-size:13px;color:#1F6B43;background:#E2F1E8;border-radius:999px;padding:8px 15px;"><span style="width:8px;height:8px;border-radius:50%;background:#2E7D4F;"></span>Disponível</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:'Montserrat';font-weight:700;font-size:13px;color:#8A6200;background:#FBF0D4;border-radius:999px;padding:8px 15px;"><span style="width:8px;height:8px;border-radius:50%;background:#E0A100;"></span>Em manutenção</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:'Montserrat';font-weight:700;font-size:13px;color:#9A2A1E;background:#F8E2DE;border-radius:999px;padding:8px 15px;"><span style="width:8px;height:8px;border-radius:50%;background:#C0392B;"></span>Locado</span>
+      </div>
+      <div style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;margin:28px 0 16px;">Chips de categoria</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <span style="font-family:'Montserrat';font-weight:600;font-size:13px;color:#464240;background:#F0EAE3;border-radius:999px;padding:8px 16px;">Escavadeiras</span>
+        <span style="font-family:'Montserrat';font-weight:600;font-size:13px;color:#fff;background:#EC670F;border-radius:999px;padding:8px 16px;">Compactadores</span>
+        <span style="font-family:'Montserrat';font-weight:600;font-size:13px;color:#464240;background:#F0EAE3;border-radius:999px;padding:8px 16px;">Geradores</span>
+        <span style="font-family:'Montserrat';font-weight:600;font-size:13px;color:#464240;background:#F0EAE3;border-radius:999px;padding:8px 16px;">Andaimes</span>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #E4DCD3;border-radius:18px;padding:36px;">
+      <div style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;margin-bottom:22px;">Campos de formulário</div>
+      <label style="display:block;font-family:'Montserrat';font-weight:600;font-size:13px;color:#6E6864;margin-bottom:8px;">O que você precisa alugar?</label>
+      <input type="text" placeholder="Ex.: escavadeira hidráulica" style="width:100%;font-family:'Montserrat';font-size:15px;color:#464240;background:#FAF6F2;border:2px solid #E4DCD3;border-radius:11px;padding:14px 16px;outline:none;transition:border .15s;" style-focus="border-color:#EC670F;background:#fff;" />
+      <label style="display:block;font-family:'Montserrat';font-weight:600;font-size:13px;color:#6E6864;margin:18px 0 8px;">Período</label>
+      <div style="display:flex;align-items:center;gap:12px;width:100%;font-family:'Montserrat';font-size:15px;color:#464240;background:#FAF6F2;border:2px solid #E4DCD3;border-radius:11px;padding:14px 16px;">
+        <span style="color:#A8A09B;">📅</span><span>Selecionar datas</span>
+      </div>
+      <div style="margin-top:18px;display:flex;align-items:center;gap:10px;">
+        <span style="flex:none;width:44px;height:26px;border-radius:999px;background:#EC670F;position:relative;"><span style="position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;"></span></span>
+        <span style="font-family:'Montserrat';font-weight:600;font-size:14px;color:#464240;">Inclui operador</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- equipment card (applied example) -->
+  <div style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#464240;margin:8px 0 16px;">Card de equipamento · exemplo aplicado</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+    <div style="background:#fff;border:1px solid #E4DCD3;border-radius:18px;overflow:hidden;box-shadow:0 6px 22px rgba(70,66,64,.06);">
+      <div style="position:relative;height:170px;background:repeating-linear-gradient(45deg,#F0EAE3 0 12px,#EAE2D8 12px 24px);display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#B0A89F;letter-spacing:.05em;">foto do equipamento</span>
+        <span style="position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat';font-weight:700;font-size:12px;color:#1F6B43;background:#E2F1E8;border-radius:999px;padding:6px 12px;"><span style="width:7px;height:7px;border-radius:50%;background:#2E7D4F;"></span>Disponível</span>
+      </div>
+      <div style="padding:20px 22px;">
+        <div style="font-family:'Montserrat';font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#EC670F;">Escavadeira</div>
+        <div style="font-family:'Metropolis';font-weight:800;font-size:21px;color:#2A2725;margin-top:4px;">CAT 320 Hidráulica</div>
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+          <span style="font-family:'Montserrat';font-weight:600;font-size:12px;color:#6E6864;background:#F0EAE3;border-radius:8px;padding:5px 10px;">20 ton</span>
+          <span style="font-family:'Montserrat';font-weight:600;font-size:12px;color:#6E6864;background:#F0EAE3;border-radius:8px;padding:5px 10px;">122 HP</span>
+          <span style="font-family:'Montserrat';font-weight:600;font-size:12px;color:#6E6864;background:#F0EAE3;border-radius:8px;padding:5px 10px;">c/ operador</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:20px;">
+          <div>
+            <span style="font-family:'Metropolis';font-weight:900;font-size:24px;color:#2A2725;">R$ 1.200</span>
+            <span style="font-family:'Montserrat';font-weight:600;font-size:13px;color:#A8A09B;">/dia</span>
+          </div>
+          <button style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#fff;background:#EC670F;border:none;border-radius:10px;padding:11px 20px;cursor:pointer;" style-hover="background:#C2540B;">Alugar</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid #E4DCD3;border-radius:18px;overflow:hidden;box-shadow:0 6px 22px rgba(70,66,64,.06);">
+      <div style="position:relative;height:170px;background:repeating-linear-gradient(45deg,#F0EAE3 0 12px,#EAE2D8 12px 24px);display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#B0A89F;letter-spacing:.05em;">foto do equipamento</span>
+        <span style="position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat';font-weight:700;font-size:12px;color:#8A6200;background:#FBF0D4;border-radius:999px;padding:6px 12px;"><span style="width:7px;height:7px;border-radius:50%;background:#E0A100;"></span>Manutenção</span>
+      </div>
+      <div style="padding:20px 22px;">
+        <div style="font-family:'Montserrat';font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#EC670F;">Compactador</div>
+        <div style="font-family:'Metropolis';font-weight:800;font-size:21px;color:#2A2725;margin-top:4px;">Rolo Compactador CG11</div>
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+          <span style="font-family:'Montserrat';font-weight:600;font-size:12px;color:#6E6864;background:#F0EAE3;border-radius:8px;padding:5px 10px;">11 ton</span>
+          <span style="font-family:'Montserrat';font-weight:600;font-size:12px;color:#6E6864;background:#F0EAE3;border-radius:8px;padding:5px 10px;">vibratório</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:20px;">
+          <div>
+            <span style="font-family:'Metropolis';font-weight:900;font-size:24px;color:#2A2725;">R$ 890</span>
+            <span style="font-family:'Montserrat';font-weight:600;font-size:13px;color:#A8A09B;">/dia</span>
+          </div>
+          <button style="font-family:'Montserrat';font-weight:700;font-size:14px;color:#A8A09B;background:#F0EAE3;border:none;border-radius:10px;padding:11px 20px;cursor:not-allowed;">Avisar</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#2A2725;border-radius:18px;overflow:hidden;box-shadow:0 6px 22px rgba(70,66,64,.18);display:flex;flex-direction:column;justify-content:space-between;">
+      <div style="padding:26px 24px 0;">
+        <img src="assets/logos/aqui-orange.png" style="height:34px;width:auto;margin-bottom:22px;" alt="" />
+        <div style="font-family:'Metropolis';font-weight:900;font-size:26px;line-height:1.1;color:#FAF6F2;">Não achou a máquina certa?</div>
+        <p style="font-family:'Montserrat';font-size:14px;line-height:1.6;color:#B8AFA8;margin:14px 0 0;">A gente encontra o equipamento ideal pra sua obra e leva até você.</p>
+      </div>
+      <div style="padding:22px 24px 26px;">
+        <button style="width:100%;font-family:'Montserrat';font-weight:700;font-size:15px;color:#2A2725;background:#EC670F;border:none;border-radius:11px;padding:15px;cursor:pointer;" style-hover="background:#FF7A1F;">Pedir orçamento</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<div style="height:14px;width:100%;background:repeating-linear-gradient(135deg,#EC670F 0 16px,#2A2725 16px 32px);margin-top:64px;"></div>
+<footer style="background:#2A2725;padding:64px 48px;">
+  <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+    <img src="assets/logos/aqui-orange.png" alt="Aluga Aqui" style="height:42px;width:auto;" />
+    <div style="text-align:right;">
+      <div style="font-family:'Montserrat';font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#8A827C;">Sistema de Identidade Visual · v1.0</div>
+      <div style="font-family:'Montserrat';font-size:13px;color:#6E635E;margin-top:6px;">Aluga Aqui · Máquinas e Equipamentos · 2025</div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      neutrals: [
+        { name: 'Carvão', hex: '#2A2725' },
+        { name: 'Grafite', hex: '#464240' },
+        { name: 'Cinza 600', hex: '#6E6864' },
+        { name: 'Cinza 400', hex: '#A8A09B' },
+        { name: 'Cinza 200', hex: '#DAD3CC' },
+        { name: 'Creme', hex: '#FAF6F2' },
+        { name: 'Branco', hex: '#FFFFFF' },
+      ],
+      semantic: [
+        { name: 'Disponível', hex: '#2E7D4F', use: 'pronto p/ locar' },
+        { name: 'Manutenção', hex: '#E0A100', use: 'indisponível' },
+        { name: 'Locado / Alerta', hex: '#C0392B', use: 'em uso' },
+      ],
+      scale: [
+        { label: 'Display', spec: '84 / 900', font: "'Metropolis'", weight: 900, px: '54px' },
+        { label: 'Título H1', spec: '46 / 900', font: "'Metropolis'", weight: 900, px: '40px' },
+        { label: 'Título H2', spec: '32 / 800', font: "'Metropolis'", weight: 800, px: '30px' },
+        { label: 'Subtítulo', spec: '22 / 700', font: "'Montserrat'", weight: 700, px: '22px' },
+        { label: 'Corpo', spec: '16 / 400', font: "'Montserrat'", weight: 400, px: '17px' },
+        { label: 'Legenda', spec: '13 / 600', font: "'Montserrat'", weight: 600, px: '14px' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

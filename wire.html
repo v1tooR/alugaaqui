@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlugaAqui — Wireframe Baixa Fidelidade</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --wf-bg: #F0EDE8;
+      --wf-surface: #FAFAF8;
+      --wf-border: #B8B3AB;
+      --wf-border-light: #D4D0CB;
+      --wf-img: #C8C3BC;
+      --wf-img-border: #A09B94;
+      --wf-dark: #3C3835;
+      --wf-mid: #6B6661;
+      --wf-muted: #9E9990;
+      --wf-btn: #D0CBC4;
+      --wf-btn-primary: #8C8780;
+      --wf-section-dark: #4A4742;
+      --wf-section-accent: #7A7570;
+      --wf-text-dark: #2C2A28;
+      --wf-text-body: #5A5550;
+      --wf-text-muted: #8A8580;
+      --wf-note-bg: #FFFAC8;
+      --wf-note-border: #D4CC80;
+      --wf-note-text: #6B6400;
+    }
+
+    body {
+      font-family: 'Courier New', 'Lucida Console', monospace;
+      background: var(--wf-bg);
+      color: var(--wf-text-body);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ─── META BAR ─── */
+    .meta-bar {
+      background: var(--wf-dark);
+      color: var(--wf-muted);
+      padding: 8px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .meta-bar strong { color: #D0CBC4; }
+    .meta-sep { color: #555; }
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 5px; }
+    .legend-swatch {
+      width: 12px; height: 12px;
+      border-radius: 2px;
+      border: 1px solid var(--wf-border);
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .wf-section {
+      position: relative;
+      border-left: 3px solid var(--wf-border-light);
+      border-right: 3px solid var(--wf-border-light);
+    }
+    .wf-section + .wf-section { border-top: 2px dashed var(--wf-border); }
+
+    .sec-label {
+      position: absolute;
+      top: 0; left: 0;
+      background: var(--wf-dark);
+      color: var(--wf-muted);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      padding: 3px 10px;
+      text-transform: uppercase;
+    }
+    .sec-num {
+      position: absolute;
+      top: 0; right: 0;
+      background: var(--wf-border-light);
+      color: var(--wf-mid);
+      font-size: 9px;
+      padding: 3px 10px;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    .wf-eyebrow {
+      display: inline-block;
+      border: 1.5px solid var(--wf-border);
+      background: var(--wf-btn);
+      color: var(--wf-mid);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+    }
+    .wf-h1 { font-size: 38px; font-weight: bold; color: var(--wf-text-dark); line-height: 1.1; }
+    .wf-h2 { font-size: 26px; font-weight: bold; color: var(--wf-text-dark); line-height: 1.2; }
+    .wf-h3 { font-size: 15px; font-weight: bold; color: var(--wf-text-dark); }
+    .wf-body { font-size: 12px; color: var(--wf-text-body); }
+    .wf-small { font-size: 10px; color: var(--wf-text-muted); }
+
+    /* inverted (dark bg sections) */
+    .inv .wf-h1, .inv .wf-h2, .inv .wf-h3 { color: #E8E4DE; }
+    .inv .wf-body { color: #A8A49E; }
+    .inv .wf-eyebrow { background: #5A5550; border-color: #7A7570; color: #C0BBB5; }
+
+    /* ─── IMAGE PLACEHOLDER ─── */
+    .img-ph {
+      background: var(--wf-img);
+      border: 2px solid var(--wf-img-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .img-ph::before, .img-ph::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: none;
+      border: none;
+    }
+    /* X cross lines */
+    .img-ph .x-line {
+      position: absolute;
+      width: 141%;
+      height: 1.5px;
+      background: var(--wf-img-border);
+    }
+    .img-ph .x-line:nth-child(1) { transform: rotate(var(--r)); }
+    .img-ph .x-line:nth-child(2) { transform: rotate(calc(-1 * var(--r))); }
+    .img-ph .ph-label {
+      position: relative;
+      z-index: 1;
+      background: var(--wf-img);
+      padding: 4px 10px;
+      font-size: 10px;
+      color: var(--wf-mid);
+      text-align: center;
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+      max-width: 80%;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn-wf {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--wf-btn-primary);
+      background: var(--wf-btn);
+      color: var(--wf-dark);
+      padding: 10px 22px;
+      font-family: inherit;
+      font-size: 12px;
+      cursor: default;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .btn-wf.primary {
+      background: var(--wf-btn-primary);
+      border-color: var(--wf-mid);
+      color: #F0EDE8;
+    }
+    .btn-wf.outline-inv {
+      background: transparent;
+      border-color: #A8A49E;
+      color: #C8C4BE;
+    }
+    .btn-wf.sm { padding: 7px 14px; font-size: 11px; }
+
+    /* ─── NOTE / ANNOTATION ─── */
+    .note {
+      display: inline-block;
+      background: var(--wf-note-bg);
+      border: 1px solid var(--wf-note-border);
+      color: var(--wf-note-text);
+      font-size: 10px;
+      padding: 4px 10px;
+      line-height: 1.4;
+    }
+    .note.block { display: block; }
+
+    /* ─── CARD ─── */
+    .card-wf {
+      border: 1.5px solid var(--wf-border);
+      background: var(--wf-surface);
+      padding: 16px;
+    }
+
+    /* ─── TEXT LINES (body placeholder) ─── */
+    .tl { height: 9px; background: var(--wf-border-light); border-radius: 2px; margin-bottom: 7px; }
+    .tl.w80 { width: 80%; }
+    .tl.w70 { width: 70%; }
+    .tl.w60 { width: 60%; }
+    .tl.w50 { width: 50%; }
+
+    /* ─── LAYOUT HELPERS ─── */
+    .row { display: flex; }
+    .col { display: flex; flex-direction: column; }
+    .gap4 { gap: 4px; }
+    .gap8 { gap: 8px; }
+    .gap12 { gap: 12px; }
+    .gap16 { gap: 16px; }
+    .gap20 { gap: 20px; }
+    .gap24 { gap: 24px; }
+    .gap32 { gap: 32px; }
+    .gap40 { gap: 40px; }
+    .mt8 { margin-top: 8px; }
+    .mt12 { margin-top: 12px; }
+    .mt16 { margin-top: 16px; }
+    .mt20 { margin-top: 20px; }
+    .mt24 { margin-top: 24px; }
+    .mt32 { margin-top: 32px; }
+    .center { text-align: center; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .justify-center { justify-content: center; }
+    .wrap { flex-wrap: wrap; }
+    .flex1 { flex: 1; }
+    .pad { padding: 64px 80px; }
+    .pad-sm { padding: 48px 80px; }
+    .pad-xs { padding: 32px 80px; }
+
+    /* ─── GRID ─── */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .grid3f { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
+
+    /* ─── BACKGROUNDS ─── */
+    .bg-surface { background: var(--wf-surface); }
+    .bg-dark { background: var(--wf-section-dark); }
+    .bg-mid { background: var(--wf-section-accent); }
+    .bg-accent { background: #888; } /* placeholder for orange */
+
+    /* ─── STARS ─── */
+    .stars { color: var(--wf-muted); font-size: 15px; letter-spacing: 2px; }
+
+    /* ─── BRAND LOGOS ─── */
+    .brand-ph {
+      width: 90px; height: 44px;
+      background: var(--wf-img);
+      border: 1.5px solid var(--wf-img-border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .brand-ph span { font-size: 9px; color: var(--wf-mid); }
+
+    /* ─── ACCORDION ─── */
+    .accordion { border: 1.5px solid var(--wf-border); background: var(--wf-surface); }
+    .acc-row {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--wf-border-light);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .acc-row:last-child { border-bottom: none; }
+    .acc-row.open { background: #EDEAE4; }
+    .acc-answer { padding: 12px 20px 16px; background: #F5F2EC; border-bottom: 1px solid var(--wf-border-light); }
+
+    /* ─── FLOATING WA ─── */
+    .fab {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: var(--wf-btn-primary);
+      border: 2px solid var(--wf-mid);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-size: 9px; color: #D0CBC4;
+      z-index: 999;
+      line-height: 1.3;
+      text-align: center;
+    }
+    .fab-note {
+      position: fixed; bottom: 88px; right: 8px;
+      font-size: 8px; color: var(--wf-muted);
+      text-align: right; line-height: 1.4;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── DIVIDER ─── */
+    hr.wf { border: none; border-top: 1.5px dashed var(--wf-border); margin: 0; }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--wf-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--wf-border); }
+
+    /* ════════════════════════════════════
+       HAMBURGER (hidden desktop, visible mobile)
+    ════════════════════════════════════ */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: default;
+      padding: 6px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--wf-mid);
+    }
+
+    /* ════════════════════════════════════
+       RESPONSIVE — TABLET (769 – 1024px)
+    ════════════════════════════════════ */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .pad     { padding: 48px 40px !important; }
+      .pad-sm  { padding: 36px 40px !important; }
+      .pad-xs  { padding: 24px 40px !important; }
+      .wf-h1   { font-size: 30px; }
+      .wf-h2   { font-size: 22px; }
+      .grid4   { grid-template-columns: repeat(2, 1fr) !important; }
+      .grid3   { grid-template-columns: repeat(2, 1fr) !important; }
+      .grid2   { gap: 32px !important; }
+    }
+
+    /* ════════════════════════════════════
+       RESPONSIVE — MOBILE (≤ 768px)
+    ════════════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* Meta bar */
+      .meta-bar { padding: 6px 14px; gap: 6px; flex-wrap: wrap; }
+      .legend   { display: none; }
+      .meta-sep { display: none; }
+
+      /* Padding global */
+      .pad    { padding: 36px 18px !important; }
+      .pad-sm { padding: 28px 18px !important; }
+      .pad-xs { padding: 20px 18px !important; }
+
+      /* Typography */
+      .wf-h1      { font-size: 24px; }
+      .wf-h2      { font-size: 18px; }
+      .wf-h3      { font-size: 13px; }
+      .wf-eyebrow { font-size: 9px; padding: 3px 10px; }
+      .note       { font-size: 9px; }
+
+      /* Section badges */
+      .sec-label { font-size: 7.5px; padding: 2px 8px; }
+      .sec-num   { font-size: 8px;   padding: 2px 8px; }
+
+      /* ── NAVBAR ── */
+      .nav-desktop     { display: none !important; }
+      .nav-cta-desktop { display: none !important; }
+      .nav-hamburger   { display: flex !important; }
+      /* navbar padding */
+      .navbar-inner    { padding: 12px 18px !important; }
+
+      /* ── HERO ── */
+      .hero-layout { flex-direction: column !important; gap: 20px !important; }
+      .hero-img-col { flex: none !important; width: 100% !important; }
+      .hero-img-col .img-ph { height: 220px !important; }
+      .hero-btns { flex-wrap: wrap !important; gap: 8px !important; }
+      .hero-btns .btn-wf {
+        flex: 1 1 auto;
+        min-width: 130px;
+        justify-content: center;
+        white-space: normal;
+      }
+
+      /* ── EQUIPMENT CARDS — horizontal scroll carousel ── */
+      .cards-carousel {
+        display: flex !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding-bottom: 14px;
+      }
+      .cards-carousel > * {
+        min-width: 74vw;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+
+      /* ── NUMBERS — 2×2 ── */
+      .numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+      .num-display  { font-size: 34px !important; }
+
+      /* ── WHY RENT — stack ── */
+      .grid3 { grid-template-columns: 1fr !important; }
+
+      /* ── ABOUT — stack ── */
+      .grid2 { grid-template-columns: 1fr !important; }
+      .about-photos {
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: 140px 100px !important;
+      }
+      .about-photos > :first-child { grid-row: auto !important; }
+
+      /* ── BRANDS — horizontal scroll ── */
+      .brands-scroll {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start !important;
+        padding-bottom: 8px;
+        gap: 10px !important;
+      }
+
+      /* ── TESTIMONIALS — horizontal scroll ── */
+      .reviews-carousel {
+        display: flex !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding-bottom: 14px;
+      }
+      .reviews-carousel > * {
+        min-width: 80vw;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+
+      /* ── CTA FINAL buttons ── */
+      .cta-btns {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+      }
+      .cta-btns .btn-wf { white-space: normal !important; text-align: center; }
+
+      /* ── FOOTER ── */
+      .grid3f { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+      /* ── FAB note ── */
+      .fab-note { display: none; }
+
+      /* ── Misc ── */
+      .brands-row { gap: 10px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ META BAR ═══ -->
+<div class="meta-bar">
+  <strong>ALUGAAQUI</strong>
+  <span class="meta-sep">·</span>
+  <span>Wireframe de Baixa Fidelidade</span>
+  <span class="meta-sep">·</span>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:#C8C3BC;"></div> Imagem</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#D0CBC4;border-color:#8C8780;"></div> Botão</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#3C3835;"></div> Fundo Escuro</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#888;border-color:#666;"></div> Laranja (prod)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#FFFAC8;border-color:#D4CC80;"></div> Anotação UX</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     NAVBAR
+═══════════════════════════════════ -->
+<div class="wf-section" style="background:#E0DDD8;border-top:3px solid var(--wf-border-light);">
+  <div class="sec-label">NAVBAR — sticky</div>
+
+  <div class="row items-center justify-between navbar-inner" style="padding:14px 80px;">
+    <!-- Logo -->
+    <div class="row items-center gap20">
+      <div style="border:2px solid var(--wf-border);background:var(--wf-btn-primary);padding:8px 16px;color:#E8E4DE;font-size:13px;font-weight:bold;">
+        [ LOGO AlugaAqui ]
+      </div>
+      <div class="row gap24 items-center nav-desktop" style="margin-left:12px;">
+        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">Equipamentos</span>
+        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">Sobre</span>
+        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">Marcas</span>
+        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">Diferenciais</span>
+        <span style="color:var(--wf-mid);border-bottom:1px solid var(--wf-muted);padding-bottom:2px;">FAQ</span>
+      </div>
+    </div>
+    <!-- CTA desktop -->
+    <div class="btn-wf primary nav-cta-desktop">📲 Solicitar Orçamento</div>
+    <!-- Hamburger mobile -->
+    <div class="nav-hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div style="padding:4px 18px 10px;">
+    <span class="note">⬆ Sticky: some no scroll ↓, aparece no scroll ↑ · <strong>Mobile:</strong> hamburguer (ícone ☰ acima) + CTA WA flutuante sempre visível</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     1. HERO
+═══════════════════════════════════ -->
+<section class="wf-section bg-dark inv" style="padding-top:32px;">
+  <div class="sec-label">SEÇÃO 1 — HERO</div>
+  <div class="sec-num">1 / 9</div>
+
+  <div class="pad" style="padding-top:56px;">
+    <div class="row gap40 items-center hero-layout">
+
+      <!-- LEFT: copy -->
+      <div class="col flex1 gap20">
+        <div class="wf-eyebrow">🔧 Entrega rápida · Equipamentos revisados · 5 estrelas no Google</div>
+
+        <div class="wf-h1">
+          A máquina certa,<br>
+          na hora certa,<br>
+          na sua obra.
+        </div>
+
+        <div class="wf-body" style="max-width:440px;">
+          Alugue betoneiras, escavadeiras, compactadores e muito mais — com entrega rápida, equipamentos revisados e suporte de quem entende de obra.
+        </div>
+
+        <div class="row gap12 mt8 hero-btns">
+          <div class="btn-wf primary" style="font-size:13px;padding:12px 26px;">[ Solicitar Orçamento ]</div>
+          <div class="btn-wf outline-inv" style="font-size:12px;padding:12px 20px;">[ Ver Equipamentos ↓ ]</div>
+        </div>
+
+        <!-- Social proof -->
+        <div style="padding-top:16px;border-top:1px solid #555;margin-top:4px;">
+          <div class="row items-center gap12">
+            <div style="border:1.5px solid #666;background:#4A4742;padding:6px 14px;" class="row items-center gap8">
+              <div class="img-ph" style="width:22px;height:22px;background:#555;border-color:#777;--r:35deg;">
+                <span class="x-line"></span><span class="x-line"></span>
+              </div>
+              <span class="stars">★★★★★</span>
+            </div>
+            <span class="wf-body">Empresa 5 estrelas no Google · +500 obras atendidas</span>
+          </div>
+          <div class="mt8"><span class="note">⬆ Badge Google real (ícone G + estrelas amarelas)</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: image -->
+      <div class="hero-img-col" style="flex:0 0 420px;">
+        <div class="img-ph" style="height:480px;width:100%;--r:49deg;">
+          <span class="x-line"></span>
+          <span class="x-line"></span>
+          <div class="ph-label">FOTO EQUIPAMENTO EM DESTAQUE<br>(betoneira / escavadeira)<br>imagem real, corte editorial</div>
+        </div>
+        <div class="mt8"><span class="note">⬆ Mobile: imagem abaixo do texto, não atrás</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     2. GRADE DE EQUIPAMENTOS
+═══════════════════════════════════ -->
+<section class="wf-section bg-surface" style="padding-top:32px;">
+  <div class="sec-label">SEÇÃO 2 — GRADE DE EQUIPAMENTOS</div>
+  <div class="sec-num">2 / 9</div>
+
+  <div class="pad" style="padding-top:56px;">
+    <div class="col gap8 center mt12 mb" style="margin-bottom:32px;">
+      <div class="wf-eyebrow" style="margin:0 auto;">EQUIPAMENTOS DISPONÍVEIS</div>
+      <div class="wf-h2 mt12">Tudo o que sua obra precisa, num só lugar.</div>
+      <div class="wf-body mt8" style="max-width:500px;margin:0 auto;">
+        Escolha o equipamento, fale com a gente e receba na obra. Simples assim.
+      </div>
+    </div>
+
+    <!-- 4-col grid desktop / horizontal carousel mobile -->
+    <div class="grid4 cards-carousel">
+
+      <!-- Card template repeated -->
+      <div class="card-wf col gap12">
+        <div class="img-ph" style="height:110px;--r:48deg;">
+          <span class="x-line"></span><span class="x-line"></span>
+          <div class="ph-label">Foto Betoneira</div>
+        </div>
+        <div class="wf-h3">🟠 Betoneiras</div>
+        <div class="wf-body wf-small">Preparo de concreto e argamassa com alta produtividade</div>
+        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
+      </div>
+
+      <div class="card-wf col gap12">
+        <div class="img-ph" style="height:110px;--r:48deg;">
+          <span class="x-line"></span><span class="x-line"></span>
+          <div class="ph-label">Foto Compactador</div>
+        </div>
+        <div class="wf-h3">🟠 Compactadores</div>
+        <div class="wf-body wf-small">Compactação eficiente para fundações e terraplanagem</div>
+        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
+      </div>
+
+      <div class="card-wf col gap12">
+        <div class="img-ph" style="height:110px;--r:48deg;">
+          <span class="x-line"></span><span class="x-line"></span>
+          <div class="ph-label">Foto Martelete</div>
+        </div>
+        <div class="wf-h3">🟠 Marteletes</div>
+        <div class="wf-body wf-small">Demolição rápida com o mínimo de esforço</div>
+        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
+      </div>
+
+      <div class="card-wf col gap12">
+        <div class="img-ph" style="height:110px;--r:48deg;">
+          <span class="x-line"></span><span class="x-line"></span>
+          <div class="ph-label">Foto Andaime</div>
+        </div>
+        <div class="wf-h3">🟠 Andaimes</div>
+        <div class="wf-body wf-small">Segurança em altura para qualquer fase da obra</div>
+        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
+      </div>
+
+      <div class="card-wf col gap12">
+        <div class="img-ph" style="height:110px;--r:48deg;">
+          <span class="x-line"></span><span class="x-line"></span>
+          <div class="ph-label">Foto Gerador</div>
+        </div>
+        <div class="wf-h3">🟠 Geradores</div>
+        <div class="wf-body wf-small">Energia onde a obra precisar, sem interrupções</div>
+        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
+      </div>
+
+      <div class="card-wf col gap12">
+        <div class="img-ph" style="height:110px;--r:48deg;">
+          <span class="x-line"></span><span class="x-line"></span>
+          <div class="ph-label">Foto Mini Carregadeira</div>
+        </div>
+        <div class="wf-h3">🟠 Mini Carregadeiras</div>
+        <div class="wf-body wf-small">Versatilidade para movimentação em espaços reduzidos</div>
+        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
+      </div>
+
+      <div class="card-wf col gap12">
+        <div class="img-ph" style="height:110px;--r:48deg;">
+          <span class="x-line"></span><span class="x-line"></span>
+          <div class="ph-label">Foto Lavadora</div>
+        </div>
+        <div class="wf-h3">🟠 Lavadoras Alta Pressão</div>
+        <div class="wf-body wf-small">Limpeza profissional de pisos, fachadas e equipamentos</div>
+        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
+      </div>
+
+      <div class="card-wf col gap12">
+        <div class="img-ph" style="height:110px;--r:48deg;">
+          <span class="x-line"></span><span class="x-line"></span>
+          <div class="ph-label">Foto Compressor de Ar</div>
+        </div>
+        <div class="wf-h3">🟠 Compressores de Ar</div>
+        <div class="wf-body wf-small">Do acabamento doméstico até a construção industrial</div>
+        <div class="btn-wf sm" style="width:100%;margin-top:auto;">[ Solicitar Orçamento ]</div>
+      </div>
+
+    </div>
+
+    <div class="col gap8 center mt32">
+      <div class="btn-wf primary" style="margin:0 auto;padding:14px 36px;font-size:14px;">
+        📲 Quero Solicitar Orçamento
+      </div>
+      <span class="note" style="margin:0 auto;">⬆ <strong>Mobile:</strong> carrossel ← → com scroll-snap, cards 74vw (hint do próximo visível). Botão abre WhatsApp com msg pré-preenchida.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     3. NÚMEROS / SOCIAL PROOF
+═══════════════════════════════════ -->
+<section class="wf-section bg-dark inv" style="padding-top:32px;">
+  <div class="sec-label">SEÇÃO 3 — NÚMEROS (fundo escuro → pode ser laranja)</div>
+  <div class="sec-num">3 / 9</div>
+
+  <div class="pad" style="padding-top:56px;">
+    <div class="wf-h2 center" style="margin-bottom:40px;">
+      Números que provam o que entregamos.
+    </div>
+
+    <div class="grid4 numbers-grid">
+      <div class="col gap8 center" style="padding:20px;border:1px solid #5A5550;">
+        <div class="num-display" style="font-size:48px;font-weight:bold;color:#E8E4DE;line-height:1;">+500</div>
+        <div class="wf-body" style="text-transform:uppercase;letter-spacing:0.1em;font-size:10px;">obras atendidas</div>
+      </div>
+      <div class="col gap8 center" style="padding:20px;border:1px solid #5A5550;">
+        <div class="num-display" style="font-size:48px;font-weight:bold;color:#E8E4DE;line-height:1;">5 ★</div>
+        <div class="wf-body" style="text-transform:uppercase;letter-spacing:0.1em;font-size:10px;">média no Google</div>
+      </div>
+      <div class="col gap8 center" style="padding:20px;border:1px solid #5A5550;">
+        <div class="num-display" style="font-size:48px;font-weight:bold;color:#E8E4DE;line-height:1;">24h</div>
+        <div class="wf-body" style="text-transform:uppercase;letter-spacing:0.1em;font-size:10px;">prazo de entrega</div>
+      </div>
+      <div class="col gap8 center" style="padding:20px;border:1px solid #5A5550;">
+        <div class="num-display" style="font-size:48px;font-weight:bold;color:#E8E4DE;line-height:1;">100%</div>
+        <div class="wf-body" style="text-transform:uppercase;letter-spacing:0.1em;font-size:10px;">equipamentos revisados</div>
+      </div>
+    </div>
+
+    <div class="center mt20">
+      <span class="note">⬆ Animação de contador numérico ao entrar na viewport (IntersectionObserver)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     4. POR QUE ALUGAR?
+═══════════════════════════════════ -->
+<section class="wf-section" style="background:#EDEAE4;padding-top:32px;">
+  <div class="sec-label">SEÇÃO 4 — POR QUE ALUGAR?</div>
+  <div class="sec-num">4 / 9</div>
+
+  <div class="pad" style="padding-top:56px;">
+    <div class="col gap8 center" style="margin-bottom:36px;">
+      <div class="wf-eyebrow" style="margin:0 auto;">VANTAGEM INTELIGENTE</div>
+      <div class="wf-h2 mt12">Você paga só pelo que usa.</div>
+      <div class="wf-body mt8">Sem manutenção, sem armazenamento, sem dor de cabeça.</div>
+    </div>
+
+    <div class="grid3">
+      <!-- Bloco 1 -->
+      <div class="card-wf col gap12" style="padding:28px;align-items:center;text-align:center;">
+        <div style="font-size:36px;">💰</div>
+        <div class="wf-h3">Economia real</div>
+        <div class="tl mt8"></div>
+        <div class="tl w80"></div>
+        <div class="tl w60"></div>
+        <div class="wf-small mt4">Comprar tem custo de aquisição, manutenção e depreciação. No aluguel, paga só pelo tempo que vai usar.</div>
+      </div>
+      <!-- Bloco 2 -->
+      <div class="card-wf col gap12" style="padding:28px;align-items:center;text-align:center;">
+        <div style="font-size:36px;">🔧</div>
+        <div class="wf-h3">Equipamentos revisados</div>
+        <div class="tl mt8"></div>
+        <div class="tl w80"></div>
+        <div class="tl w70"></div>
+        <div class="wf-small mt4">Cada máquina passa por revisão antes de sair. Problemas são responsabilidade nossa.</div>
+      </div>
+      <!-- Bloco 3 -->
+      <div class="card-wf col gap12" style="padding:28px;align-items:center;text-align:center;">
+        <div style="font-size:36px;">🚚</div>
+        <div class="wf-h3">Entrega sem burocracia</div>
+        <div class="tl mt8"></div>
+        <div class="tl w80"></div>
+        <div class="tl w50"></div>
+        <div class="wf-small mt4">Sem cadastro complicado. Fale, confirme e receba na obra. Rápido do jeito que obra exige.</div>
+      </div>
+    </div>
+
+    <div class="center mt32">
+      <div class="btn-wf primary" style="padding:13px 32px;font-size:13px;">[ Solicitar Orçamento Agora ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     5. SOBRE A EMPRESA
+═══════════════════════════════════ -->
+<section class="wf-section bg-surface" style="padding-top:32px;">
+  <div class="sec-label">SEÇÃO 5 — SOBRE A EMPRESA</div>
+  <div class="sec-num">5 / 9</div>
+
+  <div class="pad" style="padding-top:56px;">
+    <div class="grid2" style="gap:60px;align-items:center;">
+
+      <!-- LEFT: copy -->
+      <div class="col gap16">
+        <div class="wf-eyebrow">CONHEÇA A ALUGAAQUI</div>
+        <div class="wf-h2">Nascemos para mover obras.</div>
+
+        <div class="col gap6">
+          <div class="tl"></div>
+          <div class="tl w80"></div>
+          <div class="tl"></div>
+          <div class="tl w70"></div>
+          <div class="tl w90"></div>
+        </div>
+
+        <div class="wf-body">
+          Na AlugaAqui, acreditamos que cada obra — grande ou pequena — merece as ferramentas certas para acontecer com qualidade e segurança.
+        </div>
+        <div class="wf-body">
+          Somos uma locadora especializada em máquinas e equipamentos, atendendo profissionais da construção civil, empresas e também quem precisa resolver um serviço em casa.
+        </div>
+        <div class="wf-body">
+          Mais do que alugar máquinas, entregamos tranquilidade para você focar no que importa: a obra andar.
+        </div>
+      </div>
+
+      <!-- RIGHT: photo grid assimétrico -->
+      <div class="col gap8">
+        <div class="note block">⬆ Grid assimétrico — fotos REAIS da loja/equipe. Evitar stock photo.</div>
+        <div class="about-photos" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 150px;gap:10px;margin-top:8px;">
+          <div class="img-ph" style="grid-row:1/3;--r:49deg;">
+            <span class="x-line"></span><span class="x-line"></span>
+            <div class="ph-label">Foto loja ou<br>equipe AlugaAqui<br>(vertical / tall)</div>
+          </div>
+          <div class="img-ph" style="--r:45deg;">
+            <span class="x-line"></span><span class="x-line"></span>
+            <div class="ph-label">Foto equipamento<br>ou operação</div>
+          </div>
+          <div class="img-ph" style="--r:45deg;">
+            <span class="x-line"></span><span class="x-line"></span>
+            <div class="ph-label">Foto atendimento<br>ou entrega</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     6. MARCAS
+═══════════════════════════════════ -->
+<section class="wf-section" style="background:#EDEAE4;padding-top:32px;">
+  <div class="sec-label">SEÇÃO 6 — MARCAS</div>
+  <div class="sec-num">6 / 9</div>
+
+  <div class="pad-sm" style="padding-top:56px;">
+    <div class="col gap8 center" style="margin-bottom:32px;">
+      <div class="wf-eyebrow" style="margin:0 auto;">AS MELHORES MARCAS, À SUA DISPOSIÇÃO</div>
+      <div class="wf-h2 mt12">Trabalhamos só com quem é referência.</div>
+      <div class="wf-body mt8" style="max-width:520px;margin:0 auto;">
+        Equipamentos de fabricantes líderes mundiais — alta performance, durabilidade e confiança para qualquer tipo de obra.
+      </div>
+    </div>
+
+    <!-- Logos row -->
+    <div class="row gap20 justify-center wrap brands-scroll" style="margin-bottom:16px;">
+      <div class="brand-ph"><span>Bosch</span></div>
+      <div class="brand-ph"><span>Makita</span></div>
+      <div class="brand-ph"><span>Wacker</span></div>
+      <div class="brand-ph"><span>Honda</span></div>
+      <div class="brand-ph"><span>Husqvarna</span></div>
+      <div class="brand-ph"><span>DeWalt</span></div>
+      <div class="brand-ph"><span>Tramontina</span></div>
+    </div>
+
+    <div class="center mt8">
+      <span class="note">⬆ Logos reais em escala de cinza → colorido no hover. Carrossel infinito se muitas marcas.</span>
+    </div>
+
+    <div class="center mt24">
+      <div class="btn-wf primary" style="padding:13px 32px;">📲 Entre em Contato e Alugue</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     7. DEPOIMENTOS
+═══════════════════════════════════ -->
+<section class="wf-section bg-surface" style="padding-top:32px;">
+  <div class="sec-label">SEÇÃO 7 — DEPOIMENTOS / GOOGLE REVIEWS</div>
+  <div class="sec-num">7 / 9</div>
+
+  <div class="pad" style="padding-top:56px;">
+    <div class="col gap8 center" style="margin-bottom:32px;">
+      <div class="wf-eyebrow" style="margin:0 auto;">O QUE NOSSOS CLIENTES DIZEM</div>
+      <div class="wf-h2 mt12">5 estrelas em cada entrega.</div>
+      <!-- Badge reforço -->
+      <div class="row gap8 justify-center items-center mt12">
+        <div style="border:1.5px solid var(--wf-border);background:var(--wf-btn);padding:5px 14px;" class="row items-center gap8">
+          <div class="img-ph" style="width:18px;height:18px;--r:35deg;background:#C8C3BC;">
+            <span class="x-line"></span><span class="x-line"></span>
+          </div>
+          <span class="stars" style="font-size:12px;">★★★★★</span>
+          <span class="wf-small">Empresa 5 estrelas no Google</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid3 reviews-carousel">
+
+      <!-- Depo 1 -->
+      <div class="card-wf col gap12" style="padding:20px;">
+        <div class="stars">★★★★★</div>
+        <div class="col gap6">
+          <div class="tl"></div>
+          <div class="tl w90"></div>
+          <div class="tl w70"></div>
+        </div>
+        <div class="wf-small" style="font-style:italic;">
+          "Atendimento rápido e a betoneira chegou no dia combinado, já revisada. Recomendo demais!"
+        </div>
+        <div class="row items-center gap8 mt8" style="padding-top:12px;border-top:1px solid var(--wf-border-light);">
+          <div class="img-ph" style="width:34px;height:34px;border-radius:50%;flex-shrink:0;--r:45deg;">
+            <span class="x-line"></span><span class="x-line"></span>
+          </div>
+          <span class="wf-small">— Carlos M., Construtor Civil</span>
+        </div>
+      </div>
+
+      <!-- Depo 2 -->
+      <div class="card-wf col gap12" style="padding:20px;">
+        <div class="stars">★★★★★</div>
+        <div class="col gap6">
+          <div class="tl"></div>
+          <div class="tl w80"></div>
+          <div class="tl w60"></div>
+        </div>
+        <div class="wf-small" style="font-style:italic;">
+          "Depoimento real do Google Maps — breve, autêntico, com nome e cargo visíveis."
+        </div>
+        <div class="row items-center gap8 mt8" style="padding-top:12px;border-top:1px solid var(--wf-border-light);">
+          <div class="img-ph" style="width:34px;height:34px;border-radius:50%;flex-shrink:0;--r:45deg;">
+            <span class="x-line"></span><span class="x-line"></span>
+          </div>
+          <span class="wf-small">— Nome Sobrenome, Cargo</span>
+        </div>
+      </div>
+
+      <!-- Depo 3 -->
+      <div class="card-wf col gap12" style="padding:20px;">
+        <div class="stars">★★★★★</div>
+        <div class="col gap6">
+          <div class="tl"></div>
+          <div class="tl w90"></div>
+          <div class="tl w75"></div>
+        </div>
+        <div class="wf-small" style="font-style:italic;">
+          "Terceiro depoimento — destaca um aspecto diferente: qualidade, agilidade ou preço."
+        </div>
+        <div class="row items-center gap8 mt8" style="padding-top:12px;border-top:1px solid var(--wf-border-light);">
+          <div class="img-ph" style="width:34px;height:34px;border-radius:50%;flex-shrink:0;--r:45deg;">
+            <span class="x-line"></span><span class="x-line"></span>
+          </div>
+          <span class="wf-small">— Nome Sobrenome, Cargo</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="center mt24 col gap8">
+      <div class="btn-wf" style="margin:0 auto;">[ Ver todas as avaliações no Google → ]</div>
+      <span class="note" style="margin:0 auto;">⬆ <strong>Mobile:</strong> swipe horizontal entre cards (80vw cada), snap automático.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     8. FAQ
+═══════════════════════════════════ -->
+<section class="wf-section" style="background:#EDEAE4;padding-top:32px;">
+  <div class="sec-label">SEÇÃO 8 — FAQ</div>
+  <div class="sec-num">8 / 9</div>
+
+  <div class="pad" style="padding-top:56px;">
+    <div class="col gap8 center" style="margin-bottom:36px;">
+      <div class="wf-eyebrow" style="margin:0 auto;">PERGUNTAS FREQUENTES</div>
+      <div class="wf-h2 mt12">Ficou com alguma dúvida?</div>
+    </div>
+
+    <div style="max-width:740px;margin:0 auto;">
+      <div class="accordion">
+        <!-- aberta -->
+        <div class="acc-row open">
+          <span class="wf-body" style="font-weight:bold;">1. Como funciona o aluguel?</span>
+          <span style="font-size:16px;color:var(--wf-mid);">×</span>
+        </div>
+        <div class="acc-answer">
+          <span class="wf-small">É simples: entre em contato via WhatsApp ou formulário, informe o equipamento e o período. Nossa equipe confirma disponibilidade e entrega.</span>
+        </div>
+
+        <div class="acc-row">
+          <span class="wf-body" style="font-weight:bold;">2. Quanto tempo leva a entrega?</span>
+          <span style="font-size:18px;color:var(--wf-muted);">+</span>
+        </div>
+        <div class="acc-row">
+          <span class="wf-body" style="font-weight:bold;">3. Os equipamentos são revisados?</span>
+          <span style="font-size:18px;color:var(--wf-muted);">+</span>
+        </div>
+        <div class="acc-row">
+          <span class="wf-body" style="font-weight:bold;">4. Posso alugar por apenas um dia?</span>
+          <span style="font-size:18px;color:var(--wf-muted);">+</span>
+        </div>
+        <div class="acc-row">
+          <span class="wf-body" style="font-weight:bold;">5. E se o equipamento apresentar algum problema?</span>
+          <span style="font-size:18px;color:var(--wf-muted);">+</span>
+        </div>
+        <div class="acc-row" style="border-bottom:none;">
+          <span class="wf-body" style="font-weight:bold;">6. Quais formas de pagamento são aceitas?</span>
+          <span style="font-size:18px;color:var(--wf-muted);">+</span>
+        </div>
+      </div>
+      <div class="mt12">
+        <span class="note">⬆ Accordion com transição CSS suave. Um item por vez. Ícone + / × à direita.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     9. CTA FINAL
+═══════════════════════════════════ -->
+<section class="wf-section bg-accent inv" style="padding-top:32px;">
+  <div class="sec-label" style="background:#666;color:#CCC;border-color:#888;">SEÇÃO 9 — CTA FINAL (fundo laranja AlugaAqui na versão final)</div>
+  <div class="sec-num" style="background:#777;color:#CCC;">9 / 9</div>
+
+  <div class="pad" style="padding-top:56px;text-align:center;">
+    <div class="wf-h2" style="color:#F0EDE8;font-size:32px;">Sua obra não pode esperar.</div>
+    <div class="wf-h2 mt8" style="color:#F0EDE8;font-size:32px;">Fale com a gente agora.</div>
+    <div class="wf-body mt16" style="color:#DDD;max-width:480px;margin:16px auto 0;">
+      Equipamento revisado, entrega rápida e atendimento de quem entende de obra.
+    </div>
+
+    <div class="row gap16 justify-center mt32 cta-btns">
+      <div class="btn-wf" style="background:#F0EDE8;border-color:#DDD;color:#3C3835;padding:14px 32px;font-size:13px;">
+        📲 Falar pelo WhatsApp
+      </div>
+      <div class="btn-wf outline-inv" style="padding:14px 32px;font-size:13px;">
+        [ Solicitar Orçamento ]
+      </div>
+    </div>
+
+    <div class="mt16">
+      <span class="note" style="background:rgba(0,0,0,0.2);border-color:rgba(0,0,0,0.3);color:#E8E4CC;">
+        ⬆ Seção full-width com bom espaçamento. Botão 1: branco com texto laranja. Botão 2: outline branco.
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer class="wf-section" style="background:#2C2A28;padding-top:24px;">
+  <div class="sec-label" style="background:#1C1A18;color:#666;border-color:#444;">FOOTER</div>
+
+  <div class="pad" style="padding-top:56px;padding-bottom:0;">
+    <div class="grid3f" style="margin-bottom:48px;">
+
+      <!-- Col 1: Logo + tagline -->
+      <div class="col gap16">
+        <div style="border:2px solid #5A5550;background:#3A3835;padding:10px 18px;color:#9A9590;font-weight:bold;font-size:13px;width:fit-content;">
+          [ LOGO AlugaAqui ]
+        </div>
+        <div style="color:#7A7570;font-size:12px;font-style:italic;">"A força que sua obra precisa."</div>
+        <div class="row gap10 mt8">
+          <div style="width:32px;height:32px;background:#3A3835;border:1px solid #5A5550;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:8px;color:#7A7570;">IG</span>
+          </div>
+          <div style="width:32px;height:32px;background:#3A3835;border:1px solid #5A5550;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:8px;color:#7A7570;">WA</span>
+          </div>
+          <div style="width:32px;height:32px;background:#3A3835;border:1px solid #5A5550;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:8px;color:#7A7570;">FB</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Links rápidos -->
+      <div class="col gap12">
+        <div style="color:#9A9590;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:bold;margin-bottom:4px;">Links Rápidos</div>
+        <span style="color:#6A6560;font-size:12px;">Equipamentos</span>
+        <span style="color:#6A6560;font-size:12px;">Sobre</span>
+        <span style="color:#6A6560;font-size:12px;">Marcas</span>
+        <span style="color:#6A6560;font-size:12px;">Diferenciais</span>
+        <span style="color:#6A6560;font-size:12px;">FAQ</span>
+      </div>
+
+      <!-- Col 3: Contato -->
+      <div class="col gap12">
+        <div style="color:#9A9590;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:bold;margin-bottom:4px;">Contato</div>
+        <span style="color:#6A6560;font-size:12px;">📱 WhatsApp: [número]</span>
+        <span style="color:#6A6560;font-size:12px;">📍 [Endereço completo]</span>
+        <span style="color:#6A6560;font-size:12px;">📷 @alugaaquimaquinas</span>
+      </div>
+
+    </div>
+
+    <!-- Footer bottom -->
+    <div style="border-top:1px solid #3A3835;padding:16px 0 24px;">
+      <span style="color:#4A4540;font-size:10px;letter-spacing:0.06em;">
+        © 2025 AlugaAqui Máquinas e Equipamentos &nbsp;·&nbsp; CNPJ: [número] &nbsp;·&nbsp; Todos os direitos reservados.
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING WA BUTTON ═══ -->
+<div class="fab">WA<br>BTN</div>
+<div class="fab-note">sempre<br>visível<br>em mobile</div>
+
+</body>
+</html>
