@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /Design System Aluga Aqui/
+Disallow: /wire.html
+
+Sitemap: https://alugaaquimaquinas.com.br/sitemap.xml
