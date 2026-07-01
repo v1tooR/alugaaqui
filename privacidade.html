@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Política de Privacidade da AlugaAqui Máquinas e Equipamentos — como coletamos, usamos e protegemos seus dados, em conformidade com a LGPD (Lei 13.709/2018).">
+  <meta name="robots" content="index, follow">
+  <title>Política de Privacidade — AlugaAqui</title>
+  <link rel="canonical" href="https://alugaaquimaquinas.com.br/privacidade.html">
+  <link rel="icon" type="image/png" href="Design System Aluga Aqui/assets/logos/aluga-aqui-full.png">
+
+  <style>
+    /* ══════════════════════════════════════════
+       FONTS — Design System AlugaAqui
+    ══════════════════════════════════════════ */
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-Regular.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-SemiBold.otf') format('opentype');
+      font-weight: 600; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-Bold.otf') format('opentype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-ExtraBold.otf') format('opentype');
+      font-weight: 800; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Metropolis';
+      src: url('Design System Aluga Aqui/assets/fonts/Metropolis-Black.otf') format('opentype');
+      font-weight: 900; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('Design System Aluga Aqui/assets/fonts/Montserrat-Variable.ttf') format('truetype');
+      font-weight: 300 800; font-style: normal; font-display: swap;
+    }
+
+    :root {
+      --orange:         #EC670F;
+      --orange-dark:    #C2540B;
+      --orange-light:   #FBE3D2;
+      --orange-xlight:  #FEF4EE;
+      --coal:           #2A2725;
+      --graphite:       #464240;
+      --gray-600:       #6E6864;
+      --gray-400:       #A8A09B;
+      --gray-200:       #DAD3CC;
+      --cream:          #FAF6F2;
+      --white:          #FFFFFF;
+      --font-display:   'Metropolis', 'Montserrat', system-ui, sans-serif;
+      --font-body:      'Montserrat', system-ui, sans-serif;
+      --max-w:          1240px;
+      --px:             clamp(18px, 5vw, 80px);
+      --radius-card:    18px;
+      --radius-btn:     11px;
+      --ease:           cubic-bezier(.22,.61,.36,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--graphite);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--font-body); border: none; background: none; }
+    ul, ol { list-style: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding-inline: var(--px); }
+
+    .stripe {
+      height: 14px;
+      background: repeating-linear-gradient(135deg, var(--orange) 0 16px, var(--coal) 16px 32px);
+      flex-shrink: 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: var(--cream);
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(20px, 2.4vw, 25px);
+      letter-spacing: -.01em;
+      line-height: 1.2;
+      color: var(--coal);
+      margin-bottom: 14px;
+      scroll-margin-top: 110px;
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--coal);
+      margin: 18px 0 8px;
+    }
+    p { line-height: 1.75; color: var(--gray-600); font-size: 15px; margin-bottom: 14px; }
+    strong { color: var(--coal); font-weight: 700; }
+
+    /* Buttons (subset reused by cookie-consent.js) */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-weight: 700; font-size: 15px; border-radius: var(--radius-btn);
+      padding: 14px 26px; cursor: pointer;
+      transition: background .18s var(--ease), color .18s, border-color .18s, transform .18s var(--ease), box-shadow .18s;
+      white-space: nowrap; border: 2px solid transparent;
+    }
+    .btn-primary { background: var(--orange); color: var(--white); border-color: var(--orange); }
+    .btn-primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
+    .btn-outline { background: transparent; color: var(--graphite); border-color: var(--graphite); }
+    .btn-outline:hover { background: var(--graphite); color: var(--white); }
+    .btn-outline-inv { background: transparent; color: var(--cream); border-color: rgba(250,246,242,.45); }
+    .btn-outline-inv:hover { background: var(--cream); color: var(--coal); border-color: var(--cream); }
+    .btn-ghost { background: var(--orange-light); color: var(--orange); border-color: var(--orange-light); }
+    .btn-ghost:hover { background: #F7D3BC; }
+    .btn-sm { font-size: 13px; padding: 9px 18px; border-radius: 9px; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s var(--ease), transform .55s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 4px; }
+
+    /* ══════════════════════════════════════════
+       NAVBAR (simplificada)
+    ══════════════════════════════════════════ */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,246,242,.96);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border-bottom: 1px solid rgba(228,220,211,.9);
+      box-shadow: 0 1px 0 rgba(228,220,211,.9), 0 10px 36px rgba(42,39,37,.07);
+    }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 14px; }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-logo img { height: 58px; width: auto; object-fit: contain; }
+    .nav-logo:hover img { opacity: .82; }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 600; font-size: 13.5px; color: var(--graphite);
+      padding: 9px 16px; border-radius: 9px; border: 1.5px solid var(--gray-200);
+      transition: background .18s, border-color .18s, color .18s;
+    }
+    .nav-back:hover { background: var(--orange-xlight); border-color: var(--orange-light); color: var(--orange-dark); }
+    .nav-back svg { transition: transform .2s var(--ease); }
+    .nav-back:hover svg { transform: translateX(-3px); }
+
+    /* ══════════════════════════════════════════
+       PAGE HERO
+    ══════════════════════════════════════════ */
+    .legal-hero { background: var(--coal); position: relative; overflow: hidden; }
+    .legal-hero::after {
+      content: '';
+      position: absolute; top: -20%; right: -8%; width: 480px; height: 480px;
+      background: radial-gradient(ellipse at center, rgba(236,103,15,.16), transparent 70%);
+      pointer-events: none;
+    }
+    .legal-hero-inner { position: relative; z-index: 1; padding-block: 56px 44px; }
+    .legal-hero .eyebrow { margin-bottom: 14px; }
+    .legal-hero-meta { margin-top: 16px; font-size: 13px; color: var(--gray-400); }
+
+    /* ══════════════════════════════════════════
+       CONTENT LAYOUT
+    ══════════════════════════════════════════ */
+    .legal-body { padding-block: 64px 96px; }
+    .legal-layout { display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: start; }
+
+    .legal-toc {
+      position: sticky; top: 96px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-card);
+      padding: 22px 20px;
+    }
+    .legal-toc-title {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 14px;
+    }
+    .legal-toc a {
+      display: block; font-size: 13px; color: var(--gray-600); padding: 7px 0;
+      border-left: 2px solid transparent; padding-left: 12px; margin-left: -13px;
+      transition: color .18s, border-color .18s;
+    }
+    .legal-toc a:hover { color: var(--orange-dark); border-color: var(--orange-light); }
+
+    .legal-article {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-card);
+      padding: 44px clamp(24px, 4vw, 52px);
+    }
+    .legal-section { padding-block: 22px; border-bottom: 1px solid var(--gray-200); }
+    .legal-section:last-child { border-bottom: none; padding-bottom: 0; }
+    .legal-section:first-child { padding-top: 0; }
+    .legal-section ul { margin: 4px 0 14px; }
+    .legal-section li {
+      position: relative; padding-left: 18px; margin-bottom: 8px;
+      font-size: 15px; color: var(--gray-600); line-height: 1.65;
+    }
+    .legal-section li::before {
+      content: ''; position: absolute; left: 0; top: 9px;
+      width: 6px; height: 6px; border-radius: 2px; background: var(--orange);
+    }
+
+    .legal-table {
+      width: 100%; border-collapse: collapse; margin: 6px 0 16px; font-size: 13.5px;
+    }
+    .legal-table th, .legal-table td {
+      text-align: left; padding: 11px 14px; border: 1px solid var(--gray-200); vertical-align: top;
+    }
+    .legal-table th {
+      background: var(--orange-xlight); color: var(--coal); font-weight: 700;
+      font-family: var(--font-display); font-size: 12px; letter-spacing: .03em; text-transform: uppercase;
+    }
+    .legal-table td { color: var(--gray-600); line-height: 1.55; }
+
+    .legal-callout {
+      background: var(--orange-xlight);
+      border: 1px solid var(--orange-light);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin: 8px 0 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .legal-callout p { margin: 0; font-size: 13.5px; color: var(--graphite); max-width: 44ch; }
+    .legal-callout .btn { flex-shrink: 0; }
+
+    @media (max-width: 900px) {
+      .legal-layout { grid-template-columns: 1fr; }
+      .legal-toc { position: static; }
+    }
+    @media (max-width: 560px) {
+      .legal-article { padding: 32px 20px; }
+      .nav-back span { display: none; }
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    .footer { background: var(--coal); position: relative; overflow: hidden; }
+    .footer-inner { padding-top: 56px; padding-bottom: 32px; position: relative; z-index: 1; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1.3fr; gap: 48px; }
+    .footer-logo img { height: 60px; width: auto; margin-bottom: 14px; }
+    .footer-tagline { font-size: 13px; font-style: italic; color: var(--gray-400); line-height: 1.6; }
+    .footer-col-title {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 16px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 14px; color: var(--gray-400); transition: color .18s; }
+    .footer-links a:hover { color: var(--orange-light); }
+    .footer-contact { display: flex; flex-direction: column; gap: 12px; }
+    .footer-citem { font-size: 14px; color: #6A6560; }
+    .footer-citem a { color: var(--gray-400); transition: color .18s; }
+    .footer-citem a:hover { color: var(--orange-light); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding-top: 24px; margin-top: 32px; border-top: 1px solid rgba(255,255,255,.08); flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 11.5px; color: #4A4540; letter-spacing: .04em; }
+    @media (max-width: 780px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════ NAVBAR ════════════════════ -->
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="nav-logo" aria-label="AlugaAqui — Página inicial">
+      <img src="Design System Aluga Aqui/assets/logos/aluga-aqui-full.png" alt="AlugaAqui Máquinas e Equipamentos" />
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span>Voltar ao site</span>
+    </a>
+  </div>
+</header>
+
+<!-- ════════════════════ PAGE HERO ════════════════════ -->
+<section class="legal-hero">
+  <div class="stripe"></div>
+  <div class="container legal-hero-inner">
+    <span class="eyebrow">LGPD · Lei nº 13.709/2018</span>
+    <h1>Política de Privacidade</h1>
+    <p class="legal-hero-meta">Última atualização: 30 de junho de 2026 &nbsp;&middot;&nbsp; AlugaAqui Máquinas e Equipamentos &nbsp;&middot;&nbsp; CNPJ 03.037.369/0001-67</p>
+  </div>
+</section>
+
+<!-- ════════════════════ CONTENT ════════════════════ -->
+<section class="legal-body">
+  <div class="container legal-layout">
+
+    <!-- TOC -->
+    <aside class="legal-toc reveal" aria-label="Sumário">
+      <div class="legal-toc-title">Nesta página</div>
+      <a href="#quem-somos">1. Quem somos</a>
+      <a href="#dados-coletados">2. Dados que coletamos</a>
+      <a href="#uso-dos-dados">3. Como usamos seus dados</a>
+      <a href="#base-legal">4. Base legal</a>
+      <a href="#cookies">5. Cookies</a>
+      <a href="#compartilhamento">6. Compartilhamento com terceiros</a>
+      <a href="#seguranca">7. Armazenamento e segurança</a>
+      <a href="#retencao">8. Prazo de retenção</a>
+      <a href="#direitos">9. Seus direitos (LGPD)</a>
+      <a href="#exercer-direitos">10. Como exercer seus direitos</a>
+      <a href="#menores">11. Crianças e adolescentes</a>
+      <a href="#alteracoes">12. Alterações desta política</a>
+      <a href="#contato-legal">13. Legislação e contato</a>
+    </aside>
+
+    <!-- Article -->
+    <article class="legal-article reveal d1">
+
+      <div class="legal-section" id="quem-somos">
+        <h2>1. Quem somos</h2>
+        <p>
+          Esta Política de Privacidade descreve como a <strong>AlugaAqui Máquinas e Equipamentos</strong>
+          (CNPJ 03.037.369/0001-67), com sede na Rua João Polezel, 62 — Jardim das Palmeiras, Sumaré/SP,
+          CEP 13172-390 ("AlugaAqui", "nós"), coleta, usa, armazena e protege os dados pessoais de quem visita
+          o site <strong>alugaaquimaquinas.com.br</strong> ou entra em contato para alugar máquinas e equipamentos.
+        </p>
+        <p>
+          Esta política foi elaborada em conformidade com a Lei Geral de Proteção de Dados Pessoais
+          (Lei nº 13.709/2018 — LGPD) e se aplica a todos os visitantes, clientes e potenciais clientes
+          que interagem com nossos canais digitais (site, WhatsApp, Instagram e Facebook).
+        </p>
+      </div>
+
+      <div class="legal-section" id="dados-coletados">
+        <h2>2. Dados que coletamos</h2>
+        <p>Coletamos apenas os dados necessários para atender às suas solicitações e melhorar sua experiência:</p>
+        <ul>
+          <li><strong>Dados de contato:</strong> nome, telefone/WhatsApp e e-mail, quando você solicita um orçamento ou fala com nossa equipe.</li>
+          <li><strong>Dados da locação:</strong> equipamento de interesse, período desejado e endereço da obra, necessários para viabilizar a entrega.</li>
+          <li><strong>Dados de navegação:</strong> páginas visitadas, tempo de permanência, tipo de dispositivo e navegador, coletados por meio de cookies (veja a seção 5).</li>
+          <li><strong>Dados fornecidos voluntariamente:</strong> mensagens enviadas por WhatsApp, e-mail ou redes sociais.</li>
+        </ul>
+        <p>Não coletamos dados sensíveis (como origem racial, saúde ou convicções religiosas) e não solicitamos esse tipo de informação em nossos canais.</p>
+      </div>
+
+      <div class="legal-section" id="uso-dos-dados">
+        <h2>3. Como usamos seus dados</h2>
+        <ul>
+          <li>Responder solicitações de orçamento e viabilizar a locação de equipamentos;</li>
+          <li>Organizar entrega, retirada e suporte técnico durante o período de aluguel;</li>
+          <li>Enviar comunicações sobre o andamento da locação (confirmações, prazos, cobranças);</li>
+          <li>Entender como o site é utilizado, para corrigir problemas e melhorar a navegação;</li>
+          <li>Cumprir obrigações legais, fiscais e contratuais;</li>
+          <li>Com o seu consentimento, enviar comunicações comerciais e anúncios personalizados.</li>
+        </ul>
+      </div>
+
+      <div class="legal-section" id="base-legal">
+        <h2>4. Base legal</h2>
+        <p>Tratamos seus dados pessoais com base nas seguintes hipóteses legais previstas no art. 7º da LGPD:</p>
+        <ul>
+          <li><strong>Execução de contrato:</strong> para viabilizar a locação de equipamentos solicitada por você;</li>
+          <li><strong>Legítimo interesse:</strong> para melhorar nossos serviços, prevenir fraudes e garantir a segurança das operações;</li>
+          <li><strong>Consentimento:</strong> para cookies não essenciais e comunicações de marketing, sempre revogável a qualquer momento;</li>
+          <li><strong>Cumprimento de obrigação legal ou regulatória:</strong> quando exigido por lei (por exemplo, emissão de nota fiscal).</li>
+        </ul>
+      </div>
+
+      <div class="legal-section" id="cookies">
+        <h2>5. Cookies e tecnologias semelhantes</h2>
+        <p>
+          Cookies são pequenos arquivos armazenados no seu navegador que nos ajudam a reconhecer preferências
+          e entender como o site é utilizado. Classificamos os cookies do nosso site nas seguintes categorias:
+        </p>
+        <table class="legal-table">
+          <thead>
+            <tr><th>Categoria</th><th>Finalidade</th><th>Pode ser desativado?</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Necessários</strong></td>
+              <td>Garantem o funcionamento básico do site (ex: lembrar sua escolha de cookies).</td>
+              <td>Não</td>
+            </tr>
+            <tr>
+              <td><strong>Analíticos</strong></td>
+              <td>Medem o uso do site de forma agregada e anônima, para identificarmos melhorias (ex: Google Analytics).</td>
+              <td>Sim</td>
+            </tr>
+            <tr>
+              <td><strong>Marketing</strong></td>
+              <td>Usados para exibir anúncios mais relevantes em plataformas como Meta/Facebook Ads.</td>
+              <td>Sim</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Você pode alterar suas preferências de cookies a qualquer momento pelo botão abaixo, ou diretamente
+          nas configurações do seu navegador — o que também pode limitar algumas funcionalidades do site.
+        </p>
+        <div class="legal-callout">
+          <p>Gerencie quais categorias de cookies você permite neste site.</p>
+          <button type="button" class="btn btn-primary btn-sm" data-cc-open>Gerenciar preferências de cookies</button>
+        </div>
+      </div>
+
+      <div class="legal-section" id="compartilhamento">
+        <h2>6. Compartilhamento de dados com terceiros</h2>
+        <p>Não vendemos seus dados pessoais. Compartilhamos informações apenas quando necessário, com:</p>
+        <ul>
+          <li><strong>WhatsApp/Meta:</strong> ao entrar em contato pelo nosso número, sua conversa é processada pela infraestrutura do WhatsApp/Meta;</li>
+          <li><strong>Provedores de hospedagem e infraestrutura:</strong> responsáveis por manter o site no ar;</li>
+          <li><strong>Ferramentas de análise e publicidade</strong> (quando você consente com cookies analíticos/marketing), como Google Analytics e Meta Ads;</li>
+          <li><strong>Autoridades públicas</strong>, quando exigido por lei, ordem judicial ou regulação aplicável.</li>
+        </ul>
+      </div>
+
+      <div class="legal-section" id="seguranca">
+        <h2>7. Armazenamento e segurança</h2>
+        <p>
+          Adotamos medidas técnicas e administrativas razoáveis para proteger seus dados contra acessos não
+          autorizados, perda, alteração ou vazamento, incluindo conexão criptografada (HTTPS) e controle de
+          acesso às informações de contato recebidas pelos nossos canais.
+        </p>
+      </div>
+
+      <div class="legal-section" id="retencao">
+        <h2>8. Prazo de retenção</h2>
+        <p>
+          Mantemos seus dados apenas pelo tempo necessário para cumprir as finalidades descritas nesta política,
+          respeitando prazos legais fiscais e contratuais (em geral, até 5 anos após o encerramento da relação
+          comercial). Dados de navegação coletados por cookies são mantidos conforme a validade de cada cookie,
+          podendo ser removidos a qualquer momento nas configurações do seu navegador.
+        </p>
+      </div>
+
+      <div class="legal-section" id="direitos">
+        <h2>9. Seus direitos como titular dos dados</h2>
+        <p>Nos termos do art. 18 da LGPD, você tem direito a:</p>
+        <ul>
+          <li>Confirmar a existência de tratamento de dados;</li>
+          <li>Acessar os dados que temos sobre você;</li>
+          <li>Corrigir dados incompletos, inexatos ou desatualizados;</li>
+          <li>Solicitar anonimização, bloqueio ou eliminação de dados desnecessários;</li>
+          <li>Solicitar a portabilidade dos dados a outro fornecedor;</li>
+          <li>Eliminar dados tratados com base no seu consentimento;</li>
+          <li>Revogar o consentimento a qualquer momento;</li>
+          <li>Ser informado sobre com quem compartilhamos seus dados;</li>
+          <li>Se opor a tratamentos realizados em desacordo com a LGPD.</li>
+        </ul>
+      </div>
+
+      <div class="legal-section" id="exercer-direitos">
+        <h2>10. Como exercer seus direitos</h2>
+        <p>
+          Para exercer qualquer um dos direitos acima, entre em contato pelo e-mail
+          <a href="mailto:contato@alugaaquimaquinas.com.br" style="color:var(--orange-dark);text-decoration:underline;">contato@alugaaquimaquinas.com.br</a>
+          ou pelo WhatsApp <a href="https://wa.me/5519995757318" style="color:var(--orange-dark);text-decoration:underline;">(19) 99575-7318</a>,
+          informando seu pedido. Responderemos em prazo razoável e, sempre que possível, em até 15 dias corridos.
+        </p>
+      </div>
+
+      <div class="legal-section" id="menores">
+        <h2>11. Crianças e adolescentes</h2>
+        <p>
+          Nossos serviços são direcionados a empresas e profissionais da construção civil, não sendo destinados
+          a menores de 18 anos. Não coletamos intencionalmente dados de crianças ou adolescentes.
+        </p>
+      </div>
+
+      <div class="legal-section" id="alteracoes">
+        <h2>12. Alterações desta política</h2>
+        <p>
+          Esta política pode ser atualizada periodicamente para refletir melhorias em nossos serviços ou mudanças
+          na legislação. A data da última atualização está sempre indicada no topo desta página. Recomendamos
+          revisitá-la ocasionalmente.
+        </p>
+      </div>
+
+      <div class="legal-section" id="contato-legal">
+        <h2>13. Legislação aplicável e contato</h2>
+        <p>
+          Esta política é regida pelas leis da República Federativa do Brasil, em especial a Lei nº 13.709/2018
+          (LGPD) e o Marco Civil da Internet (Lei nº 12.965/2014). Fica eleito o foro da comarca de Sumaré/SP
+          para dirimir eventuais controvérsias.
+        </p>
+        <p>
+          Dúvidas sobre esta política podem ser enviadas para
+          <a href="mailto:contato@alugaaquimaquinas.com.br" style="color:var(--orange-dark);text-decoration:underline;">contato@alugaaquimaquinas.com.br</a>.
+        </p>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer class="footer" aria-label="Rodapé">
+  <div class="stripe"></div>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="Design System Aluga Aqui/assets/logos/aqui-orange.png" alt="AlugaAqui Máquinas e Equipamentos" />
+          </div>
+          <p class="footer-tagline">"A força que sua obra precisa."</p>
+        </div>
+        <nav aria-label="Links rápidos">
+          <div class="footer-col-title">Links Rápidos</div>
+          <div class="footer-links">
+            <a href="index.html#equipamentos">Equipamentos</a>
+            <a href="index.html#sobre">Sobre</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="#" data-cc-open>Preferências de Cookies</a>
+          </div>
+        </nav>
+        <address aria-label="Informações de contato">
+          <div class="footer-col-title">Contato</div>
+          <div class="footer-contact">
+            <div class="footer-citem"><a href="https://wa.me/5519995757318" target="_blank" rel="noopener noreferrer">WhatsApp: (19) 99575-7318</a></div>
+            <div class="footer-citem"><a href="mailto:contato@alugaaquimaquinas.com.br">contato@alugaaquimaquinas.com.br</a></div>
+            <div class="footer-citem">Rua João Polezel, 62 — Sumaré/SP</div>
+          </div>
+        </address>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2025–2026 AlugaAqui Máquinas e Equipamentos &nbsp;&middot;&nbsp; CNPJ: 03.037.369/0001-67</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+})();
+</script>
+<script src="cookie-consent.js" defer></script>
+</body>
+</html>
